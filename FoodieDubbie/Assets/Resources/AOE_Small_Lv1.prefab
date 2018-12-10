@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4220646353349958}
+  - component: {fileID: 114387184879653510}
   m_Layer: 0
   m_Name: AOE_Small_Lv1
   m_TagString: Untagged
@@ -296,3 +297,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114387184879653510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1102740106426796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb75cca0a3d32b408da6afd7c93928f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBeingCast: 0

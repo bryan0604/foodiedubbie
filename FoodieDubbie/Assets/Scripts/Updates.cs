@@ -1,11 +1,10 @@
 ﻿#region To Updates
 // 1. Health Bar background lerp to correct point.
-// 2. AOE damage Indications Basic.
 // 3. Spawn Management on Platform.
 // 4. Boss Management - Health Points
 // 5. Boss Management - Pattern.
 // 6. Boss Dialogue.
-// 7. AOE damage indications basic - animations.
+// 8. AOE damage indications basic - animations code mechanics. (Neglected)
 #endregion
 
 #region Updates Done
@@ -15,11 +14,13 @@
 // 4. Players Health Points Implementation.
 // 5. Platform Design Level 1 - Basic.
 // 6. Main Screen - User Interface.
-// 7. 
+// 7. AOE damage indications basic - animations. 
+// 8. Game Manager handling for Boss Fight Mechanics - Basic.
+// 9. AOE damage Indications Basic.
 #endregion
 
 #region Errors
-
+// 1.
 #endregion
 
 #region Errors Fixed
