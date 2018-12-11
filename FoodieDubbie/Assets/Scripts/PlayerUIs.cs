@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerUIs : MonoBehaviour
 {
+    public bool HealthBarMoves;
     public int DefaultHealthPoints;
     public int HealthPoints = 100;
     public float LerpSpeed = 0.5f;
@@ -12,6 +13,7 @@ public class PlayerUIs : MonoBehaviour
     public Transform Healthbar_Original;
     public Transform Healthbar_Background;
     public Text PlayerName_Text;
+    private float Axe; 
 
     private void Start()
     {
@@ -20,6 +22,23 @@ public class PlayerUIs : MonoBehaviour
     private void LateUpdate()
     {
         OnLerpingToPlayerPosition();
+    }
+
+    private void Update()
+    {
+        if(HealthBarMoves)
+        {
+            float X = Healthbar_Background.localScale.x;
+
+            X -= Time.deltaTime * (LerpSpeed/2f);
+
+            Healthbar_Background.transform.localScale = new Vector3(X, Healthbar_Background.localScale.y, Healthbar_Background.localScale.z); 
+
+            if(Healthbar_Background.transform.localScale.x <= Axe )
+            {
+                HealthBarMoves = false;
+            }
+        }
     }
 
     public void OnHealthPointsChanged()
@@ -31,6 +50,10 @@ public class PlayerUIs : MonoBehaviour
         value = CurrentValue / MaximumValue;
 
         Healthbar_Original.transform.localScale = new Vector3(Mathf.Clamp(value, 0f, 1f), Healthbar_Original.transform.localScale.y, Healthbar_Original.transform.localScale.z);
+
+        HealthBarMoves = true;
+
+        Axe = Healthbar_Original.transform.localScale.x;
     }
 
     void OnLerpingToPlayerPosition()

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public int DebuffDamage_Lv1 = 5;
+    public int BuffsDamage_Lv1 = 2;
     public int HealthPoints = 100;
     public float MovementSpeed = 3f;
     public string PlayerName;
@@ -79,8 +81,26 @@ public class PlayerManager : MonoBehaviour
         PlayerUIs.OnHealthPointsChanged();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if(collision.gameObject.tag == "buffs")
+        {
+            if(collision.transform.parent.transform.GetComponent<Damage_Buffs>()!=null)
+            {
+                Damage_Buffs _db = collision.transform.parent.transform.GetComponent<Damage_Buffs>();
+
+                if(_db.isAdvantageBuff)
+                {
+                    BossManager.singleton.OnTakingDamage(BuffsDamage_Lv1);
+                }
+                
+                if(_db.isDisadvantageBuff)
+                {
+                    OnTakenDamage(DebuffDamage_Lv1);
+                }
+
+                _db.OnDeactivation();        
+            }
+        }
     }
 }

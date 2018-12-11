@@ -5,22 +5,45 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager singleton;
-
+    public GameObject AdvantageBuffs;
+    public GameObject DisadvantageBuffs;
     public GameObject AoeSmall;
-
+    public GameObject MainPlayer;
+    public GameObject Platform;
+    public ParticleSystem ExplosionEffects_Lv1;
     [Range(0,10)]
     public int MaxSmallAoe;
-
+    [Range(0, 10)]
+    public int MaxBuffs_Quantity;
+    public int Buffs_Quantity;
     public int NumberHit_MultipleTarget;
-
     public List<GameObject> BigPool = new List<GameObject>();
-
-    public GameObject MainPlayer;
+    public List<ParticleSystem> SpecialEffects_Pools = new List<ParticleSystem>();
+    public List<Damage_Buffs> AdvantageBuff_Pools = new List<Damage_Buffs>();
+    public List<Damage_Buffs> DisadvantageBuff_Pools = new List<Damage_Buffs>();
+    private bool HitPlatform;
 
     private void Start()
     {
         singleton = this;
 
+        //Damage Buffs
+        for (int i = 0; i < MaxBuffs_Quantity; i++)
+        {
+            Damage_Buffs DB = Instantiate(AdvantageBuffs.GetComponent<Damage_Buffs>());
+
+            DB.transform.SetParent(transform);
+
+            AdvantageBuff_Pools.Add(DB);
+
+            Damage_Buffs DB2 = Instantiate(DisadvantageBuffs.GetComponent<Damage_Buffs>());
+
+            DB2.transform.SetParent(transform);
+
+            DisadvantageBuff_Pools.Add(DB2);
+        }
+
+        //AOEs
         for (int i = 0; i < MaxSmallAoe; i++)
         {
             GameObject _aoe = Instantiate(AoeSmall);
@@ -30,8 +53,18 @@ public class GameManager : MonoBehaviour
             _aoe.transform.SetParent(transform);
 
             BigPool.Add(_aoe);
+
+            ParticleSystem _se = Instantiate(ExplosionEffects_Lv1);
+
+            _se.gameObject.SetActive(false);
+
+            _se.transform.SetParent(transform);
+
+            SpecialEffects_Pools.Add(_se);
         }
     }
+
+    #region Boss Abilities
     // 1. Single 2. Multiple 3. Single Random 4. Multi Random  Large = X x Large
     public void OnCastingAbilitiesAtRandomPosition(int AmountOfCast, int code)
     {
@@ -45,7 +78,7 @@ public class GameManager : MonoBehaviour
         }
         else if(code == 3)
         {
-
+            SingleRandom();
         }
         else
         {
@@ -56,7 +89,7 @@ public class GameManager : MonoBehaviour
 
             for (int i = 0; i < AmountOfCast; i++)
             {
-                RandomMultiple();
+                SingleRandom();
             }
         }
 
@@ -100,23 +133,49 @@ public class GameManager : MonoBehaviour
         }  
     }
 
-    void RandomMultiple()
+    void SingleRandom()
     {
-        float Rand = Random.Range(-5, 5);
+        float X, Z, RandomX, RandomZ;
+        X = (Platform.transform.localScale.x / 2) - 0.5f;
+        Z = (Platform.transform.localScale.z / 2) - 0.5f;
 
-        Vector3 pos = new Vector3(Rand,0.5f,Rand);
+        RandomX = Random.Range(-X, X);
+        RandomZ = Random.Range(-Z, Z);
 
-        GameObject _aoe = BigPool[Random.Range(0, BigPool.Count)];
+        Vector3 TargetPoint = new Vector3(RandomX, 0.5f, RandomZ);
 
-        AoeManager _aoeM = _aoe.GetComponent<AoeManager>();
+        TargetPoint = Platform.transform.TransformPoint(TargetPoint / 2f);
 
-        if (_aoeM.isBeingCast)
+        Collider[] Objects = Physics.OverlapSphere(TargetPoint, 0.1f);
+
+        foreach (var item in Objects)
         {
-            RandomMultiple();
+            if (item.gameObject.tag == "Platforms")
+            {
+                HitPlatform = true;
+            }
+        }
+
+        if (HitPlatform)
+        {
+            Debug.DrawLine(transform.position, TargetPoint, Color.cyan, 15f);
+
+            GameObject _aoe = BigPool[Random.Range(0, BigPool.Count)];
+
+            AoeManager _aoeM = _aoe.GetComponent<AoeManager>();
+
+            if (_aoeM.isBeingCast)
+            {
+                SingleRandom();
+            }
+            else
+            {
+                _aoeM.OnBeingCast(TargetPoint);
+            }
         }
         else
         {
-            _aoeM.OnBeingCast(pos);
+            //Debug.DrawLine(transform.position, TargetPoint, Color.red, 15f);
         }
     }
 
@@ -126,4 +185,91 @@ public class GameManager : MonoBehaviour
 
         ObjectToKeep.transform.SetParent(transform);
     }
+
+    public void OnSpecialEffectsEnded(ParticleSystem _se)
+    {
+        _se.gameObject.SetActive(false);
+
+        _se.transform.SetParent(transform);
+    }
+
+    #endregion
+
+    #region Buffs Sector Managemenet
+    public void AdvantageBuffsRandomPosition(int Level)
+    {
+        if(Level == 1)
+        {
+            float X, Z, RandomX, RandomZ;
+            X = (Platform.transform.localScale.x / 2) - 0.5f;
+            Z = (Platform.transform.localScale.z / 2) - 0.5f;
+
+            RandomX = Random.Range(-X, X);
+            RandomZ = Random.Range(-Z, Z);
+
+            Vector3 TargetPoint = new Vector3(RandomX, 0.5f, RandomZ);
+
+            TargetPoint = Platform.transform.TransformPoint(TargetPoint / 2f);
+
+            Collider[] Objects = Physics.OverlapSphere(TargetPoint, 0.1f);
+
+            foreach (var item in Objects)
+            {
+                if (item.gameObject.tag == "Platforms")
+                {
+                    HitPlatform = true;
+                }
+            }
+
+            if(HitPlatform)
+            {
+                Damage_Buffs _db = AdvantageBuff_Pools[Random.Range(0, AdvantageBuff_Pools.Count)];
+
+                _db.OnBeingPlaced(TargetPoint);
+            }
+            else
+            {
+
+            }
+        }
+    }
+
+    public void DisadvantageBuffsRandomPosition(int Level)
+    {
+        if (Level == 1)
+        {
+            float X, Z, RandomX, RandomZ;
+            X = (Platform.transform.localScale.x / 2) - 0.5f;
+            Z = (Platform.transform.localScale.z / 2) - 0.5f;
+
+            RandomX = Random.Range(-X, X);
+            RandomZ = Random.Range(-Z, Z);
+
+            Vector3 TargetPoint = new Vector3(RandomX, 0.5f, RandomZ);
+
+            TargetPoint = Platform.transform.TransformPoint(TargetPoint / 2f);
+
+            Collider[] Objects = Physics.OverlapSphere(TargetPoint, 0.1f);
+
+            foreach (var item in Objects)
+            {
+                if (item.gameObject.tag == "Platforms")
+                {
+                    HitPlatform = true;
+                }
+            }
+
+            if (HitPlatform)
+            {
+                Damage_Buffs _db = DisadvantageBuff_Pools[Random.Range(0, DisadvantageBuff_Pools.Count)];
+
+                _db.OnBeingPlaced(TargetPoint);
+            }
+            else
+            {
+
+            }
+        }
+    }
+    #endregion
 }
