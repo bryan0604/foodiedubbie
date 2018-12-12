@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4937132683379230}
   - component: {fileID: 33441501873050364}
   - component: {fileID: 23808277201747214}
-  - component: {fileID: 135154818895271684}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: buffs
@@ -44,7 +43,7 @@ GameObject:
   m_Layer: 0
   m_Name: InternalRing
   m_TagString: Untagged
-  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -92,10 +91,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4060397027338674}
   - component: {fileID: 114961214641404864}
+  - component: {fileID: 135100076414453528}
   m_Layer: 0
-  m_Name: Negative_Buff_Lv1
+  m_Name: Disadvantage_Buff_Lv1
   m_TagString: buffs
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1797906246313780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4911976, y: 0.57, z: 0.47987488}
+  m_LocalPosition: {x: 2.3689418, y: 0.457, z: -1.9718268}
   m_LocalScale: {x: 0.35297, y: 0.35297, z: 0.35297}
   m_Children:
   - {fileID: 4814011434025844}
@@ -11839,15 +11839,15 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
---- !u!135 &135154818895271684
+--- !u!135 &135100076414453528
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1028815271621082}
+  m_GameObject: {fileID: 1797906246313780}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}

@@ -6,12 +6,13 @@ public class AoeManager : MonoBehaviour
 {
     public bool isBeingCast;
     public int Damage;
+    public int Level;
 
     public void OnBeingCast(Vector3 pos)
     {
         isBeingCast = true;
 
-        transform.position = new Vector3(pos.x, pos.y + 0.5f, pos.z);
+        transform.position = new Vector3(pos.x, pos.y + 0.2f, pos.z);
 
         gameObject.SetActive(true);
 

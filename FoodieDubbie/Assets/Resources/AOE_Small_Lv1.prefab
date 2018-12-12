@@ -310,3 +310,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBeingCast: 0
   Damage: 5
+  Level: 1

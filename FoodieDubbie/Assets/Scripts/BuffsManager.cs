@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuffsManager: MonoBehaviour
+public class Damage_Buffs : MonoBehaviour
 {
     public Transform InternalRing;
     public Transform ExternalRing;

@@ -85,9 +85,9 @@ public class PlayerManager : MonoBehaviour
     {
         if(collision.gameObject.tag == "buffs")
         {
-            if(collision.transform.parent.transform.GetComponent<Damage_Buffs>()!=null)
+            if(collision.transform.GetComponent<BuffsManager>()!=null)
             {
-                Damage_Buffs _db = collision.transform.parent.transform.GetComponent<Damage_Buffs>();
+                BuffsManager _db = collision.transform.GetComponent<BuffsManager>();
 
                 if(_db.isAdvantageBuff)
                 {
