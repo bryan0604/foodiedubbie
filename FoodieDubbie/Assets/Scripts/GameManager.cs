@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject MainPlayer;
     public GameObject Platform;
     public ParticleSystem ExplosionEffects_Lv1;
+    public ParticleSystem TurretBlastEffects_Lv1;
+    public Button Button_Dismount;
     [Range(0,10)]
     public int MaxSmallAoe;
     [Range(0, 10)]
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
     public List<BuffsManager> AdvantageBuff_Pools = new List<BuffsManager>();
     public List<BuffsManager> DisadvantageBuff_Pools = new List<BuffsManager>();
     public List<Transform> Buffs_SpecificPosition = new List<Transform>();
+    public List<PlayerManager> Players = new List<PlayerManager>();
     public Vector3 SingleTarget_Position;
     private bool HitPlatform;
     private int _skillfourquantity;
@@ -65,11 +69,19 @@ public class GameManager : MonoBehaviour
 
             ParticleSystem _se = Instantiate(ExplosionEffects_Lv1);
 
+            ParticleSystem _se1 = Instantiate(TurretBlastEffects_Lv1);
+
             _se.gameObject.SetActive(false);
+
+            _se1.gameObject.SetActive(false);
 
             _se.transform.SetParent(transform);
 
+            _se1.transform.SetParent(transform);
+
             SpecialEffects_Pools.Add(_se);
+
+            SpecialEffects_Pools.Add(_se1);
         }
     }
 
@@ -269,5 +281,21 @@ public class GameManager : MonoBehaviour
         _se.gameObject.SetActive(false);
 
         _se.transform.SetParent(transform);
+    }
+
+    public void OnMountingTurret()
+    {
+        Button_Dismount.gameObject.SetActive(true);
+        
+        Button_Dismount.onClick.AddListener(OnDismountTurret);
+    }
+
+    public void OnDismountTurret()
+    {
+        PlayerManager _player = Players[0];
+
+        _player.DismountTurret();
+
+        Button_Dismount.gameObject.SetActive(false);
     }
 }

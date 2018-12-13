@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public Rigidbody myRigidBody;
     public Joystick joystick;
     public PlayerUIs PlayerUIs;
+    private TurretManager _mountTurret;
 
     #region auto assign
     private void OnValidate()
@@ -102,5 +103,25 @@ public class PlayerManager : MonoBehaviour
                 _db.OnDeactivation();        
             }
         }
+    }
+
+    public void MountTurret(Vector3 position, TurretManager _turret)
+    {
+        MovementSpeed = 0;
+
+        transform.position = position;
+
+        GameManager.singleton.OnMountingTurret();
+
+        _mountTurret = _turret;
+
+        _mountTurret.ActivateTurret();
+    }
+
+    public void DismountTurret()
+    {
+        MovementSpeed = 3;
+
+        _mountTurret.DeactivateTurret();
     }
 }

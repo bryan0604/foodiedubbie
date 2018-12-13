@@ -8,6 +8,8 @@ public class SpecialEffectsManager : MonoBehaviour
 
     public float LifeTime;
 
+    public int SpecialEffectsCode;
+
     public void OnEndPlayingSpecialEffects(Vector3 targetPos)
     {
         selfSE.Stop();

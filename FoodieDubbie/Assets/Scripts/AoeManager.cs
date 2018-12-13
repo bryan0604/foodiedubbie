@@ -46,9 +46,12 @@ public class AoeManager : MonoBehaviour
             {
                 _se = item.GetComponent<SpecialEffectsManager>();
 
-                _se.OnEndPlayingSpecialEffects(transform.position);
+                if(_se.SpecialEffectsCode == 1)
+                {
+                    _se.OnEndPlayingSpecialEffects(transform.position);
 
-                break;
+                    break;
+                }             
             }
         }
 
