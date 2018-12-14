@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public int DebuffDamage_Lv1 = 5;
-    public int BuffsDamage_Lv1 = 2;
+    public int DbuffDamage_Lv1 = 5;
+    public int ABuffsDamage_Lv1 = 2;
+    public int HP_RecoverBuff = 5;
     public int HealthPoints = 100;
     public float MovementSpeed = 3f;
     public string PlayerName;
@@ -14,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     public Joystick joystick;
     public PlayerUIs PlayerUIs;
     private TurretManager _mountTurret;
+    private int _HealthPoints;
 
     #region auto assign
     private void OnValidate()
@@ -42,6 +44,8 @@ public class PlayerManager : MonoBehaviour
     {
         //HP
         PlayerUIs.HealthPoints = HealthPoints;
+
+        _HealthPoints = HealthPoints;
 
         //Name
         PlayerUIs.PlayerName_Text.text = PlayerName;
@@ -79,7 +83,19 @@ public class PlayerManager : MonoBehaviour
 
         PlayerUIs.HealthPoints = HealthPoints;
 
-        PlayerUIs.OnHealthPointsChanged();
+        PlayerUIs.OnHealthPointsChanged(HealthPoints,_HealthPoints,false);
+    }
+
+    public void OnRecoveringHealth()
+    {
+        HealthPoints += HP_RecoverBuff;
+
+        if (HealthPoints>=_HealthPoints)
+        {
+            HealthPoints = 100;
+        }
+
+        PlayerUIs.OnHealthPointsChanged(HealthPoints, _HealthPoints, true);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -92,12 +108,14 @@ public class PlayerManager : MonoBehaviour
 
                 if(_db.isAdvantageBuff)
                 {
-                    BossManager.singleton.OnTakingDamage(BuffsDamage_Lv1);
+                    BossManager.singleton.OnTakingDamage(ABuffsDamage_Lv1);
+
+                    OnRecoveringHealth();
                 }
                 
                 if(_db.isDisadvantageBuff)
                 {
-                    OnTakenDamage(DebuffDamage_Lv1);
+                    OnTakenDamage(DbuffDamage_Lv1);
                 }
 
                 _db.OnDeactivation();        

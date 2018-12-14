@@ -110,7 +110,7 @@ GameObject:
   m_Layer: 0
   m_Name: _playerUIs
   m_TagString: playerui
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8620f3addf669e64d82476302a1ca0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthBarMoves: 0
   DefaultHealthPoints: 0
   HealthPoints: 100
   LerpSpeed: 0.25

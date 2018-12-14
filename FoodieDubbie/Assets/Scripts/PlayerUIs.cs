@@ -13,12 +13,9 @@ public class PlayerUIs : MonoBehaviour
     public Transform Healthbar_Original;
     public Transform Healthbar_Background;
     public Text PlayerName_Text;
-    private float Axe; 
+    private float Axe;
+    private bool isRecovers;
 
-    private void Start()
-    {
-        DefaultHealthPoints = HealthPoints;
-    }
     private void LateUpdate()
     {
         OnLerpingToPlayerPosition();
@@ -28,23 +25,62 @@ public class PlayerUIs : MonoBehaviour
     {
         if(HealthBarMoves)
         {
-            float X = Healthbar_Background.localScale.x;
-
-            X -= Time.deltaTime * (LerpSpeed/2f);
-
-            Healthbar_Background.transform.localScale = new Vector3(X, Healthbar_Background.localScale.y, Healthbar_Background.localScale.z); 
-
-            if(Healthbar_Background.transform.localScale.x <= Axe )
+            if (Healthbar_Background.transform.localScale.x == Axe)
             {
                 HealthBarMoves = false;
             }
+            else if(Healthbar_Background.transform.localScale.x >= Axe)
+            {
+                float X = Healthbar_Background.localScale.x;
+
+                X -= Time.deltaTime * (LerpSpeed / 2f);
+
+                Healthbar_Background.transform.localScale = new Vector3(X, Healthbar_Background.localScale.y, Healthbar_Background.localScale.z);
+            }
+            else
+            {
+                float X = Healthbar_Background.localScale.x;
+
+                X += Time.deltaTime * (LerpSpeed / 2f);
+
+                Healthbar_Background.transform.localScale = new Vector3(X, Healthbar_Background.localScale.y, Healthbar_Background.localScale.z);
+            }
+
+            //if(isRecovers)
+            //{
+            //    float X = Healthbar_Background.localScale.x;
+
+            //    X += Time.deltaTime * (LerpSpeed / 2f);
+
+            //    Healthbar_Background.transform.localScale = new Vector3(X, Healthbar_Background.localScale.y, Healthbar_Background.localScale.z);
+
+            //    if (Healthbar_Background.transform.localScale.x >= Axe)
+            //    {
+            //        HealthBarMoves = false;
+            //    }
+            //}
+            //else
+            //{
+            //    float X = Healthbar_Background.localScale.x;
+
+            //    X -= Time.deltaTime * (LerpSpeed / 2f);
+
+            //    Healthbar_Background.transform.localScale = new Vector3(X, Healthbar_Background.localScale.y, Healthbar_Background.localScale.z);
+
+            //    if (Healthbar_Background.transform.localScale.x <= Axe)
+            //    {
+            //        HealthBarMoves = false;
+            //    }
+            //}
         }
     }
 
-    public void OnHealthPointsChanged()
+    public void OnHealthPointsChanged(int Current, int Max, bool isRecovering)
     {
-        float CurrentValue = HealthPoints;
-        float MaximumValue = DefaultHealthPoints;
+        isRecovers = isRecovering;
+
+        float CurrentValue = Current;
+        float MaximumValue = Max;
         float value;
 
         value = CurrentValue / MaximumValue;

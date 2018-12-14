@@ -103,7 +103,7 @@ public class TurretManager : MonoBehaviour
             {
                 _se = item.GetComponent<SpecialEffectsManager>();
 
-                if (_se.SpecialEffectsCode == 2)
+                if (_se.SpecialEffectsCode == 3)
                 {
                     _se.OnEndPlayingSpecialEffects(ShootPoint1.transform.position);
 
