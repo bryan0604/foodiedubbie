@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damage_Buffs : MonoBehaviour
+public class BuffsManager : MonoBehaviour
 {
     public Transform InternalRing;
     public Transform ExternalRing;
@@ -11,6 +11,7 @@ public class Damage_Buffs : MonoBehaviour
     public float ExpiresTime=5f;
     public bool isAdvantageBuff;
     public bool isDisadvantageBuff;
+    public Transform TargetedPlayer;
 
     private void FixedUpdate()
     {
@@ -37,5 +38,32 @@ public class Damage_Buffs : MonoBehaviour
     public void OnDeactivation()
     {
         gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(TargetedPlayer!=null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, TargetedPlayer.position, Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            TargetedPlayer = other.transform;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            if(TargetedPlayer == other.transform)
+            {
+                TargetedPlayer = null;
+            }
+        }
     }
 }

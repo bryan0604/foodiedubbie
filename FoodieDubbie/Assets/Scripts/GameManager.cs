@@ -191,8 +191,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CastingNormalAttack(int Hits, int Damage, float Cooldowns, float CastingTime)
     {
-        Debug.Log("Processing Normal Attack!" );
-
         yield return new WaitForSeconds(CastingTime);
 
         if(Hits>0)

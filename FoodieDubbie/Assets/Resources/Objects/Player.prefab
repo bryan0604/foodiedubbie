@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4770725323118114}
   - component: {fileID: 33191540098953382}
   - component: {fileID: 23197550782834646}
-  - component: {fileID: 135826616704102192}
   - component: {fileID: 114927856922057484}
-  - component: {fileID: 54877309821330548}
+  - component: {fileID: 54839716123288770}
+  - component: {fileID: 135519903870450518}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1180361072040864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.66, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.66, y: 0.526, z: -4.887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,7 +86,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1180361072040864}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54877309821330548
+--- !u!54 &54839716123288770
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,10 +94,10 @@ Rigidbody:
   m_GameObject: {fileID: 1180361072040864}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 10
+  m_AngularDrag: 10
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -113,15 +113,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DbuffDamage_Lv1: 5
-  ABuffsDamage_Lv1: 2
+  ABuffsDamage_Lv1: 45
   HP_RecoverBuff: 5
   HealthPoints: 100
   MovementSpeed: 3
   PlayerName: Anduin
-  myRigidBody: {fileID: 54877309821330548}
+  myRigidBody: {fileID: 54839716123288770}
   joystick: {fileID: 0}
   PlayerUIs: {fileID: 0}
---- !u!135 &135826616704102192
+--- !u!135 &135519903870450518
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

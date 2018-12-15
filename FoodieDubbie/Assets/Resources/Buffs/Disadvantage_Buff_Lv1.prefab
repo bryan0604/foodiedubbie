@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 4060397027338674}
   - component: {fileID: 114961214641404864}
   - component: {fileID: 135100076414453528}
+  - component: {fileID: 135208880775331010}
   m_Layer: 0
   m_Name: Disadvantage_Buff_Lv1
   m_TagString: buffs
@@ -125,7 +126,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1797906246313780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3689418, y: 0.457, z: -1.9718268}
+  m_LocalPosition: {x: -3.43, y: 0.39, z: -5.08}
   m_LocalScale: {x: 0.35297, y: 0.35297, z: 0.35297}
   m_Children:
   - {fileID: 4814011434025844}
@@ -6554,6 +6555,7 @@ MonoBehaviour:
   ExpiresTime: 5
   isAdvantageBuff: 0
   isDisadvantageBuff: 1
+  TargetedPlayer: {fileID: 0}
 --- !u!114 &114983442151538568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11850,4 +11852,16 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135208880775331010
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797906246313780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
