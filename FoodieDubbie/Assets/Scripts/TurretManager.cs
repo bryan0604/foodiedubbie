@@ -120,14 +120,14 @@ public class TurretManager : MonoBehaviour
 
     public void ActivateTurret()
     {
-        Debug.Log("Activate Turret");
+        //Debug.Log("Activate Turret");
 
         isActivated = true;
     }
 
     public void DeactivateTurret()
     {
-        Debug.Log("Deactivate Turret");
+        //Debug.Log("Deactivate Turret");
 
         isActivated = false;
 

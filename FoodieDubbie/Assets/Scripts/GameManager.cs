@@ -37,12 +37,23 @@ public class GameManager : MonoBehaviour
     private bool HitPlatform;
     private int _skillfourquantity;
     private int _normalHits;
-    //private int _normalDamage;
-    //private float _normalCooldown;
+
+    public delegate void BossSkills();
+    public List<BossSkills> BossAbilities = new List<BossSkills>();
 
     private void Awake()
     {
         singleton = this;
+
+        //Test - Void call from other script
+        BossAbilities.Add(NormalAttack);//0
+        BossAbilities.Add(SkillOne_SingleRandom);//1
+        BossAbilities.Add(SkillTwo_MultiRandom);//2
+        BossAbilities.Add(SkillThree_SingleTarget);//3
+        BossAbilities.Add(SkillFour_MultiTarget);//4
+        BossAbilities.Add(DropBuffsAtRandomSpot);//5
+        BossAbilities.Add(DropDisadvantageBuff);//6
+        BossAbilities.Add(DropAdvantageBuff);//7
 
         _skillfourquantity = SkillFour_Quantity;
 
@@ -126,6 +137,7 @@ public class GameManager : MonoBehaviour
 
     public void SkillOne_SingleRandom()
     {
+        
         TargetManagement(true, SkillOne_Quantity, false, 1, false, true);
     }
 
@@ -179,22 +191,20 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CastingNormalAttack(int Hits, int Damage, float Cooldowns, float CastingTime)
     {
-        Debug.Log("Processing Normal Attack!");
-
-        //_normalHits = Hits;
-        //_normalDamage = Damage;
-        //_normalCooldown = Cooldowns;
+        Debug.Log("Processing Normal Attack!" );
 
         yield return new WaitForSeconds(CastingTime);
 
         if(Hits>0)
         {
-            StartCoroutine(HitManagement());
+            StartCoroutine(HitManagement(Hits));
         }
     }
 
-    IEnumerator HitManagement()
+    IEnumerator HitManagement(int h)
     {
+        _normalHits = h;
+
         yield return new WaitForSeconds(0.25f);
 
         SpecialEffectsManager SpecialEffect;
@@ -226,7 +236,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            StartCoroutine(HitManagement());
+            StartCoroutine(HitManagement(_normalHits));
         }
         else
         {

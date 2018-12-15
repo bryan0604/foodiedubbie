@@ -4347,6 +4347,11 @@ Prefab:
       propertyPath: BossLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114684092468063086, guid: 792691b94c375cf4a8b39b84c5d3a6f4,
+        type: 2}
+      propertyPath: Phase
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 792691b94c375cf4a8b39b84c5d3a6f4, type: 2}
   m_IsPrefabAsset: 0

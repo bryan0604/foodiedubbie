@@ -7,17 +7,13 @@ public class BossManager : MonoBehaviour
     public static BossManager singleton;
     public List<int> Health_ThresholdPercent = new List<int>();
     public List<int> Health_ThresholdCheck = new List<int>();
-    [Header("Boss 1 Phase Timings")]
-    public List<float> SkillsTiming_B1P1 = new List<float>();
-    [Header("Boss 1 Phase boolean")]
-    public List<bool> PhaseBool = new List<bool>();
     [Space]
-    [Header("Boss 1 Phase Cycles to drop buffs")]
-    public List<int> Cycles = new List<int>();
-    public int Phase;
-    public int BossLevel;
+    [Header("Current Phase")]
+    public int CurrentPhase = -1;
+    public int TotalPhase;
+    public int BuffCycles=4;
     [Tooltip("Cast Every Sec")]
-    public float _aoeSmall=5f;
+    public float _aoeSmall = 5f;
     public float _aoeMedium;
     public float LerpSpeed;
     public int CastAmount_Aoe = 5;
@@ -28,7 +24,7 @@ public class BossManager : MonoBehaviour
     public bool isHealthbarMoving;
     private int DefaultHealthPoints;
     private float Axe;
-    private int _currentCycles;
+    private int _BuffCycles;
     private int _currentPhase;
 
     private void Start()
@@ -36,6 +32,11 @@ public class BossManager : MonoBehaviour
         singleton = this;
 
         DefaultHealthPoints = HealthPoints;
+
+        _currentPhase = CurrentPhase;
+        _BuffCycles = BuffCycles;
+
+        TotalPhase = Health_ThresholdPercent.Count-1;
 
         for (int i = 0; i < Health_ThresholdPercent.Count; i++)
         {
@@ -47,12 +48,12 @@ public class BossManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             OnTakingDamage(75);
         }
 
-        if(isHealthbarMoving)
+        if (isHealthbarMoving)
         {
             float X = Healthbar_Background.localScale.x;
 
@@ -60,7 +61,7 @@ public class BossManager : MonoBehaviour
 
             Healthbar_Background.transform.localScale = new Vector3(X, Healthbar_Background.localScale.y, Healthbar_Background.localScale.z);
 
-            if(Healthbar_Background.transform.localScale.x <= Axe)
+            if (Healthbar_Background.transform.localScale.x <= Axe)
             {
                 isHealthbarMoving = false;
             }
@@ -96,118 +97,164 @@ public class BossManager : MonoBehaviour
     {
         for (int i = 0; i < Health_ThresholdCheck.Count; i++)
         {
-            if(HealthPoints <= Health_ThresholdCheck[i])
+            if (HealthPoints <= Health_ThresholdCheck[i])
             {
-                if(BossLevel == 1)
+                if (i > CurrentPhase)
                 {
-                    if(_currentPhase==i+1)
-                    {
-                        
-                    }
-                    else
-                    {
-                    
-                        Debug.Log(i + 1);
+                    CurrentPhase = i;
 
-                        _currentPhase = i + 1;
+                    if (CurrentPhase == 0)
+                    {
+                        PhaseZero();
                     }
-                    //PhaseManagement(i + 1);
+                    else if (CurrentPhase == 1)
+                    {
+
+                    }
+                    else if (CurrentPhase == 2)
+                    {
+
+                    }
                 }
+                //Debug.Log("Standard - " +i);
             }
         }
     }
     #endregion
 
-    #region Boss Fight Pattern - Design Level 1
-    void PhaseManagement(int _phase)
-    {
-        if(Phase!=_phase)
-        {
-            Phase = _phase;
-            if (Phase == 1)
-            {
-                PhaseOne();
-            }
-            else if(Phase == 2)
-            {
-                PhaseTwo();
-            }
-            else
-            {
-                PhaseThree();
-            }
-        }
-    }
+    #region Boss Fight Pattern - Design 
 
+    //Normal Attack > Single Target x 4 Buffs(7 only)
+    #region Basic Phase
     void BasicPhase()
     {
-        StartCoroutine(Boss_1_Phase_0_Skill_1());
+        Debug.Log("Commencing Basic Phase");
+
+        StartCoroutine(BasicPhase_S1());
     }
 
-    IEnumerator Boss_1_Phase_0_Skill_1()
+    IEnumerator BasicPhase_S1()
     {
-        yield return new WaitForSeconds(SkillsTiming_B1P1[0]);
-        
-        if(Phase != 0)
+        yield return new WaitForSeconds(2f);
+
+        if (CurrentPhase != -1)
         {
-            Debug.Log("Cancel");
-        }
 
-        GameManager.singleton.SkillThree_SingleTarget();
-
-        CyclesManagement_B1P0();
-
-        StartCoroutine(Boss_1_Phase_0_Skill_2());
-    }
-
-    IEnumerator Boss_1_Phase_0_Skill_2()
-    {
-        yield return new WaitForSeconds(SkillsTiming_B1P1[1]);
-
-        if (Phase != 0)
-        {
-            Debug.Log("Cancel");
         }
         else
         {
-            GameManager.singleton.NormalAttack();
+            GameManager.singleton.BossAbilities[0].Invoke();
 
-            CyclesManagement_B1P0();
+            BuffsCycles_BasicPhase();
 
-            StartCoroutine(Boss_1_Phase_0_Skill_1());
-        }
+            StartCoroutine(BasicPhase_S2());
+        }     
     }
 
-    void CyclesManagement_B1P0()
+    IEnumerator BasicPhase_S2()
     {
-        if(_currentCycles >= Cycles[0])
-        {
-            _currentCycles = 0;
+        yield return new WaitForSeconds(8f);
 
-            GameManager.singleton.DropAdvantageBuff();
+        if (CurrentPhase != -1)
+        {
+
         }
         else
         {
-            _currentCycles++;
+            GameManager.singleton.BossAbilities[3].Invoke();
+
+            BuffsCycles_BasicPhase();
+
+            StartCoroutine(BasicPhase_S1());
         }
     }
 
-    void PhaseOne()
+    void BuffsCycles_BasicPhase()
     {
-        Debug.Log("Activating Phase One!");
+        if (_BuffCycles <= 0)
+        {
+            GameManager.singleton.BossAbilities[7].Invoke();
 
-
+            _BuffCycles = BuffCycles;
+        }
+        else
+        {
+            _BuffCycles -= 1;
+        }
     }
 
-    void PhaseTwo()
+    #endregion
+
+    //Single Random > Multi Random x 6 Buffs(6,7) 
+    #region Phase Zero
+    void PhaseZero()
     {
-        Debug.Log("Phase Two!");
+        Debug.Log("Commencing Phase Zero");
+        BuffCycles = 6;
+        _BuffCycles = BuffCycles;
+
+        StartCoroutine(PhaseZero_S1());
     }
 
-    void PhaseThree()
+    IEnumerator PhaseZero_S1()
     {
-        Debug.Log("Phase Three!");
+        yield return new WaitForSeconds(5f);
+
+        if (CurrentPhase != 0)
+        {
+
+        }
+        else
+        {
+            GameManager.singleton.BossAbilities[1].Invoke();
+
+            BuffsCycles_PhaseZero();
+
+            StartCoroutine(PhaseZero_S2());
+        }
     }
+    IEnumerator PhaseZero_S2()
+    {
+        yield return new WaitForSeconds(8f);
+
+        if (CurrentPhase != 0)
+        {
+
+        }
+        else
+        {
+            GameManager.singleton.BossAbilities[2].Invoke();
+
+            BuffsCycles_PhaseZero();
+
+            StartCoroutine(PhaseZero_S1());
+        }
+    }
+
+    void BuffsCycles_PhaseZero()
+    {
+        if (_BuffCycles == 0)
+        {
+            GameManager.singleton.BossAbilities[6].Invoke();
+
+            _BuffCycles = BuffCycles;
+        }
+        else if(_BuffCycles == 3)
+        {
+            GameManager.singleton.BossAbilities[7].Invoke();
+
+            _BuffCycles -= 1;
+        }
+        else
+        {
+            _BuffCycles -= 1;
+        }
+    }
+    #endregion
+
+    #region Phase One
+
+    #endregion
 
     #endregion
 }
