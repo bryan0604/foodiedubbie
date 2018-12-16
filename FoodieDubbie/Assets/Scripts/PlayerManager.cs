@@ -17,29 +17,6 @@ public class PlayerManager : MonoBehaviour
     private TurretManager _mountTurret;
     private int _HealthPoints;
 
-    #region auto assign
-    //private void OnValidate()
-    //{
-    //    if(myRigidBody == null)
-    //    {
-    //        myRigidBody = GetComponent<Rigidbody>();
-    //        Debug.Log("rigidbody is applied.");
-    //    }
-
-    //    if(joystick == null)
-    //    {
-    //        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
-    //        Debug.Log("joystick is applied.");
-    //    } 
-
-    //    if(PlayerUIs == null)
-    //    {
-    //        PlayerUIs = GameObject.FindGameObjectWithTag("playerui").GetComponent<PlayerUIs>();
-    //        Debug.Log("PlayerUIs is applied.");
-    //    }
-    //}
-    #endregion
-
     private void Start()
     {
         //HP
@@ -80,6 +57,13 @@ public class PlayerManager : MonoBehaviour
     public void OnTakenDamage(int _DamageAmount)
     {
         HealthPoints -= _DamageAmount;
+
+        if(HealthPoints <= 0)
+        {
+            GameManager.singleton.Game_RoundsEnd(false);
+
+            return;
+        }
 
         PlayerUIs.HealthPoints = HealthPoints;
 

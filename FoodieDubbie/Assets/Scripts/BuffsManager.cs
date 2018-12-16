@@ -9,9 +9,11 @@ public class BuffsManager : MonoBehaviour
     public float InternalSpinSpeed = 10f;
     public float ExternalSpinSpeed = 8f;
     public float ExpiresTime=5f;
+    public float DbuffFollowSpeed = 2f;
     public bool isAdvantageBuff;
     public bool isDisadvantageBuff;
     public Transform TargetedPlayer;
+    public SphereCollider _SphereCollider;
 
     private void FixedUpdate()
     {
@@ -37,6 +39,8 @@ public class BuffsManager : MonoBehaviour
 
     public void OnDeactivation()
     {
+        TargetedPlayer = null;
+
         gameObject.SetActive(false);
     }
 
@@ -44,7 +48,7 @@ public class BuffsManager : MonoBehaviour
     {
         if(TargetedPlayer!=null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, TargetedPlayer.position, Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, TargetedPlayer.position, Time.deltaTime * DbuffFollowSpeed);
         }
     }
 
@@ -53,6 +57,8 @@ public class BuffsManager : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             TargetedPlayer = other.transform;
+
+            _SphereCollider.radius += 4f;
         }
     }
 
@@ -63,6 +69,8 @@ public class BuffsManager : MonoBehaviour
             if(TargetedPlayer == other.transform)
             {
                 TargetedPlayer = null;
+
+                _SphereCollider.radius -= 4f;
             }
         }
     }

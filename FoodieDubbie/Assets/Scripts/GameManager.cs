@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject MainPlayer;
     public GameObject Platform;
     public Button Button_Dismount;
+    public GameVictory UI_GameRoundEnd;
     [Range(0,10)]
     public int MaxSmallAoe;
     [Range(0, 10)]
@@ -32,8 +33,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public List<BuffsManager> Buff_Pools = new List<BuffsManager>();
     public List<Transform> Buffs_SpecificPosition = new List<Transform>();
+    public List<Behaviour> BehaviourScripts_toDisable = new List<Behaviour>();
     [HideInInspector]
     public Vector3 SingleTarget_Position;
+    public bool isGameEnd;
     private bool HitPlatform;
     private int _skillfourquantity;
     private int _normalHits;
@@ -130,9 +133,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region Ability/Skill Management
+
     public void NormalAttack()
     {
-        StartCoroutine(CastingNormalAttack(5, 1, 5f, 2f));
+        StartCoroutine(CastingNormalAttack(3, 1, 5f, 2f));
     }
 
     public void SkillOne_SingleRandom()
@@ -450,6 +455,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #endregion
+
     public void OnExplode(GameObject ObjectToKeep)
     {
         ObjectToKeep.SetActive(false);
@@ -478,5 +485,35 @@ public class GameManager : MonoBehaviour
         _player.DismountTurret();
 
         Button_Dismount.gameObject.SetActive(false);
+    }
+
+    public void Game_RoundsEnd(bool IsaWin)
+    {
+        if (IsaWin)
+        {
+            if(!isGameEnd)
+            {
+                UI_GameRoundEnd.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Victory LOL!";
+                isGameEnd = true;
+                Game_GlobalInfo.singleton.OnDefeatedLevel(1);
+            }
+        }
+        else
+        {
+            UI_GameRoundEnd.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Victory-NOT TODAY!";
+        }
+        UI_GameRoundEnd.gameObject.SetActive(true);
+
+        UI_GameRoundEnd.ShowButton("Button Main Menu");
+
+        GameEnd_DisableItems();
+    }
+
+    public void GameEnd_DisableItems()
+    {
+        for (int i = 0; i < BehaviourScripts_toDisable.Count; i++)
+        {
+            BehaviourScripts_toDisable[i].enabled = false;
+        }
     }
 }

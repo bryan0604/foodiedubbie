@@ -28,7 +28,7 @@ public class AoeManager : MonoBehaviour
         Collider[] Objects = Physics.OverlapSphere(transform.position, radius);
         foreach (var item in Objects)
         {
-            if(item.gameObject.tag == "Player")
+            if(item.gameObject.tag == "Player" && !GameManager.singleton.isGameEnd)
             {
                 Debug.Log("Hit!");
 

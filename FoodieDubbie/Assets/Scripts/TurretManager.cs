@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurretManager : MonoBehaviour
 {
-    public Material Material;
+    public Image BatteryBar;
 
     public Gradient BatteryGradientColor;
 
@@ -38,7 +39,7 @@ public class TurretManager : MonoBehaviour
 
         Color32 c = BatteryGradientColor.Evaluate(1);
 
-        Material.color = c;
+        BatteryBar.color = c;
     }
 
     private void Update()
@@ -49,7 +50,7 @@ public class TurretManager : MonoBehaviour
 
             Color32 c = BatteryGradientColor.Evaluate(i);
 
-            Material.color = c;
+            BatteryBar.color = c;
 
             if(_batterylife >= BatteryLife)
             {
@@ -75,7 +76,7 @@ public class TurretManager : MonoBehaviour
 
                 Color32 c = BatteryGradientColor.Evaluate(i);
 
-                Material.color = c;
+                BatteryBar.color = c;
 
                 if (_batterylife<=0)
                 {
@@ -115,6 +116,7 @@ public class TurretManager : MonoBehaviour
 
     void Recharge()
     {
+        //Debug.Log("A");
         isRecharging = true;
     }
 

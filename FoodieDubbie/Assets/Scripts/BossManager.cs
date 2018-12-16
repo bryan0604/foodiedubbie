@@ -72,6 +72,14 @@ public class BossManager : MonoBehaviour
     {
         HealthPoints -= Amount;
 
+        if(HealthPoints <= 0)
+        {
+            GameManager.singleton.Game_RoundsEnd(true);
+            StopAllCoroutines();
+
+            return;
+        }
+
         OnHealthPointsChanged();
 
         CheckThreshold();
@@ -113,7 +121,7 @@ public class BossManager : MonoBehaviour
                     }
                     else if (CurrentPhase == 2)
                     {
-
+                        PhaseTwo();
                     }
                 }
                 //Debug.Log("Standard - " +i);
@@ -128,7 +136,7 @@ public class BossManager : MonoBehaviour
     #region Basic Phase
     void BasicPhase()
     {
-        Debug.Log("Commencing Basic Phase");
+        //Debug.Log("Commencing Basic Phase");
 
         StartCoroutine(BasicPhase_S1());
     }
@@ -442,7 +450,7 @@ public class BossManager : MonoBehaviour
 
             _BuffCycles -= 1;
         }
-        else if (_BuffCycles == 6)
+        else if (_BuffCycles == 5)
         {
             GameManager.singleton.BossAbilities[7].Invoke();
 
@@ -467,10 +475,107 @@ public class BossManager : MonoBehaviour
 
     // 3,3,0,0 
     // Single Target > 0.5 > Single Target > 0.5 > Normal Attack > 0.5 > Normal Attack
-    // 1 buffs in 2 cycles @ 2
-    #region MyRegion
+    // 1 buffs in 4 cycles, 5 
+    #region Phase Two(last)
+    void PhaseTwo()
+    {
+        Debug.Log("Commencing Phase Two");
+        BuffCycles = 4;
+        _BuffCycles = BuffCycles;
 
-    #endregion
+        StartCoroutine(PhaseTwo_S1());
+    }
 
-#endregion
+    IEnumerator PhaseTwo_S1()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (CurrentPhase != 2)
+        {
+
+        }
+        else
+        {
+            GameManager.singleton.BossAbilities[3].Invoke();
+
+            //BuffsCycles_PhaseTwo();
+
+            StartCoroutine(PhaseTwo_S2());
+        }
+    }
+
+    IEnumerator PhaseTwo_S2()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (CurrentPhase != 2)
+        {
+
+        }
+        else
+        {
+            GameManager.singleton.BossAbilities[3].Invoke();
+
+            BuffsCycles_PhaseTwo();
+
+            StartCoroutine(PhaseTwo_S3());
+        }
+    }
+
+    IEnumerator PhaseTwo_S3()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (CurrentPhase != 2)
+        {
+
+        }
+        else
+        {
+            GameManager.singleton.BossAbilities[0].Invoke();
+
+            //BuffsCycles_PhaseTwo();
+
+            StartCoroutine(PhaseTwo_S4());
+        }
+    }
+
+    IEnumerator PhaseTwo_S4()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (CurrentPhase != 2)
+        {
+
+        }
+        else
+        {
+            GameManager.singleton.BossAbilities[0].Invoke();
+
+            BuffsCycles_PhaseTwo();
+
+            StartCoroutine(PhaseTwo_S1());
+        }
+    }
+
+    void BuffsCycles_PhaseTwo()
+    {
+        if (_BuffCycles == 4)
+        {
+            GameManager.singleton.BossAbilities[5].Invoke();
+
+            _BuffCycles -= 1;
+        }
+        else if (_BuffCycles == 0)
+        {
+            _BuffCycles = BuffCycles;
+        }
+        else
+        {
+            _BuffCycles -= 1;
+        }
+    }
+        #endregion
+
+        #endregion
 }

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114198319779347358}
   - component: {fileID: 114684092468063086}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameManager_Lv1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,6 +56,7 @@ MonoBehaviour:
   MainPlayer: {fileID: 0}
   Platform: {fileID: 0}
   Button_Dismount: {fileID: 0}
+  UI_GameRoundEnd: {fileID: 0}
   MaxSmallAoe: 10
   MaxBuffs_Quantity: 10
   SkillOne_Quantity: 1
@@ -77,7 +78,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  BehaviourScripts_toDisable:
+  - {fileID: 114684092468063086}
+  - {fileID: 0}
+  - {fileID: 0}
   SingleTarget_Position: {x: 0, y: 0, z: 0}
+  isGameEnd: 0
 --- !u!114 &114684092468063086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,7 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6141ecffa230b724dbd8d9c6a8943b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health_Threshold: []
+  Health_ThresholdPercent: 4b0000003200000019000000
+  Health_ThresholdCheck: 
+  CurrentPhase: -1
+  TotalPhase: 0
+  BuffCycles: 4
   _aoeSmall: 5
   _aoeMedium: 0
   LerpSpeed: 0.05

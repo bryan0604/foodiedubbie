@@ -8,6 +8,7 @@ TagManager:
   - playerui
   - Platforms
   - buffs
+  - Button Main Menu
   layers:
   - Default
   - TransparentFX
