@@ -7,6 +7,7 @@ public class AoeManager : MonoBehaviour
     public bool isBeingCast;
     public int Damage;
     public int Level;
+    public float ExplodeTiming = 5f;
 
     public void OnBeingCast(Vector3 pos)
     {
@@ -21,7 +22,7 @@ public class AoeManager : MonoBehaviour
 
     public IEnumerator CastAoe()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(ExplodeTiming);
 
         isBeingCast = false;
         float radius = (transform.localScale.x + transform.localScale.y + transform.localScale.z) / 3f;

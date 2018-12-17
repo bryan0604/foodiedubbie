@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossManager : MonoBehaviour
+public class BossManager_Level1 : MonoBehaviour
 {
-    public static BossManager singleton;
+    public static BossManager_Level1 singleton;
     public List<int> Health_ThresholdPercent = new List<int>();
     public List<int> Health_ThresholdCheck = new List<int>();
     [Space]
@@ -14,7 +14,6 @@ public class BossManager : MonoBehaviour
     public int BuffCycles=4;
     [Tooltip("Cast Every Sec")]
     public float _aoeSmall = 5f;
-    public float _aoeMedium;
     public float LerpSpeed;
     public int CastAmount_Aoe = 5;
     public int CastAmount_Buffs = 4;
@@ -25,7 +24,6 @@ public class BossManager : MonoBehaviour
     private int DefaultHealthPoints;
     private float Axe;
     private int _BuffCycles;
-    private int _currentPhase;
 
     private void Start()
     {
@@ -33,7 +31,6 @@ public class BossManager : MonoBehaviour
 
         DefaultHealthPoints = HealthPoints;
 
-        _currentPhase = CurrentPhase;
         _BuffCycles = BuffCycles;
 
         TotalPhase = Health_ThresholdPercent.Count-1;

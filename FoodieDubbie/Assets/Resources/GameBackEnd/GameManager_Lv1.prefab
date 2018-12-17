@@ -1,21 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1341232354105724}
-  m_IsPrefabAsset: 1
 --- !u!1 &1341232354105724
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4823061880624952}
@@ -30,9 +20,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4823061880624952
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341232354105724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.65, y: 5.52, z: 0}
@@ -43,16 +34,17 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114198319779347358
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341232354105724}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84201b99da05a434488fa5c1f6807511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AoeSmall: {fileID: 1102740106426796, guid: 8687b35bd9e4cd84f8e7d8c9e3d53cf4, type: 2}
+  AoeSmall: {fileID: 1102740106426796, guid: 8687b35bd9e4cd84f8e7d8c9e3d53cf4, type: 3}
   MainPlayer: {fileID: 0}
   Platform: {fileID: 0}
   Button_Dismount: {fileID: 0}
@@ -64,12 +56,12 @@ MonoBehaviour:
   SkillThree_Quantity: 1
   SkillFour_Quantity: 5
   AllSpecialEffects:
-  - {fileID: 1339137897316286, guid: 16fc4883c8c05de46ad189f8c14be8b7, type: 2}
-  - {fileID: 1550805010057600, guid: 3d4dbe8b0ed2c7547b80c2ac542b4b67, type: 2}
-  - {fileID: 1032960549784740, guid: 5550dbe8dc3c55947964af68a39bc455, type: 2}
+  - {fileID: 1339137897316286, guid: 16fc4883c8c05de46ad189f8c14be8b7, type: 3}
+  - {fileID: 1550805010057600, guid: 3d4dbe8b0ed2c7547b80c2ac542b4b67, type: 3}
+  - {fileID: 1032960549784740, guid: 5550dbe8dc3c55947964af68a39bc455, type: 3}
   AllBuffTypes:
-  - {fileID: 1797906246313780, guid: 290a4a9d60e407844bcc5b20b10ef0d7, type: 2}
-  - {fileID: 1291706210693770, guid: 6241bcb746eb33348a3d335dc7464737, type: 2}
+  - {fileID: 1797906246313780, guid: 290a4a9d60e407844bcc5b20b10ef0d7, type: 3}
+  - {fileID: 1291706210693770, guid: 6241bcb746eb33348a3d335dc7464737, type: 3}
   Aoes_Pools: []
   SpecialEffects_Pools: []
   Buff_Pools: []
@@ -86,23 +78,23 @@ MonoBehaviour:
   isGameEnd: 0
 --- !u!114 &114684092468063086
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341232354105724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6141ecffa230b724dbd8d9c6a8943b4b, type: 3}
+  m_Script: {fileID: 11500000, guid: e5154e483493f44478a8f0f1524b75f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health_ThresholdPercent: 4b0000003200000019000000
+  Health_ThresholdPercent: 460000003200000019000000
   Health_ThresholdCheck: 
   CurrentPhase: -1
   TotalPhase: 0
   BuffCycles: 4
   _aoeSmall: 5
-  _aoeMedium: 0
-  LerpSpeed: 0.05
+  LerpSpeed: 0
   CastAmount_Aoe: 5
   CastAmount_Buffs: 4
   HealthPoints: 1000

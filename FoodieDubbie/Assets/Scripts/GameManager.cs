@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SkillList()
+    private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -388,7 +388,7 @@ public class GameManager : MonoBehaviour
                 RandomX = Random.Range(-X, X);
                 RandomZ = Random.Range(-Z, Z);
 
-                SingleTarget_Position = new Vector3(RandomX, 1.55f, RandomZ);
+                SingleTarget_Position = new Vector3(RandomX, 1.5f, RandomZ);
 
                 SingleTarget_Position = Platform.transform.TransformPoint(SingleTarget_Position / 2f);
 
@@ -513,7 +513,14 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < BehaviourScripts_toDisable.Count; i++)
         {
-            BehaviourScripts_toDisable[i].enabled = false;
+            if(BehaviourScripts_toDisable[i] == null)
+            {
+                
+            }
+            else
+            {
+                BehaviourScripts_toDisable[i].enabled = false;
+            }
         }
     }
 }

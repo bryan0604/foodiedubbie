@@ -14,7 +14,7 @@ public class PlayerUIs : MonoBehaviour
     public Transform Healthbar_Background;
     public Text PlayerName_Text;
     private float Axe;
-    private bool isRecovers;
+    //private bool isRecovers;
 
     private void LateUpdate()
     {
@@ -77,7 +77,7 @@ public class PlayerUIs : MonoBehaviour
 
     public void OnHealthPointsChanged(int Current, int Max, bool isRecovering)
     {
-        isRecovers = isRecovering;
+        //isRecovers = isRecovering;
 
         float CurrentValue = Current;
         float MaximumValue = Max;
