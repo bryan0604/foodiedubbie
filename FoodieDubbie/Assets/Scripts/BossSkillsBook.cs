@@ -5,11 +5,11 @@ public class ShowMyGuiPenis : EditorWindow
 {
     public string[] test123 = new[]
     {
-        "1",
-        "3",
-        "5",
-        "SingleTarget",
-        "MultiTarget"
+        "1","2","3","4","5","6","7","8","9"
+        ,"SingleTarget"
+        ,"MultiTarget"
+        ,"SingleRandom"
+        ,"MultiRandom"
     };
 
     int index = 0;

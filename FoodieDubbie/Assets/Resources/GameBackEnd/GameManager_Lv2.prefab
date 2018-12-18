@@ -116,12 +116,12 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Button_Dismount: {fileID: 0}
   UI_GameRoundEnd: {fileID: 0}
-  MaxSmallAoe: 10
+  MaxSmallAoe: 25
   MaxBuffs_Quantity: 10
-  SkillOne_Quantity: 2
-  SkillTwo_Quantity: 2
-  SkillThree_Quantity: 2
-  SkillFour_Quantity: 2
+  SkillOne_Quantity: 1
+  SkillTwo_Quantity: 8
+  SkillThree_Quantity: 1
+  SkillFour_Quantity: 4
   AllSpecialEffects:
   - {fileID: 1339137897316286, guid: 16fc4883c8c05de46ad189f8c14be8b7, type: 3}
   - {fileID: 1550805010057600, guid: 3d4dbe8b0ed2c7547b80c2ac542b4b67, type: 3}
@@ -138,7 +138,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   BehaviourScripts_toDisable:
-  - {fileID: 0}
+  - {fileID: 114095496710809716}
   - {fileID: 0}
   - {fileID: 0}
   SingleTarget_Position: {x: 0, y: 0, z: 0}
@@ -157,20 +157,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossPhaseManaging: {fileID: 5333966746659575777}
   Health_ThresholdPercent: 500000003c0000002800000014000000
-  Health_ThresholdCheck: 00000000000000000000000000000000
+  Health_ThresholdCheck: 100e00008c0a00000807000084030000
   CurrentPhase: -1
   TotalPhase: 0
   BuffCycles: 4
   _aoeSmall: 5
   _aoeMedium: 0
-  LerpSpeed: 0
+  LerpSpeed: 0.1
   CastAmount_Aoe: 5
   CastAmount_Buffs: 4
   HealthPoints: 4500
   Healthbar_Original: {fileID: 0}
   Healthbar_Background: {fileID: 0}
-  isHealthbarMoving: 1
+  isHealthbarMoving: 0
   isLatestUpdated: 0
+  IsGameBegin: 0
 --- !u!114 &5333966746659575777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,25 +187,34 @@ MonoBehaviour:
   BossManager: {fileID: 630370063}
   TotalOfPhase:
   - BossCommands:
-    - 2
-    - retert
-    - 5
-    - dfg
-  - BossCommands:
-    - cxvcxvcx
-    - 4
-    - cxvcxvcx
-    - 7
-  - BossCommands:
-    - nmnm
-    - 3
-    - bnbn
-    - 1
-    - 2
-  - BossCommands:
     - 6
-    - 8
-    - rty
+    - RandomBuffsRandomSpot
+    - 6
+    - AdvantageBuffs
+    - 6
+    - DisadvantageBuffs
+    - 6
+    - NormalAttack
+  - BossCommands:
+    - 
+    - 
+    - 
+    - 
+  - BossCommands:
+    - 
+    - 
+    - 
+    - 
+  - BossCommands:
+    - 
+    - 
+    - 
+    - 
+  - BossCommands:
+    - 
+    - 
+    - 
+    - 
   CurrentPhaseMain: 0
   CurrentPhaseisAt: 0
   isNumber: 0

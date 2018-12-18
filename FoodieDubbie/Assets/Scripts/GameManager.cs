@@ -13,9 +13,9 @@ public class GameManager : MonoBehaviour
     public GameObject Platform;
     public Button Button_Dismount;
     public GameVictory UI_GameRoundEnd;
-    [Range(0,10)]
+    [Range(0,25)]
     public int MaxSmallAoe;
-    [Range(0, 10)]
+    [Range(0, 25)]
     public int MaxBuffs_Quantity;
     [Header("AOE's Quantity")]
     public int SkillOne_Quantity;

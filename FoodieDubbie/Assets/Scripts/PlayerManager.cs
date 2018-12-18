@@ -92,7 +92,15 @@ public class PlayerManager : MonoBehaviour
 
                 if(_db.isAdvantageBuff)
                 {
-                    BossManager_Level1.singleton.OnTakingDamage(ABuffsDamage_Lv1);
+                    if(BossManager_Level1.singleton)
+                    {
+                        BossManager_Level1.singleton.OnTakingDamage(ABuffsDamage_Lv1);
+                    }
+                    else
+                    {
+                        BossManager_Level2.singleton.OnTakingDamage(ABuffsDamage_Lv1);
+                    }
+                    
 
                     OnRecoveringHealth();
                 }

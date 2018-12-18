@@ -5,6 +5,7 @@ using UnityEditor;
 
 public class BossPhaseManager : MonoBehaviour
 {
+    #region Phases Array
     [System.Serializable]
     public class TotalPhases
     {
@@ -15,6 +16,39 @@ public class BossPhaseManager : MonoBehaviour
             BossCommands.Add(_bossCom);
         }
     }
+    #endregion
+
+    #region Editor
+    //[CustomEditor(typeof(BossPhaseManager))]
+    //public class ObjectBuilderEditor : Editor
+    //{
+    //    public override void OnInspectorGUI()
+    //    {
+    //        DrawDefaultInspector();
+
+    //        BossPhaseManager myScript = (BossPhaseManager)target;
+    //        if (GUILayout.Button("Clear Entire List"))
+    //        {
+    //            myScript.ClearBossCommandsList();
+    //        }
+
+    //        if (GUILayout.Button("Clear One from below"))
+    //        {
+    //            myScript.ClearBossCommndOne();
+    //        }
+
+    //    }
+
+    //    public string[] test123 = new[]
+    //    {
+    //        "1","2","3","4","5","6","7","8","9"
+    //        ,"SingleTarget"
+    //        ,"MultiTarget"
+    //        ,"SingleRandom"
+    //        ,"MultiRandom"
+    //    };
+    //}
+    #endregion
 
     [Header("Version 0.1.5 - 17122018")]
     [Header("Compatible to any boss script(ForNow)")]
@@ -29,13 +63,8 @@ public class BossPhaseManager : MonoBehaviour
     public bool isSkills;
     public bool isLatestUpdated;
 
-    private void OnValidate()
+    private void Start()
     {
-        if (isLatestUpdated)
-        {
-            isLatestUpdated = false;
-            return;
-        }
         singleton = this;
     }
 
@@ -47,7 +76,7 @@ public class BossPhaseManager : MonoBehaviour
 
         TotalOfPhase.Clear();
 
-        for (int i = 0; i < _int; i++)
+        for (int i = 0; i < _int+1; i++)
         {
             TotalOfPhase.Add(new TotalPhases(""));
         }
@@ -73,20 +102,17 @@ public class BossPhaseManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void ActivatePhaseManager()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            OnCheckingPhase();
-        }
+        OnCheckingPhase();
     }
 
     #region Ability Management
     public void OnCheckingPhase()
     {
         int _tempInt = 0;
-
-        Debug.LogWarning("Checking Phase");
+        bool _isASkill = false;
+        //Debug.LogWarning("Checking Phase");
 
         //BossManager_Level2.singleton.OnTakingDamage(150);
 
@@ -106,19 +132,21 @@ public class BossPhaseManager : MonoBehaviour
 
                 if(CurrentPhaseisAt == k)
                 {
-                    Debug.Log(TotalOfPhase[i+CurrentPhaseMain].BossCommands[k]);
+                    //Debug.Log(TotalOfPhase[i+CurrentPhaseMain].BossCommands[k]);
 
                     if(int.TryParse(TotalOfPhase[i + CurrentPhaseMain].BossCommands[k],out _tempInt))
                     {
-                        Debug.Log("Is an Integer!");
+                        //Debug.Log("Is an Integer!");
 
-                        StartCoroutine(WaitForAmountofSeconds((float)_tempInt));
+                        //StartCoroutine(WaitForAmountofSeconds((float)_tempInt));
                     }
                     else
                     {
                         //Debug.Log("Is a String!");
 
-                        AbilitiesChosen(TotalOfPhase[i + CurrentPhaseMain].BossCommands[k]);
+                        _isASkill = true;
+
+                        //AbilitiesChosen(TotalOfPhase[i + CurrentPhaseMain].BossCommands[k]);
                     }
 
                     CurrentPhaseisAt++;
@@ -127,14 +155,19 @@ public class BossPhaseManager : MonoBehaviour
                     {
                         CurrentPhaseisAt = 0;
                     }
+
+                    if(_isASkill)
+                    {
+                        AbilitiesChosen(TotalOfPhase[i + CurrentPhaseMain].BossCommands[k]);
+                    }
                     else
                     {
-
+                        StartCoroutine(WaitForAmountofSeconds((float)_tempInt));
                     }
+                    
                     return;
                 }
             }
-
         }
     }
 
@@ -144,7 +177,7 @@ public class BossPhaseManager : MonoBehaviour
 
         yield return new WaitForSeconds(_time);
 
-        Debug.Log("===== Next Step ===== ");
+        Debug.Log(" ");
 
         OnCheckingPhase();
     }
@@ -152,6 +185,39 @@ public class BossPhaseManager : MonoBehaviour
     void AbilitiesChosen(string _skill)
     {
         Debug.Log("Casting - " + _skill);
+
+        if (_skill == "SingleTarget")
+        {
+            GameManager.singleton.SkillThree_SingleTarget();
+        }
+        else if (_skill == "MultiTarget")
+        {
+            GameManager.singleton.SkillFour_MultiTarget();
+        }
+        else if (_skill == "SingleRandom")
+        {
+            GameManager.singleton.SkillOne_SingleRandom();
+        }
+        else if (_skill == "NormalAttack")
+        {
+            GameManager.singleton.NormalAttack();
+        }
+        else if(_skill == "AdvantageBuffs")
+        {
+            GameManager.singleton.DropAdvantageBuff();
+        }
+        else if(_skill == "DisadvantageBuffs")
+        {
+            GameManager.singleton.DropDisadvantageBuff();
+        }
+        else if(_skill == "RandomBuffsRandomSpot")
+        {
+            GameManager.singleton.DropBuffsAtRandomSpot();
+        }
+        else
+        {
+            GameManager.singleton.SkillTwo_MultiRandom();
+        }
 
         OnCheckingPhase();
     }
@@ -204,42 +270,3 @@ public class BossPhaseManager : MonoBehaviour
     #endregion
 
 }
-
-
-
-#region Editor
-[CustomEditor(typeof(BossPhaseManager))]
-public class ObjectBuilderEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-
-        BossPhaseManager myScript = (BossPhaseManager)target;
-        if (GUILayout.Button("Clear Entire List"))
-        {
-            myScript.ClearBossCommandsList();
-        }
-
-        if (GUILayout.Button("Clear One from below"))
-        {
-            myScript.ClearBossCommndOne();
-        }
-
-        if(GUILayout.Button("DryRun Phases"))
-        {
-            myScript.OnCheckingPhase();
-        }
-
-        if(GUILayout.Button("Reset Phase count"))
-        {
-            myScript.ResetPhaseCount();
-        }
-
-        if(GUILayout.Button("FullRun Test"))
-        {
-
-        }
-    }
-}
-#endregion

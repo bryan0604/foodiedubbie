@@ -86,7 +86,14 @@ public class TurretManager : MonoBehaviour
                 {
                     SpawnSpecialEffects();
 
-                    BossManager_Level1.singleton.OnTakingDamage(TurretDamage);
+                    if(BossManager_Level1.singleton != null)
+                    {
+                        BossManager_Level1.singleton.OnTakingDamage(TurretDamage);
+                    }
+                    else if(BossManager_Level2.singleton != null)
+                    {
+                        BossManager_Level2.singleton.OnTakingDamage(TurretDamage);
+                    }
 
                     _looptime = LoopTime;
                 }

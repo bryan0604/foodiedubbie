@@ -25,19 +25,20 @@ public class BossManager_Level2 : MonoBehaviour
     public Transform Healthbar_Background;
     public bool isHealthbarMoving;
     public bool isLatestUpdated;
+    public bool IsGameBegin;
     private int DefaultHealthPoints;
     private float Axe;
     private int _BuffCycles;
- 
-    private void OnValidate()
-    {
-        if (isLatestUpdated) 
-        {
-            isLatestUpdated = false;
-            return;
-        }
-        singleton = this;
-    }
+
+    //private void OnValidate()
+    //{
+    //    if (isLatestUpdated) 
+    //    {
+    //        isLatestUpdated = false;
+    //        return;
+    //    }
+    //    singleton = this;
+    //}
 
     public void OnUpdateData()
     {
@@ -62,6 +63,8 @@ public class BossManager_Level2 : MonoBehaviour
         _BuffCycles = BuffCycles;
 
         TotalPhase = Health_ThresholdPercent.Count-1;
+
+        Health_ThresholdCheck.Clear();
 
         for (int i = 0; i < Health_ThresholdPercent.Count; i++)
         {
@@ -93,6 +96,13 @@ public class BossManager_Level2 : MonoBehaviour
 
     public void OnTakingDamage(int Amount)
     {
+        if(IsGameBegin==false)
+        {
+            IsGameBegin = true;
+
+            BossPhaseManaging.ActivatePhaseManager();
+        }
+
         HealthPoints -= Amount;
 
         if(HealthPoints <= 0)
@@ -103,7 +113,7 @@ public class BossManager_Level2 : MonoBehaviour
             return;
         }
 
-        //OnHealthPointsChanged();
+        OnHealthPointsChanged();
 
         CheckThreshold();
     }
@@ -128,7 +138,7 @@ public class BossManager_Level2 : MonoBehaviour
     #region Threshold Design
     void CheckThreshold()
     {
-        Debug.Log("=====Checking Threshold=====");
+        //Debug.Log("=====Checking Threshold=====");
         for (int i = 0; i < Health_ThresholdCheck.Count; i++)
         {
             if (HealthPoints <= Health_ThresholdCheck[i])
@@ -141,30 +151,10 @@ public class BossManager_Level2 : MonoBehaviour
 
                     BossPhaseManager.singleton.CurrentPhaseMain ++;
                     BossPhaseManager.singleton.CurrentPhaseisAt = 0;
-
-                    if (CurrentPhase == 0)
-                    {
-                        
-                    }
-                    else if (CurrentPhase == 1)
-                    {
-                        
-                    }
-                    else if (CurrentPhase == 2)
-                    {
-                        
-                    }
-                    else if(CurrentPhase==3)
-                    {
-                        
-                    }
                 }
             }
         }
     }
     #endregion
 
-    #region Boss Fight Pattern - Design 
-
-    #endregion
 }
