@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject Platform;
     public Button Button_Dismount;
     public GameVictory UI_GameRoundEnd;
-    [Range(0,25)]
+    [Range(0,50)]
     public int MaxSmallAoe;
     [Range(0, 25)]
     public int MaxBuffs_Quantity;
@@ -144,17 +144,17 @@ public class GameManager : MonoBehaviour
     public void SkillOne_SingleRandom()
     {
         
-        TargetManagement(true, SkillOne_Quantity, false, 1, false, true);
+        TargetManagement(true, SkillOne_Quantity, false, 1, false, true,false,false);
     }
 
     public void SkillTwo_MultiRandom()
     {
-        TargetManagement(true, SkillTwo_Quantity, true, 1, false, true);
+        TargetManagement(true, SkillTwo_Quantity, true, 1, false, true, false, false);
     }
 
     public void SkillThree_SingleTarget()
     {
-        TargetManagement(false, SkillThree_Quantity, false, 1, false, true);
+        TargetManagement(false, SkillThree_Quantity, false, 1, false, true, false, false);
     }
 
     public void SkillFour_MultiTarget()
@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            TargetManagement(false, 1, false, 1, false, true);
+            TargetManagement(false, 1, false, 1, false, true, false, false);
 
             _skillfourquantity -= 1;
 
@@ -376,7 +376,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void TargetManagement(bool isRandom, int Quantity, bool isTheSameTimeSpawning, int Level, bool isBuff ,bool isAbility)
+    void TargetManagement(bool isRandom, int Quantity, bool isTheSameTimeSpawning, int Level, bool isBuff ,bool isSmall, bool isMedium, bool isLarge)
     {
         if(isRandom)
         {
@@ -407,10 +407,7 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.DrawLine(transform.position, SingleTarget_Position, Color.green, 5f);
 
-                    if(isAbility)
-                    {
-                        AbilitiesManagement(Level);
-                    }
+                    AbilitiesManagement(Level,isSmall,isMedium,isLarge);
                 }
                 else
                 {
@@ -422,17 +419,14 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < Quantity; i++)
             {
-                if(isAbility)
-                {
-                    SingleTarget_Position = MainPlayer.transform.position;
+                SingleTarget_Position = MainPlayer.transform.position;
 
-                    AbilitiesManagement(Level);
-                }
+                AbilitiesManagement(Level, isSmall, isMedium, isLarge);
             }
         }
     }
 
-    void AbilitiesManagement(int Level)
+    void AbilitiesManagement(int Level, bool isSmall, bool isMedium, bool isLarge)
     {
         AoeManager Aoe;
 

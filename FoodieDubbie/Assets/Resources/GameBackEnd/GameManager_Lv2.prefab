@@ -116,10 +116,10 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Button_Dismount: {fileID: 0}
   UI_GameRoundEnd: {fileID: 0}
-  MaxSmallAoe: 25
-  MaxBuffs_Quantity: 10
+  MaxSmallAoe: 36
+  MaxBuffs_Quantity: 15
   SkillOne_Quantity: 1
-  SkillTwo_Quantity: 8
+  SkillTwo_Quantity: 12
   SkillThree_Quantity: 1
   SkillFour_Quantity: 4
   AllSpecialEffects:
@@ -217,24 +217,36 @@ MonoBehaviour:
     - 6
     - AdvantageBuffs
   - BossCommands:
-    - 6
+    - 8
     - MultiTarget
     - DisadvantageBuffs
-    - 4
+    - 2
     - NormalAttack
+    - 2
+    - MultiTarget
+    - 3
+    - RandomBuffsRandomSpot
+    - 1
+    - RandomBuffsRandomSpot
+    - MultiRandom
+  - BossCommands:
+    - 2
+    - AdvantageBuffs
+    - 1
+    - MultiRandom
+    - 1
+    - MultiRandom
+    - 1
+    - MultiRandom
+    - 5
+    - MultiTarget
+    - 1
+    - DisadvantageBuffs
+    - 1
+    - RandomBuffsRandomSpot
     - 3
     - NormalAttack
     - 2
-    - RandomBuffsRandomSpot
-  - BossCommands:
-    - 1
-    - MultiRandom
-    - 1
-    - MultiRandom
-    - 6
-    - RandomBuffsRandomSpot
-    - 1
-    - DisadvantageBuffs
   CurrentPhaseMain: 0
   CurrentPhaseisAt: 0
   isNumber: 0

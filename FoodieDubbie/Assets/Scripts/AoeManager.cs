@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AoeManager : MonoBehaviour
 {
+    public bool isSmall;
     public bool isBeingCast;
     public int Damage;
     public int Level;
