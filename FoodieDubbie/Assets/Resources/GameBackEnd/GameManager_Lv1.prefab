@@ -76,6 +76,7 @@ MonoBehaviour:
   - {fileID: 0}
   SingleTarget_Position: {x: 0, y: 0, z: 0}
   isGameEnd: 0
+  CurrentGameLevel: 1
 --- !u!114 &114684092468063086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +95,7 @@ MonoBehaviour:
   TotalPhase: 0
   BuffCycles: 4
   _aoeSmall: 5
-  LerpSpeed: 0
+  LerpSpeed: 0.01
   CastAmount_Aoe: 5
   CastAmount_Buffs: 4
   HealthPoints: 1000

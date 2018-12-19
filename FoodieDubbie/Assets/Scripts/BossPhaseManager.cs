@@ -214,7 +214,7 @@ public class BossPhaseManager : MonoBehaviour
         {
             GameManager.singleton.DropBuffsAtRandomSpot();
         }
-        else
+        else if(_skill == "MultiRandom")
         {
             GameManager.singleton.SkillTwo_MultiRandom();
         }

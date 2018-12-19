@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public Vector3 SingleTarget_Position;
     public bool isGameEnd;
+    public int CurrentGameLevel;
     private bool HitPlatform;
     private int _skillfourquantity;
     private int _normalHits;
@@ -495,7 +496,9 @@ public class GameManager : MonoBehaviour
             {
                 UI_GameRoundEnd.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Victory LOL!";
                 isGameEnd = true;
-                Game_GlobalInfo.singleton.OnDefeatedLevel(1);
+                Game_GlobalInfo.singleton.OnDefeatedLevel(CurrentGameLevel);
+                if(BossPhaseManager.singleton!=null)
+                    BossPhaseManager.singleton.StopAllCoroutines();
             }
         }
         else

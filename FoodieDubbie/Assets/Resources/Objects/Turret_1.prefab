@@ -1166,7 +1166,7 @@ MonoBehaviour:
   isRecharging: 0
   BatteryLife: 50
   RechargingSpeed: 1.2
-  TurretDamage: 1
+  TurretDamage: 2
   LoopTime: 0.25
 --- !u!1 &1957760216562030
 GameObject:

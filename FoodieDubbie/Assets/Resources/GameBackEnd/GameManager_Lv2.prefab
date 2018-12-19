@@ -138,11 +138,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   BehaviourScripts_toDisable:
-  - {fileID: 114095496710809716}
+  - {fileID: 5333966746659575777}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 630370063}
   SingleTarget_Position: {x: 0, y: 0, z: 0}
   isGameEnd: 0
+  CurrentGameLevel: 2
 --- !u!114 &630370063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,10 +165,10 @@ MonoBehaviour:
   BuffCycles: 4
   _aoeSmall: 5
   _aoeMedium: 0
-  LerpSpeed: 0.1
+  LerpSpeed: 0.01
   CastAmount_Aoe: 5
   CastAmount_Buffs: 4
-  HealthPoints: 4500
+  HealthPoints: 3000
   Healthbar_Original: {fileID: 0}
   Healthbar_Background: {fileID: 0}
   isHealthbarMoving: 0
@@ -187,34 +189,52 @@ MonoBehaviour:
   BossManager: {fileID: 630370063}
   TotalOfPhase:
   - BossCommands:
-    - 6
+    - 2
+    - NormalAttack
+    - 3
+    - NormalAttack
+    - 5
+    - SingleTarget
     - RandomBuffsRandomSpot
-    - 6
+  - BossCommands:
+    - 1
     - AdvantageBuffs
+    - 2
+    - MultiRandom
     - 6
-    - DisadvantageBuffs
-    - 6
+    - SingleTarget
+    - 1
     - NormalAttack
   - BossCommands:
-    - 
-    - 
-    - 
-    - 
+    - 2
+    - NormalAttack
+    - 4
+    - DisadvantageBuffs
+    - 3
+    - MultiRandom
+    - 1
+    - MultiRandom
+    - 6
+    - AdvantageBuffs
   - BossCommands:
-    - 
-    - 
-    - 
-    - 
+    - 6
+    - MultiTarget
+    - DisadvantageBuffs
+    - 4
+    - NormalAttack
+    - 3
+    - NormalAttack
+    - 2
+    - RandomBuffsRandomSpot
   - BossCommands:
-    - 
-    - 
-    - 
-    - 
-  - BossCommands:
-    - 
-    - 
-    - 
-    - 
+    - 1
+    - MultiRandom
+    - 1
+    - MultiRandom
+    - 6
+    - RandomBuffsRandomSpot
+    - 1
+    - DisadvantageBuffs
   CurrentPhaseMain: 0
   CurrentPhaseisAt: 0
   isNumber: 0
@@ -996,7 +1016,7 @@ MonoBehaviour:
   isRecharging: 0
   BatteryLife: 50
   RechargingSpeed: 1.2
-  TurretDamage: 1
+  TurretDamage: 2
   LoopTime: 0.25
 --- !u!1 &1153753937512644
 GameObject:
@@ -1862,7 +1882,7 @@ MonoBehaviour:
   isRecharging: 0
   BatteryLife: 50
   RechargingSpeed: 1.2
-  TurretDamage: 1
+  TurretDamage: 2
   LoopTime: 0.25
 --- !u!1 &1276593027282324
 GameObject:
@@ -3365,7 +3385,7 @@ MonoBehaviour:
   isRecharging: 0
   BatteryLife: 50
   RechargingSpeed: 1.2
-  TurretDamage: 1
+  TurretDamage: 2
   LoopTime: 0.25
 --- !u!1 &1574090985714800
 GameObject:
@@ -4727,7 +4747,7 @@ MonoBehaviour:
   isRecharging: 0
   BatteryLife: 50
   RechargingSpeed: 1.2
-  TurretDamage: 1
+  TurretDamage: 2
   LoopTime: 0.25
 --- !u!1 &1780260086200706
 GameObject:

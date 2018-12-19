@@ -23,6 +23,11 @@ public class BuffsManager : MonoBehaviour
 
     public void OnBeingPlaced(Vector3 TargetPoint)
     {
+        if(_SphereCollider!=null)
+        {
+            _SphereCollider.radius = 8f;
+        }
+
         gameObject.SetActive(true);
 
         transform.position = new Vector3(TargetPoint.x, TargetPoint.y + 0.5f, TargetPoint.z); ;
@@ -58,7 +63,10 @@ public class BuffsManager : MonoBehaviour
         {
             TargetedPlayer = other.transform;
 
-            _SphereCollider.radius += 4f;
+            if (_SphereCollider != null)
+            {
+                _SphereCollider.radius = 12f;
+            }
         }
     }
 
@@ -70,7 +78,10 @@ public class BuffsManager : MonoBehaviour
             {
                 TargetedPlayer = null;
 
-                _SphereCollider.radius -= 4f;
+                if (_SphereCollider != null)
+                {
+                    _SphereCollider.radius = 8f;
+                }
             }
         }
     }

@@ -4523,10 +4523,6 @@ PrefabInstance:
       propertyPath: Healthbar_Background
       value: 
       objectReference: {fileID: 669844679}
-    - target: {fileID: 630370063, guid: c285116977cbd0141ab3c9994af8c23d, type: 3}
-      propertyPath: LerpSpeed
-      value: 0.01
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c285116977cbd0141ab3c9994af8c23d, type: 3}
 --- !u!1 &666506227

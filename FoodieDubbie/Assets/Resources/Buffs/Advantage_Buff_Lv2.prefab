@@ -5437,7 +5437,7 @@ MonoBehaviour:
   isAdvantageBuff: 1
   isDisadvantageBuff: 0
   TargetedPlayer: {fileID: 0}
-  _SphereCollider: {fileID: 135971349789234912}
+  _SphereCollider: {fileID: 0}
 --- !u!135 &135971349789234912
 SphereCollider:
   m_ObjectHideFlags: 0

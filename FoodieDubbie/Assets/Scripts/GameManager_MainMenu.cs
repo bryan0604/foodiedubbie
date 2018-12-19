@@ -50,6 +50,8 @@ public class GameManager_MainMenu : MonoBehaviour
     void Continue()
     {
         Debug.Log("Next Level = " + Game_GlobalInfo.singleton.Player_NextLevel);
+
+        SceneManager.LoadScene(Game_GlobalInfo.singleton.Player_NextLevel);
     }
 
     void OnCheckNextLevel()
