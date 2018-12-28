@@ -218,6 +218,10 @@ public class BossPhaseManager : MonoBehaviour
         {
             GameManager.singleton.SkillTwo_MultiRandom();
         }
+        else if(_skill == "BossUltimateOne")
+        {
+            GameManager.singleton.BossOne_UltimateOne();
+        }
 
         OnCheckingPhase();
     }

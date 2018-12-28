@@ -12,11 +12,7 @@ public class Boss_1_Ultimate : MonoBehaviour
     public Transform Platforms_3;
     public Transform Platforms_4;
     public Transform Player;
-
-    private void Start()
-    {
-        InvokeRepeating("ElectricShock",ZapTiming,ZapTiming);
-    }
+    public bool isActivate;
 
     void ElectricShock()
     {
@@ -24,15 +20,27 @@ public class Boss_1_Ultimate : MonoBehaviour
         {
             Debug.Log("Zap player = " + Player);
         }
+        else
+        {
+            Debug.Log("Zap nothing.");
+        }
     }
 
     void FixedUpdate()
     {
-        transform.Rotate(Vector3.up, PlatformRotationSpeed * Time.deltaTime, Space.Self);
-        Platforms_1.rotation *= Quaternion.Euler( -Vector3.up *RotationSpeed * RotationSpeed * Time.deltaTime);
-        Platforms_2.rotation *= Quaternion.Euler( -Vector3.up *RotationSpeed * RotationSpeed * Time.deltaTime);
-        Platforms_3.rotation *= Quaternion.Euler( -Vector3.up *RotationSpeed * RotationSpeed * Time.deltaTime);
-        Platforms_4.rotation *= Quaternion.Euler( -Vector3.up *RotationSpeed * RotationSpeed * Time.deltaTime);
+        if(isActivate)
+        {
+            transform.Rotate(Vector3.up, PlatformRotationSpeed * Time.deltaTime, Space.Self);
+            Platforms_1.rotation *= Quaternion.Euler(-Vector3.up * RotationSpeed * RotationSpeed * Time.deltaTime);
+            Platforms_2.rotation *= Quaternion.Euler(-Vector3.up * RotationSpeed * RotationSpeed * Time.deltaTime);
+            Platforms_3.rotation *= Quaternion.Euler(-Vector3.up * RotationSpeed * RotationSpeed * Time.deltaTime);
+            Platforms_4.rotation *= Quaternion.Euler(-Vector3.up * RotationSpeed * RotationSpeed * Time.deltaTime);
+
+        }
+        else
+        {
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,5 +60,32 @@ public class Boss_1_Ultimate : MonoBehaviour
                 Player = null;
             }
         }
+    }
+
+    public void OnActivate()
+    {
+        if (isActivate) return;
+
+        gameObject.SetActive(true);
+
+        StartCoroutine(StartCasting());
+    }
+
+    IEnumerator StartCasting()
+    {
+        yield return new WaitForSeconds(5f);
+
+        isActivate = true;
+
+        InvokeRepeating("ElectricShock", ZapTiming, ZapTiming);
+
+        StartCoroutine(EndCasting());
+    }
+
+    IEnumerator EndCasting()
+    {
+        yield return new WaitForSeconds(15f);
+
+        isActivate = false;
     }
 }

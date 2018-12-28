@@ -2530,6 +2530,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
+        type: 3}
+      propertyPath: TargetPlayer
+      value: 
+      objectReference: {fileID: 2044029007}
     - target: {fileID: 4482779045061312, guid: ca5026be1fc80b04499943bb933a891e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.72
@@ -2562,11 +2567,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
-        type: 3}
-      propertyPath: TargetPlayer
-      value: 
-      objectReference: {fileID: 2044029007}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5026be1fc80b04499943bb933a891e, type: 3}
 --- !u!1 &408331185
@@ -4094,6 +4094,11 @@ PrefabInstance:
         type: 3}
       propertyPath: DbuffDamage_Lv1
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 54839716123288770, guid: b049f75b56d93474f84b5d214e87d017,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b049f75b56d93474f84b5d214e87d017, type: 3}

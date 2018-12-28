@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 57632615081739958}
   - component: {fileID: 57632615081739959}
+  - component: {fileID: 3284726374827264252}
   - component: {fileID: 57632615081739956}
   m_Layer: 0
   m_Name: SE_Boss_1_Ultimate_1
@@ -17,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &57632615081739958
 Transform:
   m_ObjectHideFlags: 0
@@ -4654,6 +4655,21 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &3284726374827264252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57632615081739957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7fc348ccdf9ab46acd92abc176b33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selfSE: {fileID: 0}
+  LifeTime: 0
+  SpecialEffectsCode: 4
 --- !u!199 &57632615081739956
 ParticleSystemRenderer:
   serializedVersion: 6

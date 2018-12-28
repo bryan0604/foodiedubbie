@@ -9,6 +9,8 @@ TagManager:
   - Platforms
   - buffs
   - Button Main Menu
+  - aoept
+  - buffpt
   layers:
   - Default
   - TransparentFX

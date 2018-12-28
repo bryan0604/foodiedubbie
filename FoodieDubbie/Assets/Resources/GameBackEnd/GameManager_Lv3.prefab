@@ -826,7 +826,7 @@ MonoBehaviour:
   isRecharging: 0
   BatteryLife: 50
   RechargingSpeed: 1.2
-  TurretDamage: 2
+  TurretDamage: 5
   LoopTime: 0.25
 --- !u!1 &1910894559395358576
 GameObject:
@@ -2793,7 +2793,7 @@ MonoBehaviour:
   isRecharging: 0
   BatteryLife: 50
   RechargingSpeed: 1.2
-  TurretDamage: 2
+  TurretDamage: 5
   LoopTime: 0.25
 --- !u!1 &5300827759912001404
 GameObject:
@@ -3168,7 +3168,7 @@ MonoBehaviour:
   isRecharging: 0
   BatteryLife: 50
   RechargingSpeed: 1.2
-  TurretDamage: 2
+  TurretDamage: 5
   LoopTime: 0.25
 --- !u!1 &6219590764094916035
 GameObject:
@@ -3573,7 +3573,7 @@ MonoBehaviour:
   isRecharging: 0
   BatteryLife: 50
   RechargingSpeed: 1.2
-  TurretDamage: 2
+  TurretDamage: 5
   LoopTime: 0.25
 --- !u!1 &6564710065236801508
 GameObject:
@@ -4321,6 +4321,7 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Button_Dismount: {fileID: 0}
   UI_GameRoundEnd: {fileID: 0}
+  Boss1Ultimate: {fileID: 0}
   MaxSmallAoe: 36
   MaxBuffs_Quantity: 15
   SkillOne_Quantity: 1
@@ -4331,6 +4332,7 @@ MonoBehaviour:
   - {fileID: 1339137897316286, guid: 16fc4883c8c05de46ad189f8c14be8b7, type: 3}
   - {fileID: 1550805010057600, guid: 3d4dbe8b0ed2c7547b80c2ac542b4b67, type: 3}
   - {fileID: 1032960549784740, guid: 5550dbe8dc3c55947964af68a39bc455, type: 3}
+  - {fileID: 57632615081739957, guid: 7480718719739da48a7b48a23e35f2d1, type: 3}
   AllBuffTypes:
   - {fileID: 1797906246313780, guid: 03e2a0b79e0f8624a91212d141d2b4f1, type: 3}
   - {fileID: 1291706210693770, guid: eecdf28ce8ee4734fad7e282412f2342, type: 3}
@@ -4363,8 +4365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossPhaseManaging: {fileID: 1376525134773273607}
-  Health_ThresholdPercent: 500000003c0000002800000014000000
-  Health_ThresholdCheck: 100e00008c0a00000807000084030000
+  Health_ThresholdPercent: 500000003c00000028000000
+  Health_ThresholdCheck: 100e00008c0a000008070000
   CurrentPhase: -1
   TotalPhase: 0
   BuffCycles: 4
@@ -4395,12 +4397,7 @@ MonoBehaviour:
   TotalOfPhase:
   - BossCommands:
     - 2
-    - NormalAttack
-    - 3
-    - NormalAttack
-    - 5
-    - SingleTarget
-    - RandomBuffsRandomSpot
+    - BossUltimateOne
   - BossCommands:
     - 1
     - AdvantageBuffs
@@ -4422,36 +4419,16 @@ MonoBehaviour:
     - 6
     - AdvantageBuffs
   - BossCommands:
-    - 8
-    - MultiTarget
-    - DisadvantageBuffs
     - 2
     - NormalAttack
-    - 2
-    - MultiTarget
+    - 4
+    - DisadvantageBuffs
     - 3
-    - RandomBuffsRandomSpot
-    - 1
-    - RandomBuffsRandomSpot
     - MultiRandom
-  - BossCommands:
-    - 2
+    - 1
+    - MultiRandom
+    - 6
     - AdvantageBuffs
-    - 1
-    - MultiRandom
-    - 1
-    - MultiRandom
-    - 1
-    - MultiRandom
-    - 5
-    - MultiTarget
-    - 1
-    - DisadvantageBuffs
-    - 1
-    - RandomBuffsRandomSpot
-    - 3
-    - NormalAttack
-    - 2
   CurrentPhaseMain: 0
   CurrentPhaseisAt: 0
   isNumber: 0

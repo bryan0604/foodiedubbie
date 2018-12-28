@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager singleton;
-    [Header("Update this soon!")]
-    public GameObject AoeSmall;
     [HideInInspector]
     public GameObject MainPlayer;
     public GameObject Platform;
     public Button Button_Dismount;
     public GameVictory UI_GameRoundEnd;
+    public Boss_1_Ultimate Boss1Ultimate;
+    public Boss_1_Ultimate_2 Boss1UltimateTwo;
     [Range(0,50)]
     public int MaxSmallAoe;
     [Range(0, 25)]
@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public int SkillTwo_Quantity;
     public int SkillThree_Quantity;
     public int SkillFour_Quantity;
+    [Header("All Aoes here!")]
+    public List<GameObject> AllAoes = new List<GameObject>();
     [Header("Put all special effects here!")]
     public List<GameObject> AllSpecialEffects = new List<GameObject>();
     [Header("Put all buffs here!")]
@@ -77,13 +79,17 @@ public class GameManager : MonoBehaviour
         //AOEs
         for (int i = 0; i < MaxSmallAoe; i++)
         {
-            AoeManager _aoe = Instantiate(AoeSmall.GetComponent<AoeManager>());
+            for (int j = 0; j < AllAoes.Count; j++)
+            {
+                AoeManager _aoe = Instantiate(AllAoes[j].GetComponent<AoeManager>());
 
-            _aoe.gameObject.SetActive(false);
+                _aoe.gameObject.SetActive(false);
 
-            _aoe.transform.SetParent(transform);
+                _aoe.transform.SetParent(transform);
 
-            Aoes_Pools.Add(_aoe);
+                Aoes_Pools.Add(_aoe);
+            }
+
 
             for (int o = 0; o < AllSpecialEffects.Count; o++)
             {
@@ -132,9 +138,72 @@ public class GameManager : MonoBehaviour
         {
             NormalAttack();
         }
+        if(Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            BossOne_UltimateOne();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            BossOne_UltimateTwo();
+        }
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            SkillFive_SingleSpot();
+        }
+
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            SkillOne_Upgraded();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SkillTwo_Upgraded();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SkillThree_Upgraded();
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SkillFour_Upgraded();
+        }
     }
 
     #region Ability/Skill Management
+    public void SkillOne_Upgraded()
+    {
+        TargetManagement(true, SkillOne_Quantity, false,2, false, true, false, false);
+    }
+
+    public void SkillTwo_Upgraded()
+    {
+        TargetManagement(true, SkillTwo_Quantity, true, 2, false, true, false, false);
+    }
+
+    public void SkillThree_Upgraded()
+    {
+        TargetManagement(false, SkillThree_Quantity, false, 2, false, true, false, false);
+    }
+
+    public void SkillFour_Upgraded()
+    {
+        StartCoroutine(Subs_SkillFour_Upgraded());
+    }
+
+    public void SkillFive_SingleSpot()
+    {
+        TargetOnSpots();
+    }
+
+    public void BossOne_UltimateOne()
+    {
+        Boss1Ultimate.OnActivate();
+    }
+
+    public void BossOne_UltimateTwo()
+    {
+        Boss1UltimateTwo.OnActivate();
+    }
 
     public void NormalAttack()
     {
@@ -177,6 +246,24 @@ public class GameManager : MonoBehaviour
             _skillfourquantity -= 1;
 
             SkillFour_MultiTarget();
+        }
+    }
+
+    IEnumerator Subs_SkillFour_Upgraded()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (_skillfourquantity <= 0)
+        {
+            _skillfourquantity = SkillFour_Quantity;
+        }
+        else
+        {
+            TargetManagement(false, 1, false, 2, false, true, false, false);
+
+            _skillfourquantity -= 1;
+
+            SkillFour_Upgraded();
         }
     }
 
@@ -268,6 +355,8 @@ public class GameManager : MonoBehaviour
                         {
                             if (!item.gameObject.activeInHierarchy)
                             {
+                                if (Buffs_SpecificPosition[i].tag != "buffpt") return;
+
                                 item.OnBeingPlaced(Buffs_SpecificPosition[i].position);
 
                                 i++;
@@ -279,6 +368,8 @@ public class GameManager : MonoBehaviour
                             {
                                 if (item.isAdvantageBuff)
                                 {
+                                    if (Buffs_SpecificPosition[i].tag != "buffpt") return;
+
                                     item.OnBeingPlaced(Buffs_SpecificPosition[i].position);
 
                                     i++;
@@ -303,6 +394,8 @@ public class GameManager : MonoBehaviour
                         {
                             if (!item.gameObject.activeInHierarchy)
                             {
+                                if (Buffs_SpecificPosition[i].tag != "buffpt") return;
+
                                 item.OnBeingPlaced(Buffs_SpecificPosition[i].position);
 
                                 i++;
@@ -314,6 +407,8 @@ public class GameManager : MonoBehaviour
                             {
                                 if (item.isDisadvantageBuff)
                                 {
+                                    if (Buffs_SpecificPosition[i].tag != "buffpt") return;
+
                                     item.OnBeingPlaced(Buffs_SpecificPosition[i].position);
 
                                     i++;
@@ -426,12 +521,43 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void TargetOnSpots()
+    {
+        foreach (var item in Buffs_SpecificPosition)
+        {
+            if(item.tag == "aoept")
+            {
+                TargetOnSpecificSpotsPattern(item.position, 3);
+
+                Debug.Log(item.name);
+            }
+        }
+    }
+
+    public void TargetOnSpecificSpotsPattern(Vector3 _spot, int Level)
+    {
+        foreach (AoeManager item in Aoes_Pools)
+        {
+            if (item.Level == Level && !item.gameObject.activeInHierarchy)
+            {
+                AoeManager Aoe = item;
+
+                Aoe.OnBeingCast(_spot);
+
+                return;
+            }
+            else
+            {
+
+            }
+        }
+    }
+
     void AbilitiesManagement(int Level, bool isSmall, bool isMedium, bool isLarge)
     {
         AoeManager Aoe;
+        Debug.Log(Level);
 
-        if(Level == 1)
-        {
             foreach (AoeManager item in Aoes_Pools)
             {
                 if(item.Level == Level && !item.gameObject.activeInHierarchy)
@@ -447,7 +573,7 @@ public class GameManager : MonoBehaviour
 
                 }
             }
-        }
+        
     }
 
     #endregion

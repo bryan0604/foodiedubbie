@@ -782,7 +782,6 @@ GameObject:
   - component: {fileID: 1971512260909737707}
   - component: {fileID: 1971512260909737706}
   - component: {fileID: 1971512260909737621}
-  - component: {fileID: 1971512260909737620}
   - component: {fileID: 7763434956437275739}
   m_Layer: 9
   m_Name: _PlatformFoodSpawn (3)
@@ -1794,20 +1793,6 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
---- !u!64 &1971512260909737620
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1971512260909737623}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!135 &7763434956437275739
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1816,10 +1801,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971512260909737623}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.3
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0.075, z: 0}
 --- !u!1 &1971512260929500073
 GameObject:
@@ -2293,13 +2278,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1971512261210772101}
   - component: {fileID: 1971512261210772122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boss_1_Ultimate_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1971512261210772101
 Transform:
   m_ObjectHideFlags: 0
@@ -2338,6 +2323,7 @@ MonoBehaviour:
   Platforms_3: {fileID: 1971512260909737704}
   Platforms_4: {fileID: 1971512261637605092}
   Player: {fileID: 0}
+  isActivate: 0
 --- !u!1 &1971512261220982973
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,7 +2567,6 @@ GameObject:
   - component: {fileID: 1971512261325321169}
   - component: {fileID: 1971512261325321168}
   - component: {fileID: 1971512261325321171}
-  - component: {fileID: 1971512261325321170}
   - component: {fileID: 7994861202849130001}
   m_Layer: 9
   m_Name: _PlatformFoodSpawn (2)
@@ -3593,20 +3578,6 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
---- !u!64 &1971512261325321170
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1971512261325321181}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!135 &7994861202849130001
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3615,10 +3586,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971512261325321181}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.3
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0.075, z: 0}
 --- !u!1 &1971512261329465278
 GameObject:
@@ -4094,7 +4065,6 @@ GameObject:
   - component: {fileID: 1971512261637605095}
   - component: {fileID: 1971512261637605094}
   - component: {fileID: 1971512261637605089}
-  - component: {fileID: 1971512261637605088}
   - component: {fileID: 3049631970562305067}
   m_Layer: 9
   m_Name: _PlatformFoodSpawn (4)
@@ -5106,20 +5076,6 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
---- !u!64 &1971512261637605088
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1971512261637605091}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!135 &3049631970562305067
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5128,10 +5084,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971512261637605091}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.3
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0.075, z: 0}
 --- !u!1 &1971512261796098399
 GameObject:
@@ -5607,7 +5563,6 @@ GameObject:
   - component: {fileID: 1971512262164078474}
   - component: {fileID: 1971512262164078517}
   - component: {fileID: 1971512262164078516}
-  - component: {fileID: 1971512262164078519}
   - component: {fileID: 5896052516456343177}
   m_Layer: 9
   m_Name: _PlatformFoodSpawn (1)
@@ -6619,20 +6574,6 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
---- !u!64 &1971512262164078519
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1971512262164078518}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!135 &5896052516456343177
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6641,10 +6582,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971512262164078518}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.3
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0.075, z: 0}
 --- !u!1 &1971512262248299754
 GameObject:
