@@ -4667,7 +4667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7fc348ccdf9ab46acd92abc176b33e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfSE: {fileID: 0}
+  selfSE: {fileID: 57632615081739959}
   LifeTime: 0
   SpecialEffectsCode: 4
 --- !u!199 &57632615081739956

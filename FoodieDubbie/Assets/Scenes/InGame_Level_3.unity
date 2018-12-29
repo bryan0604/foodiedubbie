@@ -536,7 +536,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-90658
+  m_Name: pb_Mesh-1928
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -4716,7 +4716,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-90622
+  m_Name: pb_Mesh-1892
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -5058,22 +5058,327 @@ PrefabInstance:
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
       propertyPath: TotalOfPhase.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.size
-      value: 2
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.size
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[1]
-      value: 999
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[0]
+      value: NormalAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[2]
+      value: DisadvantageBuffs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[3]
+      value: MultiRandomUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[5]
+      value: MultiRandomUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[6]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[7]
+      value: AdvantageBuffs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[8]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[9]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[10]
+      value: BossUltimateTwo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[11]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[12]
+      value: SingleSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[13]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[14]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[0]
+      value: NormalAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[2]
+      value: SingleTargetUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[4]
+      value: NormalAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[5]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[6]
+      value: SingleTargetUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[7]
+      value: MultiRandomUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[8]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[9]
+      value: MultiRandomUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[10]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[11]
+      value: DisadvantageBuffs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[12]
+      value: SingleSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[13]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[14]
+      value: AdvantageBuffs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[1]
       value: BossUltimateOne
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[3]
+      value: MultiTargetUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[5]
+      value: RandomBuffsRandomSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[6]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[7]
+      value: MultiTargetUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[8]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[9]
+      value: RandomBuffsRandomSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[10]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[11]
+      value: MultiRandomUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[12]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[13]
+      value: AdvantageBuffs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[14]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[15]
+      value: MultiTargetUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[16]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[2].BossCommands.Array.data[17]
+      value: MultiRandomUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[1]
+      value: BossUltimateOne
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[3]
+      value: SingleSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[4]
+      value: BossUltimateTwo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[5]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[6]
+      value: RandomBuffsRandomSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[7]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[8]
+      value: BossUltimateTwo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[9]
+      value: SingleSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[10]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[11]
+      value: MultiTargetUpgraded
       objectReference: {fileID: 0}
     - target: {fileID: 7241853429025020455, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
@@ -6244,7 +6549,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-90640
+  m_Name: pb_Mesh-1910
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -11784,7 +12089,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-90604
+  m_Name: pb_Mesh-1874
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -12047,6 +12352,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1971512261210772122, guid: da06f818909affe479f67b646cb585e1,
+        type: 3}
+      propertyPath: ZapTiming
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1971512261210772101, guid: da06f818909affe479f67b646cb585e1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12161,6 +12471,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Radius
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971512260909737707, guid: da06f818909affe479f67b646cb585e1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971512261325321169, guid: da06f818909affe479f67b646cb585e1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971512261637605095, guid: da06f818909affe479f67b646cb585e1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971512262164078474, guid: da06f818909affe479f67b646cb585e1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da06f818909affe479f67b646cb585e1, type: 3}

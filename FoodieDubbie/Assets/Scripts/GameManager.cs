@@ -556,7 +556,7 @@ public class GameManager : MonoBehaviour
     void AbilitiesManagement(int Level, bool isSmall, bool isMedium, bool isLarge)
     {
         AoeManager Aoe;
-        Debug.Log(Level);
+        //Debug.Log(Level);
 
             foreach (AoeManager item in Aoes_Pools)
             {

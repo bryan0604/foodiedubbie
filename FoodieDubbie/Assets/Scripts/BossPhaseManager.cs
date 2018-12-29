@@ -222,6 +222,30 @@ public class BossPhaseManager : MonoBehaviour
         {
             GameManager.singleton.BossOne_UltimateOne();
         }
+        else if(_skill == "BossUltimateTwo")
+        {
+            GameManager.singleton.BossOne_UltimateTwo();
+        }
+        else if (_skill == "SingleTargetUpgraded")
+        {
+            GameManager.singleton.SkillThree_Upgraded();
+        }
+        else if (_skill == "MultiTargetUpgraded")
+        {
+            GameManager.singleton.SkillFour_Upgraded();
+        }
+        else if (_skill == "SingleRandomUpgraded")
+        {
+            GameManager.singleton.SkillOne_Upgraded();
+        }
+        else if (_skill == "MultiRandomUpgraded")
+        {
+            GameManager.singleton.SkillTwo_Upgraded();
+        }
+        else if(_skill == "SingleSpot")
+        {
+            GameManager.singleton.SkillFive_SingleSpot();
+        }
 
         OnCheckingPhase();
     }
