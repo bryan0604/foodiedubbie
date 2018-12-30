@@ -118,7 +118,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh46640
+  m_Name: pb_Mesh78374
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -368,6 +368,31 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4280666332818063721, guid: 20eb7d50dcaead34fb8c39f965fa6371,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 204.04688
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566282491642525707, guid: 20eb7d50dcaead34fb8c39f965fa6371,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 63.90625
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566282491642525707, guid: 20eb7d50dcaead34fb8c39f965fa6371,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -253.70312
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069873469081434886, guid: 20eb7d50dcaead34fb8c39f965fa6371,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1142.2969
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778588464111329392, guid: 20eb7d50dcaead34fb8c39f965fa6371,
+        type: 3}
+      propertyPath: m_ScaleFactor
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20eb7d50dcaead34fb8c39f965fa6371, type: 3}
 --- !u!224 &96838071 stripped
@@ -536,7 +561,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1928
+  m_Name: pb_Mesh-275770
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1048,7 +1073,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh46590
+  m_Name: pb_Mesh78324
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2938,7 +2963,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh46284
+  m_Name: pb_Mesh78018
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3288,7 +3313,7 @@ GameObject:
   - component: {fileID: 451409638}
   - component: {fileID: 451409637}
   m_Layer: 9
-  m_Name: Platform_Level2_Design
+  m_Name: Platform_Level3_Design
   m_TagString: Platforms
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4716,7 +4741,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1892
+  m_Name: pb_Mesh-275734
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -4949,6 +4974,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8969311785762477957, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
+      propertyPath: BehaviourScripts_toDisable.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969311785762477957, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
       propertyPath: MainPlayer
       value: 
       objectReference: {fileID: 2010916152}
@@ -5035,6 +5065,21 @@ PrefabInstance:
       propertyPath: Buffs_SpecificPosition.Array.data[4]
       value: 
       objectReference: {fileID: 687527444}
+    - target: {fileID: 8969311785762477957, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: CurrentGameLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969311785762477957, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: BehaviourScripts_toDisable.Array.data[4]
+      value: 
+      objectReference: {fileID: 944522788}
+    - target: {fileID: 8969311785762477957, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: BehaviourScripts_toDisable.Array.data[5]
+      value: 
+      objectReference: {fileID: 665996051}
     - target: {fileID: 1647304376, guid: 5bd97019e26be7643a8653ede11284b9, type: 3}
       propertyPath: Health_ThresholdPercent.Array.size
       value: 3
@@ -5078,7 +5123,7 @@ PrefabInstance:
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.size
-      value: 12
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
@@ -5333,7 +5378,7 @@ PrefabInstance:
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[2]
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
@@ -5343,42 +5388,112 @@ PrefabInstance:
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[4]
-      value: BossUltimateTwo
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[5]
-      value: 4
+      value: SingleTargetUpgraded
       objectReference: {fileID: 0}
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[6]
-      value: RandomBuffsRandomSpot
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[7]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
-        type: 3}
-      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[8]
-      value: BossUltimateTwo
-      objectReference: {fileID: 0}
-    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
-        type: 3}
-      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[9]
       value: SingleSpot
       objectReference: {fileID: 0}
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[8]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[9]
+      value: AdvantageBuffs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
       propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[10]
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[11]
+      value: SingleSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[12]
+      value: BossUltimateTwo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[13]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[14]
+      value: RandomBuffsRandomSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[15]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[16]
+      value: MultiRandomUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[17]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[18]
+      value: MultiRandomUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[19]
+      value: SingleSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[20]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[21]
+      value: AdvantageBuffs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[22]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[23]
       value: MultiTargetUpgraded
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[24]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376525134773273607, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[25]
+      value: AdvantageBuffs
       objectReference: {fileID: 0}
     - target: {fileID: 7241853429025020455, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
@@ -6549,7 +6664,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1910
+  m_Name: pb_Mesh-275752
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -8421,7 +8536,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh46520
+  m_Name: pb_Mesh78254
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -10007,7 +10122,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh46178
+  m_Name: pb_Mesh77912
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -12089,7 +12204,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1874
+  m_Name: pb_Mesh-275716
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2

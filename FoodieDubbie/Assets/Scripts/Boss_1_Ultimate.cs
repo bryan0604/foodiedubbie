@@ -124,7 +124,7 @@ public class Boss_1_Ultimate : MonoBehaviour
         Platforms_4.GetComponent<MeshRenderer>().enabled = true;
 
         isActivate = true;
-
+        CancelInvoke("ElectricShock");
         InvokeRepeating("ElectricShock", ZapTiming, ZapTiming);
 
         StartCoroutine(EndCasting());
