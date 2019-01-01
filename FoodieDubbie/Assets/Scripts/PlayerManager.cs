@@ -25,6 +25,8 @@ public class PlayerManager : MonoBehaviour
         _HealthPoints = HealthPoints;
 
         //Name
+        PlayerName = Game_GlobalInfo.singleton.Player_Username;
+
         PlayerUIs.PlayerName_Text.text = PlayerName;
     }
 

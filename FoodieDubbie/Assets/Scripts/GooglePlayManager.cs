@@ -8,10 +8,15 @@ using UnityEngine.SocialPlatforms;
 
 public class GooglePlayManager : MonoBehaviour
 {
+    public GameObject LoginPanelInfo;
     public Text GooglePlayUsername;
-    public int GooglePlayCurrentLevel;
+    public Text GooglePlayCurrentLevel;
+    public Text DisplayInfo;
     public Button GooglePlaySignIn;
     public Button GooglePlayLeaderboard;
+    public Button GooglePlayAchievement;
+    public Button AddLevelPoints;
+    private int CurrentLevel=1;
 
     private void Awake()
     {
@@ -22,7 +27,31 @@ public class GooglePlayManager : MonoBehaviour
 
         if(GooglePlayLeaderboard)
         {
-            GooglePlayLeaderboard.onClick.AddListener(TestShowAchievement);
+            GooglePlayLeaderboard.onClick.AddListener(TestShowLeaderboard);
+        }
+
+        if(GooglePlayAchievement)
+        {
+            GooglePlayAchievement.onClick.AddListener(TestShowAchievement);
+        }
+
+        if(AddLevelPoints)
+        {
+            AddLevelPoints.onClick.AddListener(OnUpdateClearedLevel);
+        }
+
+        OnCheckingGooglePlayUser();
+    }
+
+    void OnCheckingGooglePlayUser()
+    {
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
+        {
+            DisplayInfo.text = "You have already logged on";
+        }
+        else
+        {
+            DisplayInfo.text = "You have not log in";
         }
     }
 
@@ -34,9 +63,19 @@ public class GooglePlayManager : MonoBehaviour
 
         PlayGamesPlatform.Activate();
 
+        PlayGamesPlatform.DebugLogEnabled = true;
+
         //Social.CreateAchievement();
 
         //Social.LoadAchievements(success => { Debug.Log(success); });
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ShowLoginInfo();
+        }
     }
 
     public void TestAuthLogin()
@@ -49,32 +88,43 @@ public class GooglePlayManager : MonoBehaviour
             
             if (success)
             {
-                ((GooglePlayGames.PlayGamesPlatform)Social.Active).SetGravityForPopups(Gravity.BOTTOM);
-
-                GooglePlayUsername.text = Social.localUser.userName; 
+                ShowLoginInfo();
             }
+        });
+    }
 
-            ((PlayGamesLocalUser)Social.localUser).GetStats((rc, stats) =>
-            {
-                // see  CommonStatusCodes for all values.       // -1 means cached stats, 0 is succeess
-         
-                if (rc <= 0 && stats.HasDaysSinceLastPlayed())
-                {
-                    Debug.Log("It has been " + stats.DaysSinceLastPlayed + " days");
-                }
-            });
+    void ShowLoginInfo()
+    {
+        ((GooglePlayGames.PlayGamesPlatform)Social.Active).SetGravityForPopups(Gravity.LEFT);
+
+        GooglePlayUsername.text = Social.localUser.userName;
+
+        ILeaderboard lb = PlayGamesPlatform.Instance.CreateLeaderboard();
+
+        lb.id = GPGSIds.leaderboard_test_leaderboard_01;
+
+        lb.LoadScores(ok =>
+        {
+            GooglePlayCurrentLevel.text = lb.localUserScore.value.ToString();
         });
 
-        //Debug.Log(config.AccountName + " " + config.Scopes);
+        Game_GlobalInfo.singleton.Player_LatestDefeatedLevel = int.Parse(GooglePlayCurrentLevel.text)+1;
+
+        LoginPanelInfo.SetActive(true);
+
+        OnCheckingGooglePlayUser();
+
+        Game_GlobalInfo.singleton.OnUpdatePlayerInfo(Social.localUser.userName);
     }
 
     public void TestShowAchievement()
     {
-        Debug.Log("Showing Achievements");
-
-        Social.Active.ShowAchievementsUI();
-
         Social.ShowAchievementsUI();
+    }
+
+    public void TestShowLeaderboard()
+    {
+        Social.ShowLeaderboardUI();
     }
 
     public void UnlockAchievement(string id)
@@ -82,8 +132,17 @@ public class GooglePlayManager : MonoBehaviour
         Social.ReportProgress(id, 100 , success => { });
     }
 
-    public void IncrementAchievementProgress(string id, int AmountIncrement)
+    public void OnUpdateClearedLevel()
     {
-        PlayGamesPlatform.Instance.IncrementAchievement(id, AmountIncrement, success => { });
+        CurrentLevel++;
+
+        AddScoreToLeaderboard(GPGSIds.leaderboard_test_leaderboard_01, CurrentLevel);
+
+        GooglePlayCurrentLevel.text = CurrentLevel.ToString();
+    }
+
+    public void AddScoreToLeaderboard(string id, long score)
+    {
+        Social.ReportScore(score, id, success => { });
     }
 }

@@ -47,4 +47,9 @@ public class Game_GlobalInfo : MonoBehaviour
     {
         Player_NextLevel = Player_LatestDefeatedLevel + 1;
     }
+
+    public void OnUpdatePlayerInfo(string _username)
+    {
+        Player_Username = _username;
+    }
 }
