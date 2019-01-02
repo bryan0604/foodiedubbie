@@ -70,16 +70,10 @@ public class GooglePlayManager : MonoBehaviour
         //Social.LoadAchievements(success => { Debug.Log(success); });
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ShowLoginInfo();
-        }
-    }
-
     public void TestAuthLogin()
     {
+        LoadingManager.singleton.LoadingScreen(true);
+
         Social.localUser.Authenticate((bool success) =>
         {
             Debug.Log("Success or Fail = " + success);
@@ -89,6 +83,10 @@ public class GooglePlayManager : MonoBehaviour
             if (success)
             {
                 ShowLoginInfo();
+            }
+            else
+            {
+                LoadingManager.singleton.LoadingScreen(false);
             }
         });
     }
@@ -105,16 +103,23 @@ public class GooglePlayManager : MonoBehaviour
 
         lb.LoadScores(ok =>
         {
+            //Game_GlobalInfo.singleton.OnUpdatePlayerInfo(Social.localUser.userName, int.Parse(GooglePlayCurrentLevel.text));
+
             GooglePlayCurrentLevel.text = lb.localUserScore.value.ToString();
+
+            Game_GlobalInfo.singleton.OnUpdatePlayerInfo(GooglePlayUsername.text, int.Parse( GooglePlayCurrentLevel.text));
+
+            LoadingManager.singleton.LoadingScreen(false);
+
+            LoginPanelInfo.SetActive(true);
+
+            OnCheckingGooglePlayUser();
         });
+    }
 
-        Game_GlobalInfo.singleton.Player_LatestDefeatedLevel = int.Parse(GooglePlayCurrentLevel.text)+1;
+    void TestSignOut()
+    {
 
-        LoginPanelInfo.SetActive(true);
-
-        OnCheckingGooglePlayUser();
-
-        Game_GlobalInfo.singleton.OnUpdatePlayerInfo(Social.localUser.userName);
     }
 
     public void TestShowAchievement()
@@ -124,7 +129,8 @@ public class GooglePlayManager : MonoBehaviour
 
     public void TestShowLeaderboard()
     {
-        Social.ShowLeaderboardUI();
+        PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_test_leaderboard_01);
+        //Social.ShowLeaderboardUI(GPGSIds.leaderboard_test_leaderboard_01)
     }
 
     public void UnlockAchievement(string id)

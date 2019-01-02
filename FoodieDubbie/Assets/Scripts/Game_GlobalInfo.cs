@@ -48,8 +48,19 @@ public class Game_GlobalInfo : MonoBehaviour
         Player_NextLevel = Player_LatestDefeatedLevel + 1;
     }
 
-    public void OnUpdatePlayerInfo(string _username)
+    public void OnUpdatePlayerInfo(string _username, int _level)
     {
         Player_Username = _username;
+        Player_LatestDefeatedLevel = _level;
+
+        OnNextLevelCheck();
+    }
+
+    public void ClearAllData()
+    {
+        Player_Username = "";
+        Player_NextLevel = 0;
+        Player_Achievement = new List<int>(0);
+        Player_LatestDefeatedLevel = 0;
     }
 }
