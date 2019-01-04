@@ -97,23 +97,39 @@ public class GooglePlayManager : MonoBehaviour
 
         GooglePlayUsername.text = Social.localUser.userName;
 
+        //Social.LoadScores(GPGSIds.leaderboard_test_leaderboard_01, scores => {
+        //    if (scores.Length > 0)
+        //    {
+        //        Debug.Log("Got " + scores.Length + " scores");
+        //        string myScores = "Leaderboard:\n";
+        //        foreach (IScore score in scores)
+        //            myScores += "\t UserID - " + score.userID + " FV - " + score.formattedValue + " V " + score.value + "\n";
+        //        DebugManager.OnDebugging(myScores);
+        //    }
+        //    else
+        //        DebugManager.OnDebugging("No Score found");
+        //});
+
         ILeaderboard lb = PlayGamesPlatform.Instance.CreateLeaderboard();
 
         lb.id = GPGSIds.leaderboard_test_leaderboard_01;
 
         lb.LoadScores(ok =>
         {
-            //Game_GlobalInfo.singleton.OnUpdatePlayerInfo(Social.localUser.userName, int.Parse(GooglePlayCurrentLevel.text));
+            //DebugManager.OnDebugging(lb.localUserScore.value.ToString());
 
             GooglePlayCurrentLevel.text = lb.localUserScore.value.ToString();
 
-            Game_GlobalInfo.singleton.OnUpdatePlayerInfo(GooglePlayUsername.text, int.Parse( GooglePlayCurrentLevel.text));
+            CurrentLevel = int.Parse(GooglePlayCurrentLevel.text);
+
+            Game_GlobalInfo.singleton.OnUpdatePlayerInfo(GooglePlayUsername.text, int.Parse(GooglePlayCurrentLevel.text));
 
             LoadingManager.singleton.LoadingScreen(false);
 
-            LoginPanelInfo.SetActive(true);
+        LoginPanelInfo.SetActive(true);
 
-            OnCheckingGooglePlayUser();
+        OnCheckingGooglePlayUser();
+
         });
     }
 

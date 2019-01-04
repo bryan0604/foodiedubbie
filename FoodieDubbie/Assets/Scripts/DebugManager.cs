@@ -18,11 +18,11 @@ public class DebugManager : MonoBehaviour
         {
             int t = Random.Range(0, 9);
             Debug.Log("adding " + t);
-            OnDebugging(t);
+            //OnDebugging(t);
         }
     }
 
-    public static void OnDebugging(int code)
+    public static void OnDebugging(string code)
     {
         MyText.text = MyText.text + " " + code;
     }

@@ -27,7 +27,7 @@ public class GameVictory : MonoBehaviour
 
     void OnBacktoMainMenu()
     {
-        SceneManager.LoadScene(Scene_MainMenu, LoadSceneMode.Single);
+        SceneManager.LoadScene(Scene_MainMenu,LoadSceneMode.Single);
     }
 
 }

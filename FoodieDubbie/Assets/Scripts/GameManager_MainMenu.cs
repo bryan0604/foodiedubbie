@@ -6,45 +6,35 @@ using UnityEngine.SceneManagement;
 
 public class GameManager_MainMenu : MonoBehaviour
 {
-    public List<string> BossBattle_Levels = new List<string>();
-    public Button Button_StartGame;
+    //public List<string> BossBattle_Levels = new List<string>();
+    public Button Button_Resume;
     public Button Button_Login;
     public Button Button_Quit;
     public Button Button_RankList;
-    public Button Button_Continue;
+    public Button Button_LevelSelect;
     public Button Button_OnCheckNextLevel;
 
     public GameObject _InfoPanel_Bg;
+    public GameObject _LevelsPanel;
+    public GameObject _MainPanel;
 
     private void Awake()
     {
-        Button_StartGame.onClick.AddListener(StartGame);
-        Button_Login.onClick.AddListener(Login);
+        Button_Resume.onClick.AddListener(Continue);
         Button_Quit.onClick.AddListener(Quit);
-        Button_RankList.onClick.AddListener(RankList);
-        Button_Continue.onClick.AddListener(Continue);
+        Button_LevelSelect.onClick.AddListener(SelectLevel);
         Button_OnCheckNextLevel.onClick.AddListener(OnCheckNextLevel);
     }
 
-    void StartGame()
-    {
-        Debug.Log("Start Game - Level 1");
-        SceneManager.LoadScene(BossBattle_Levels[0],LoadSceneMode.Single);
-    }
-
-    void Login()
-    {
-
-    }
+    //void StartGame()
+    //{
+    //    Debug.Log("Start Game - Level 1");
+    //    SceneManager.LoadScene(BossBattle_Levels[0],LoadSceneMode.Single);
+    //}
 
     void Quit()
     {
         Application.Quit();
-    }
-
-    void RankList()
-    {
-
     }
 
     void Continue()
@@ -52,6 +42,18 @@ public class GameManager_MainMenu : MonoBehaviour
         Debug.Log("Next Level = " + Game_GlobalInfo.singleton.Player_NextLevel);
 
         SceneManager.LoadScene(Game_GlobalInfo.singleton.Player_NextLevel);
+    }
+
+    void SelectLevel()
+    {
+        _LevelsPanel.SetActive(true);
+        _MainPanel.SetActive(false);
+    }
+
+    public void BackFromLevelSelect()
+    {
+        _MainPanel.SetActive(true);
+        _LevelsPanel.SetActive(false);
     }
 
     void OnCheckNextLevel()
