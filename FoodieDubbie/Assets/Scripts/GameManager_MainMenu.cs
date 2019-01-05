@@ -17,6 +17,7 @@ public class GameManager_MainMenu : MonoBehaviour
     public GameObject _InfoPanel_Bg;
     public GameObject _LevelsPanel;
     public GameObject _MainPanel;
+    public GameObject _LoginInfoPanel;
 
     private void Awake()
     {
@@ -48,12 +49,17 @@ public class GameManager_MainMenu : MonoBehaviour
     {
         _LevelsPanel.SetActive(true);
         _MainPanel.SetActive(false);
+        _LoginInfoPanel.SetActive(false);
     }
 
     public void BackFromLevelSelect()
     {
         _MainPanel.SetActive(true);
         _LevelsPanel.SetActive(false);
+        if (Social.localUser.authenticated)
+        {
+            _LoginInfoPanel.SetActive(true);
+        }
     }
 
     void OnCheckNextLevel()

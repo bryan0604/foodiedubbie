@@ -97,40 +97,31 @@ public class GooglePlayManager : MonoBehaviour
 
         GooglePlayUsername.text = Social.localUser.userName;
 
-        //Social.LoadScores(GPGSIds.leaderboard_test_leaderboard_01, scores => {
-        //    if (scores.Length > 0)
-        //    {
-        //        Debug.Log("Got " + scores.Length + " scores");
-        //        string myScores = "Leaderboard:\n";
-        //        foreach (IScore score in scores)
-        //            myScores += "\t UserID - " + score.userID + " FV - " + score.formattedValue + " V " + score.value + "\n";
-        //        DebugManager.OnDebugging(myScores);
-        //    }
-        //    else
-        //        DebugManager.OnDebugging("No Score found");
-        //});
+        Social.LoadScores(GPGSIds.leaderboard_test_leaderboard_01, success =>
+         {
+             foreach (var item in success)
+             {
+                 if(item.userID == Social.localUser.id)
+                 {
+                     //DebugManager.OnDebugging(item.value.ToString());
 
-        ILeaderboard lb = PlayGamesPlatform.Instance.CreateLeaderboard();
+                     GooglePlayCurrentLevel.text = item.value.ToString();
 
-        lb.id = GPGSIds.leaderboard_test_leaderboard_01;
+                     CurrentLevel = int.Parse(item.value.ToString());
 
-        lb.LoadScores(ok =>
-        {
-            //DebugManager.OnDebugging(lb.localUserScore.value.ToString());
+                     Game_GlobalInfo.singleton.OnUpdatePlayerInfo(Social.localUser.userName, CurrentLevel);
+                 }
+                 //DebugManager.OnDebugging( item.value.ToString());
+             }
+         });
 
-            GooglePlayCurrentLevel.text = lb.localUserScore.value.ToString();
-
-            CurrentLevel = int.Parse(GooglePlayCurrentLevel.text);
-
-            Game_GlobalInfo.singleton.OnUpdatePlayerInfo(GooglePlayUsername.text, int.Parse(GooglePlayCurrentLevel.text));
-
-            LoadingManager.singleton.LoadingScreen(false);
+        LoadingManager.singleton.LoadingScreen(false);
 
         LoginPanelInfo.SetActive(true);
 
         OnCheckingGooglePlayUser();
 
-        });
+        //});
     }
 
     void TestSignOut()
