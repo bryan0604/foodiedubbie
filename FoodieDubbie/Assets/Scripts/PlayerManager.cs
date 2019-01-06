@@ -24,8 +24,16 @@ public class PlayerManager : MonoBehaviour
 
         _HealthPoints = HealthPoints;
 
-        //Name
-        PlayerName = Game_GlobalInfo.singleton.Player_Username;
+        //Name'
+        if(Game_GlobalInfo.singleton)
+        {
+            PlayerName = Game_GlobalInfo.singleton.Player_Username;
+        }
+        else
+        {
+            PlayerName = "Error404";
+        }
+        
 
         PlayerUIs.PlayerName_Text.text = PlayerName;
     }

@@ -101,6 +101,7 @@ public class BossManager_Level2 : MonoBehaviour
             IsGameBegin = true;
 
             BossPhaseManaging.ActivatePhaseManager();
+            BossConvoManager.singleton.OnActivateBossConvo();
         }
 
         HealthPoints -= Amount;
@@ -148,7 +149,7 @@ public class BossManager_Level2 : MonoBehaviour
                     CurrentPhase = i;
 
                     Debug.Log("=====Changing Phase=====");
-
+                    BossConvoManager.singleton.OnActivateBossConvo();
                     BossPhaseManager.singleton.CurrentPhaseMain ++;
                     BossPhaseManager.singleton.CurrentPhaseisAt = 0;
                 }

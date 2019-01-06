@@ -1,22 +1,22 @@
 ﻿#region To Updates
-// 1. Level 2 Features
-// 2. Balancing Level 1 - Intermediate
+// 1. Camera Shake (Priority - 1D)
+// 2. Level 4 & 5 Introductions
 // 3. Multiplayer
-// 4. Level 3 Features
-// 5. Create skill name for Upgraded Abilities!
-// 6. Boss Dialogue text system.
+// 4. Level 4 & 5 Balancing and Test Error
+// 5.
+// 6. Boss Dialogue text system. (Priority - 1D)
 // 7.
 // 8. AOE damage indications basic - animations code mechanics. (Neglected)
-// 9. Special Effects when player takes dmg.
-//10. Display Damage text when got hit.
-//11. Main Menu introduction - Design.
-//12. Main Menu - functions basic.
-//13. In Game - Pause Function.
+// 9. Special Effects when player takes dmg. (Priority - 1D)
+//10. Display Damage text when got hit. (Not important)
+//11. 
+//12.
+//13. In Game - Pause Function. (Priority - 1D)
 //14. 
-//15. AOE Introduction - Large.
-//16. Time potion - Add / Reduce time. 
-//17. Time = 0. End game. 
-//18. Reconstruct a better system of Boss Manager and Game Manager. (Check theory below)
+//15. 
+//16.
+//17.
+//18. 
 #endregion
 
 #region Updates Done
@@ -54,6 +54,19 @@
 // 32 Player UI lerping to player position.
 // 33. Boss fight pattern updated with simple accessible through other scripts
 // 34. Balancing Level 1 - Standard
+// 35. Balancing Level 1 - Intermediate
+// 36. Level 3 Features
+// 37. Level 2 Features
+// 38. Main Menu introduction - Design
+// 39. Main Menu - functions basic.
+// 40. AOE Introduction - Large.
+// 41. Reconstruct a better system of Boss Manager and Game Manager
+// 42. GooglePlay Logins
+// 43. GooglePlay Achievements
+// 44. GooglePlay Leaderboards
+// 45. GooglePlay Features
+// 46. GooglePlay Save and Load System
+// 47. Ranking System according to GooglePlay Leaderboard
 #endregion
 
 #region Errors
@@ -77,17 +90,18 @@
 //13. UIs issues after set to mobile platform.
 //14. Unity crashed due to Ienumerator fault OnValidate
 //15. Unity GUI Editor Windows issues doesnt update infos.
-
+//16. GooglePlay login no response.
 #endregion
 
 #region Comments and Pointers
 //1. Make sure gameplay will make player busy running around.
+#endregion
 //2. If too easy. decrease aoe explode time.
 //3. Challenge Defeat boss and Time Taken.
 //4. Adjust difficulties to maximum if too boring
-#endregion
 
-#region Boss Lv 1 Fight pattern.
+#region Boss Lv 1 Fight pattern
+
 #endregion
 
 #region Code Logic
