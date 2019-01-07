@@ -13,6 +13,7 @@ public class BossConvoManager : MonoBehaviour
     }
 
     public List<TotalPhrasesInPhase> Phrases = new List<TotalPhrasesInPhase>();
+    public List<string> EndPhrase = new List<string>();
 
     [SerializeField]
     private int _currentPhrasesIsAt = 0;
@@ -26,7 +27,7 @@ public class BossConvoManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.C))
         {
-            OnActivateBossConvo();
+            OnSendingEndGamePhrase();
         }
     }
 
@@ -54,34 +55,86 @@ public class BossConvoManager : MonoBehaviour
 
         if(isAnInteger)
         {
-            StartCoroutine(CountDownTimer((float)_Time));
+            StartCoroutine(CountDownTimer((float)_Time, false));
         }
         else
         {
-            StartCoroutine(OutPutPhrase());
+            StartCoroutine(OutPutPhrase(false));
         }
 
          _currentPhrasesIsAt++;
     }
 
-    IEnumerator CountDownTimer(float _timeInSec)
+    IEnumerator CountDownTimer(float _timeInSec, bool isEndingPhrase)
     {
         Debug.Log("Wait for " + _timeInSec);
 
         yield return new WaitForSeconds(_timeInSec);
 
-        OnActivateBossConvo();
+        if(isEndingPhrase)
+        {
+            OnSendingEndGamePhrase();
+        }
+        else
+        {
+            OnActivateBossConvo();
+        }
     }
 
-    IEnumerator OutPutPhrase()
+    IEnumerator OutPutPhrase(bool isEndingPhrase)
     {
         yield return new WaitForSeconds(0.1f);
 
         Debug.Log(Phrases[BossPhaseManager.singleton.CurrentPhaseMain].TotalPhrases[_currentPhrasesIsAt - 1]);
 
-        ConvoArrangeManager.singleTon.AddPhraseToText(Phrases[BossPhaseManager.singleton.CurrentPhaseMain].TotalPhrases[_currentPhrasesIsAt - 1]);
+        if (isEndingPhrase)
+        {
+            ConvoArrangeManager.singleTon.AddPhraseToText(EndPhrase[_currentPhrasesIsAt-1]);
 
-        OnActivateBossConvo();
+            OnSendingEndGamePhrase();
+        }
+        else
+        {
+            ConvoArrangeManager.singleTon.AddPhraseToText(Phrases[BossPhaseManager.singleton.CurrentPhaseMain].TotalPhrases[_currentPhrasesIsAt - 1]);
+
+            OnActivateBossConvo();
+        }
     }
+
+    #region End Phrase Management
+    public void OnSendingEndGamePhrase()
+    {
+        int _Time;
+        bool isAnInteger = false;
+
+        if(_currentPhrasesIsAt >= EndPhrase.Count)
+        {
+            _currentPhrasesIsAt = 0;
+
+            return;
+        }
+
+
+        if (int.TryParse(EndPhrase[_currentPhrasesIsAt], out _Time))
+        {
+            isAnInteger = true;
+        }
+        else
+        {
+            isAnInteger = false;
+        }
+
+        if (isAnInteger)
+        {
+            StartCoroutine(CountDownTimer((float)_Time, true));
+        }
+        else
+        {
+            StartCoroutine(OutPutPhrase(true));
+        }
+
+        _currentPhrasesIsAt++;
+    }
+    #endregion
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class LevelsManager : MonoBehaviour
 {
@@ -25,13 +26,29 @@ public class LevelsManager : MonoBehaviour
         for (int i = 0; i < _OpeningLevelAt; i++)
         {
             AllLevels[i].interactable = true;
-            AllLevels[i].onClick.AddListener(()=> { LevelManagement(i); });
+            AllLevels[i].onClick.AddListener(delegate { DebugButton(EventSystem.current.currentSelectedGameObject); });
+            //Debug.Log(AllLevels[i].name);
         }
     }
 
-    void LevelManagement(int Level)
+    void DebugButton(GameObject number)
     {
-        SceneManager.LoadScene(Level, LoadSceneMode.Single);
+        foreach (var item in AllLevels)
+        {
+            if(item.gameObject == number)
+            {
+                Debug.Log(item.transform.GetSiblingIndex() + 1);
+
+                if(item.transform.GetSiblingIndex() + 1 >= SceneManager.sceneCountInBuildSettings)
+                {
+                    Debug.LogWarning("Scene coming soon!");
+                }
+                else
+                {
+                    SceneManager.LoadScene(item.transform.GetSiblingIndex() + 1, LoadSceneMode.Single);
+                }
+            }
+        }
     }
 
     void Back()

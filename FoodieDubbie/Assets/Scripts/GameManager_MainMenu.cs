@@ -24,7 +24,7 @@ public class GameManager_MainMenu : MonoBehaviour
         Button_Resume.onClick.AddListener(Continue);
         Button_Quit.onClick.AddListener(Quit);
         Button_LevelSelect.onClick.AddListener(SelectLevel);
-        Button_OnCheckNextLevel.onClick.AddListener(OnCheckNextLevel);
+        Button_OnCheckNextLevel.onClick.AddListener(OnCheckingLevel);
     }
 
     //void StartGame()
@@ -62,30 +62,8 @@ public class GameManager_MainMenu : MonoBehaviour
         }
     }
 
-    void OnCheckNextLevel()
+    void OnCheckingLevel()
     {
-        _InfoPanel_Bg.gameObject.SetActive(true);
-
-        Text _text = _InfoPanel_Bg.transform.GetChild(0).GetComponent<Text>();
-
-        _text.text = "Next Level = " + Game_GlobalInfo.singleton.Player_NextLevel;
-
-        StartCoroutine(ClosingInfoPanel());
-    }
-
-    IEnumerator ClosingInfoPanel()
-    {
-        yield return new WaitForSeconds(5f);
-
-        _InfoPanel_Bg.gameObject.SetActive(false);
-
-        if(_InfoPanel_Bg.GetComponent<Animator>().isActiveAndEnabled)
-        {
-            _InfoPanel_Bg.GetComponent<Animator>().Play("InfoPanel", 0, 0f);
-        }
-        else
-        {
-            
-        }       
+        NoticePromptManager.singLeTon.OnCheckNextLevel();
     }
 }
