@@ -40,7 +40,14 @@ public class GameManager_MainMenu : MonoBehaviour
 
     void Continue()
     {
-        Debug.Log("Next Level = " + Game_GlobalInfo.singleton.Player_NextLevel);
+        //Debug.Log("Next Level = " + Game_GlobalInfo.singleton.Player_NextLevel);
+
+        if (Game_GlobalInfo.singleton.Player_NextLevel >= SceneManager.sceneCountInBuildSettings)
+        {
+            Debug.LogWarning("Scene coming soon!");
+
+            return;
+        }
 
         SceneManager.LoadScene(Game_GlobalInfo.singleton.Player_NextLevel);
     }

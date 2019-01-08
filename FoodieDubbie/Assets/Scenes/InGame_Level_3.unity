@@ -3095,11 +3095,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
+    - target: {fileID: 20799806990342172, guid: ca5026be1fc80b04499943bb933a891e,
         type: 3}
-      propertyPath: TargetPlayer
-      value: 
-      objectReference: {fileID: 2044029007}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4482779045061312, guid: ca5026be1fc80b04499943bb933a891e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.72
@@ -3132,11 +3132,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 20799806990342172, guid: ca5026be1fc80b04499943bb933a891e,
+    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
         type: 3}
-      propertyPath: orthographic
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: TargetPlayer
+      value: 
+      objectReference: {fileID: 2044029007}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5026be1fc80b04499943bb933a891e, type: 3}
 --- !u!1 &388888050
@@ -4898,6 +4898,7 @@ MonoBehaviour:
     - yuir
   - TotalPhrases: []
   - TotalPhrases: []
+  EndPhrase: []
   _currentPhrasesIsAt: 0
 --- !u!114 &508800870
 MonoBehaviour:
@@ -5391,6 +5392,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8969311785762477957, guid: 5bd97019e26be7643a8653ede11284b9,
         type: 3}
+      propertyPath: AllSpecialEffects.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969311785762477957, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
       propertyPath: MainPlayer
       value: 
       objectReference: {fileID: 2010916152}
@@ -5512,6 +5518,18 @@ PrefabInstance:
       propertyPath: BehaviourScripts_toDisable.Array.data[9]
       value: 
       objectReference: {fileID: 630370062}
+    - target: {fileID: 8969311785762477957, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: AllSpecialEffects.Array.data[4]
+      value: 
+      objectReference: {fileID: 6698148968573611227, guid: d081004db2b3a6d42b0b3e22923e017b,
+        type: 3}
+    - target: {fileID: 8969311785762477957, guid: 5bd97019e26be7643a8653ede11284b9,
+        type: 3}
+      propertyPath: AllSpecialEffects.Array.data[5]
+      value: 
+      objectReference: {fileID: 3474593792879376487, guid: 898482a1374dda64dbfc7100124330f0,
+        type: 3}
     - target: {fileID: 1647304376, guid: 5bd97019e26be7643a8653ede11284b9, type: 3}
       propertyPath: Health_ThresholdPercent.Array.size
       value: 3

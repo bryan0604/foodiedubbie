@@ -35,7 +35,7 @@ public class DialogueText : MonoBehaviour
 
     IEnumerator ArrangementText()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(9f);
 
         transform.SetAsLastSibling();
 

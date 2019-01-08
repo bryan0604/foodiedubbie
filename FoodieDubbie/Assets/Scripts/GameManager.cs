@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager singleton;
-    [HideInInspector]
+    
     public GameObject MainPlayer;
     public GameObject Platform;
     public Button Button_Dismount;
@@ -625,6 +625,9 @@ public class GameManager : MonoBehaviour
         else
         {
             UI_GameRoundEnd.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Victory-NOT TODAY!";
+
+            if (BossPhaseManager.singleton != null)
+                BossPhaseManager.singleton.StopAllCoroutines();
         }
         UI_GameRoundEnd.gameObject.SetActive(true);
 

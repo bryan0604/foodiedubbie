@@ -7518,8 +7518,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player_Username: NoName
   Player_Achievement: 
-  Player_NextLevel: 5
-  Player_LatestDefeatedLevel: 4
+  Player_NextLevel: 0
+  Player_LatestDefeatedLevel: 0
 --- !u!114 &1367523116
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,14 +4,14 @@
 // 3. Multiplayer
 // 4. Level 4 & 5 Balancing and Test Error
 // 5.
-// 6. Boss Dialogue text system. (Priority - 1D)
+// 6. 
 // 7.
 // 8. AOE damage indications basic - animations code mechanics. (Neglected)
 // 9. Special Effects when player takes dmg. (Priority - 1D)
 //10. Display Damage text when got hit. (Not important)
 //11. 
-//12.
-//13. In Game - Pause Function. (Priority - 1D)
+//12. Loading Display before game start.
+//13. 
 //14. 
 //15. 
 //16.
@@ -51,7 +51,7 @@
 // 29. Boss UI health bar introduction
 // 30. Boss UI health bar background lerping.
 // 31. Player UI healthbar background lerpings.
-// 32 Player UI lerping to player position.
+// 32. Player UI lerping to player position.
 // 33. Boss fight pattern updated with simple accessible through other scripts
 // 34. Balancing Level 1 - Standard
 // 35. Balancing Level 1 - Intermediate
@@ -67,11 +67,12 @@
 // 45. GooglePlay Features
 // 46. GooglePlay Save and Load System
 // 47. Ranking System according to GooglePlay Leaderboard
+// 48. In Game - Pause Function.
+// 49. Boss Dialogue text system.
 #endregion
 
 #region Errors
-// 1. Game Manager singleton not found is null. On Start issue.
-// 2. Buff Disadvantage needed to clear target set null when disabled.
+//1. Must stop time when player died. Reduce lag.
 #endregion
 
 #region Errors Fixed
@@ -91,6 +92,13 @@
 //14. Unity crashed due to Ienumerator fault OnValidate
 //15. Unity GUI Editor Windows issues doesnt update infos.
 //16. GooglePlay login no response.
+//17. GUI Error doesn't erase contents;
+//18. Boss Skills out of arrays when casting abilities.
+//19. Boss Phase Manager read skill when game ends.
+//20. Level Manager failed to assign level to correct button.
+//21. Level Manager out of array when levelpanel is active.
+//22. Game Manager singleton not found is null. On Start issue.
+//23. Buff Disadvantage needed to clear target set null when disabled.
 #endregion
 
 #region Comments and Pointers

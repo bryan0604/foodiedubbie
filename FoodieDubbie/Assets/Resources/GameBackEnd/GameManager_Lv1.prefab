@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1341232354105724
+--- !u!1 &6798862744574305198
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4823061880624952}
-  - component: {fileID: 114198319779347358}
-  - component: {fileID: 114684092468063086}
+  - component: {fileID: 7945993192674678830}
+  - component: {fileID: 617439971836830861}
+  - component: {fileID: 5712441915750207686}
+  - component: {fileID: 1220887438694382199}
+  - component: {fileID: 6123927886459544654}
+  - component: {fileID: 7338854189521688846}
+  - component: {fileID: 1341232354105725}
   m_Layer: 0
   m_Name: GameManager_Lv1
   m_TagString: Untagged
@@ -18,13 +22,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4823061880624952
+--- !u!4 &7945993192674678830
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1341232354105724}
+  m_GameObject: {fileID: 6798862744574305198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.65, y: 5.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,33 +36,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114198319779347358
+--- !u!114 &617439971836830861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1341232354105724}
+  m_GameObject: {fileID: 6798862744574305198}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84201b99da05a434488fa5c1f6807511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AoeSmall: {fileID: 1102740106426796, guid: 8687b35bd9e4cd84f8e7d8c9e3d53cf4, type: 3}
   MainPlayer: {fileID: 0}
   Platform: {fileID: 0}
   Button_Dismount: {fileID: 0}
   UI_GameRoundEnd: {fileID: 0}
-  MaxSmallAoe: 10
+  Boss1Ultimate: {fileID: 0}
+  Boss1UltimateTwo: {fileID: 0}
+  MaxSmallAoe: 20
   MaxBuffs_Quantity: 10
   SkillOne_Quantity: 1
   SkillTwo_Quantity: 5
   SkillThree_Quantity: 1
   SkillFour_Quantity: 5
+  AllAoes:
+  - {fileID: 1102740106426796, guid: 8687b35bd9e4cd84f8e7d8c9e3d53cf4, type: 3}
   AllSpecialEffects:
   - {fileID: 1339137897316286, guid: 16fc4883c8c05de46ad189f8c14be8b7, type: 3}
   - {fileID: 1550805010057600, guid: 3d4dbe8b0ed2c7547b80c2ac542b4b67, type: 3}
   - {fileID: 1032960549784740, guid: 5550dbe8dc3c55947964af68a39bc455, type: 3}
+  - {fileID: 3474593792879376487, guid: 898482a1374dda64dbfc7100124330f0, type: 3}
   AllBuffTypes:
   - {fileID: 1797906246313780, guid: 290a4a9d60e407844bcc5b20b10ef0d7, type: 3}
   - {fileID: 1291706210693770, guid: 6241bcb746eb33348a3d335dc7464737, type: 3}
@@ -71,34 +79,160 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   BehaviourScripts_toDisable:
-  - {fileID: 114684092468063086}
+  - {fileID: 1341232354105725}
+  - {fileID: 0}
+  - {fileID: 7338854189521688846}
   - {fileID: 0}
   - {fileID: 0}
   SingleTarget_Position: {x: 0, y: 0, z: 0}
   isGameEnd: 0
   CurrentGameLevel: 1
---- !u!114 &114684092468063086
+--- !u!114 &5712441915750207686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1341232354105724}
+  m_GameObject: {fileID: 6798862744574305198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5154e483493f44478a8f0f1524b75f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 0569ceb5c6c274b4bbde63354ffd8320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health_ThresholdPercent: 460000003200000019000000
+  ParentOfDialogueText: {fileID: 0}
+--- !u!114 &1220887438694382199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798862744574305198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a70fd901566e36141ad89e856756ac35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PausePanel: {fileID: 0}
+  Button_MainMenu: {fileID: 0}
+  Button_Guidance: {fileID: 0}
+  Button_Pause: {fileID: 0}
+  Button_Unpause: {fileID: 0}
+--- !u!114 &6123927886459544654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798862744574305198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0544bd3ace625dd4caae9973168570cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Phrases:
+  - TotalPhrases:
+    - 2
+    - hi
+  - TotalPhrases:
+    - 2
+    - hi
+  - TotalPhrases:
+    - 2
+    - hi
+  - TotalPhrases:
+    - 2
+    - hi
+  EndPhrase:
+  - 2
+  - hi
+  - 4
+  - hi
+  _currentPhrasesIsAt: 0
+--- !u!114 &7338854189521688846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798862744574305198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7079c89bf8640884090cb0cc29bfab51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossManager: {fileID: 1341232354105725}
+  TotalOfPhase:
+  - BossCommands:
+    - 2
+    - SingleTarget
+    - 2
+    - NormalAttack
+    - 4
+    - SingleRandom
+    - 3
+    - AdvantageBuffs
+    - 3
+  - BossCommands:
+    - 2
+    - RandomBuffsRandomSpot
+    - 2
+    - NormalAttack
+    - 2
+    - DisadvantageBuffs
+    - 2
+    - SingleTarget
+  - BossCommands:
+    - 2
+    - MultiTarget
+    - 5
+    - AdvantageBuffs
+    - 1
+    - MultiTarget
+    - 5
+  - BossCommands:
+    - 2
+    - AdvantageBuffs
+    - 1
+    - NormalAttack
+    - 2
+    - SingleTarget
+    - 3
+    - MultiRandom
+    - 1
+    - MultiRandom
+    - 4
+    - RandomBuffsRandomSpot
+  CurrentPhaseMain: 0
+  CurrentPhaseisAt: 0
+  isNumber: 0
+  isSkills: 0
+  isLatestUpdated: 0
+--- !u!114 &1341232354105725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798862744574305198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4828208b5e91f2d4e878e020841c9984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossPhaseManaging: {fileID: 7338854189521688846}
+  Health_ThresholdPercent: 4b0000002d00000014000000
   Health_ThresholdCheck: 
   CurrentPhase: -1
   TotalPhase: 0
   BuffCycles: 4
   _aoeSmall: 5
-  LerpSpeed: 0.01
+  _aoeMedium: 0
+  LerpSpeed: 0.15
   CastAmount_Aoe: 5
   CastAmount_Buffs: 4
-  HealthPoints: 1000
+  HealthPoints: 1500
   Healthbar_Original: {fileID: 0}
   Healthbar_Background: {fileID: 0}
   isHealthbarMoving: 0
+  isLatestUpdated: 0
+  IsGameBegin: 0

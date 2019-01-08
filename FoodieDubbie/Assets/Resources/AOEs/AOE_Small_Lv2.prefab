@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb75cca0a3d32b408da6afd7c93928f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSmall: 0
+  isSmall: 1
   isBeingCast: 0
   Damage: 50
   Level: 2

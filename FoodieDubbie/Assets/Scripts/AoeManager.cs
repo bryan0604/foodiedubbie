@@ -40,6 +40,7 @@ public class AoeManager : MonoBehaviour
             }
         }
 
+        #region SE
         SpecialEffectsManager _se;
 
         foreach (var item in GameManager.singleton.SpecialEffects_Pools)
@@ -48,14 +49,29 @@ public class AoeManager : MonoBehaviour
             {
                 _se = item.GetComponent<SpecialEffectsManager>();
 
-                if(_se.SpecialEffectsCode == 1)
+                if(isSmall)
                 {
-                    _se.OnEndPlayingSpecialEffects(transform.position);
+                    if (_se.SpecialEffectsCode == 1)
+                    {
+                        _se.OnEndPlayingSpecialEffects(transform.position);
 
-                    break;
-                }             
+                        break;
+                    }
+                }
+                else
+                {
+                    if (_se.SpecialEffectsCode == 6)
+                    {
+                        _se.OnEndPlayingSpecialEffects(transform.position);
+
+                        break;
+                    }
+                }
+          
             }
         }
+
+        #endregion
 
         GameManager.singleton.OnExplode(gameObject);
     }

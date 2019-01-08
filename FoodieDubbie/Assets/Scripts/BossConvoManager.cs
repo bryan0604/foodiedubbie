@@ -85,7 +85,7 @@ public class BossConvoManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
 
-        Debug.Log(Phrases[BossPhaseManager.singleton.CurrentPhaseMain].TotalPhrases[_currentPhrasesIsAt - 1]);
+        //Debug.Log(Phrases[BossPhaseManager.singleton.CurrentPhaseMain].TotalPhrases[_currentPhrasesIsAt - 1]);
 
         if (isEndingPhrase)
         {

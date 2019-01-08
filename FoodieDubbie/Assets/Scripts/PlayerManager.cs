@@ -68,7 +68,26 @@ public class PlayerManager : MonoBehaviour
     {
         HealthPoints -= _DamageAmount;
 
-        if(HealthPoints <= 0)
+        #region SE
+        SpecialEffectsManager _se;
+
+        foreach (var item in GameManager.singleton.SpecialEffects_Pools)
+        {
+            if (!item.gameObject.activeInHierarchy)
+            {
+                _se = item.GetComponent<SpecialEffectsManager>();
+
+                if (_se.SpecialEffectsCode == 5)
+                {
+                    _se.OnEndPlayingSpecialEffects(transform.position);
+
+                    break;
+                }
+            }
+        }
+        #endregion
+
+        if (HealthPoints <= 0)
         {
             GameManager.singleton.Game_RoundsEnd(false);
 
