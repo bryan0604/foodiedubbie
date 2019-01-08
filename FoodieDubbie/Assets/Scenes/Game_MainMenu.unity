@@ -213,7 +213,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30074
+  m_Name: pb_Mesh12688
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1050,7 +1050,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29968
+  m_Name: pb_Mesh12624
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2987,7 +2987,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29396
+  m_Name: pb_Mesh12338
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -6111,9 +6111,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1206387551}
   - component: {fileID: 1206387552}
-  - component: {fileID: 1206387553}
   - component: {fileID: 1206387554}
   - component: {fileID: 1206387555}
+  - component: {fileID: 1206387557}
+  - component: {fileID: 1206387556}
   m_Layer: 0
   m_Name: GameManager_MainMenu
   m_TagString: Untagged
@@ -6157,26 +6158,6 @@ MonoBehaviour:
   _LevelsPanel: {fileID: 176302777}
   _MainPanel: {fileID: 1631805152}
   _LoginInfoPanel: {fileID: 1353181220}
---- !u!114 &1206387553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206387550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a71a6211654671b42a2e7012eb0f6614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoginPanelInfo: {fileID: 1353181220}
-  GooglePlayUsername: {fileID: 920603292}
-  GooglePlayCurrentLevel: {fileID: 907337588}
-  DisplayInfo: {fileID: 1273963870}
-  GooglePlaySignIn: {fileID: 1893097550}
-  GooglePlayLeaderboard: {fileID: 426283386}
-  GooglePlayAchievement: {fileID: 234523039}
-  AddLevelPoints: {fileID: 381321435}
 --- !u!114 &1206387554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6206,6 +6187,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _InfoPanel_Bg: {fileID: 1712539158}
   TextContent: {fileID: 2145563392}
+--- !u!114 &1206387556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206387550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4190d82307a339f478881c97673fbbfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoginPanelInfo: {fileID: 1353181220}
+  GooglePlayUsername: {fileID: 920603292}
+  GooglePlayCurrentLevel: {fileID: 907337588}
+  DisplayInfo: {fileID: 1273963870}
+  GooglePlaySignIn: {fileID: 1893097550}
+  GooglePlayLeaderboard: {fileID: 426283386}
+  GooglePlayAchievement: {fileID: 234523039}
+  AddLevelPoints: {fileID: 381321435}
+--- !u!114 &1206387557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206387550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb5e19ebf2bcad4dad386e89fdd3d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoadingScreen_Panel: {fileID: 469031177}
+  Prefab: {fileID: 8690881975611071746, guid: cd9560e5291ff7a409535567902e56fe, type: 3}
 --- !u!1 &1218877019
 GameObject:
   m_ObjectHideFlags: 0
@@ -7529,18 +7544,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1367523113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cb5e19ebf2bcad4dad386e89fdd3d6c, type: 3}
+  m_Script: {fileID: 11500000, guid: a71a6211654671b42a2e7012eb0f6614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadingScreen_Panel: {fileID: 469031177}
-  Prefab: {fileID: 8690881975611071746, guid: cd9560e5291ff7a409535567902e56fe, type: 3}
+  MenuManager: {fileID: 0}
 --- !u!43 &1446253540
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29768
+  m_Name: pb_Mesh12552
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -9100,7 +9114,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29262
+  m_Name: pb_Mesh12222
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -11517,6 +11531,11 @@ PrefabInstance:
       value: GameMainMenu_UIs
       objectReference: {fileID: 0}
     - target: {fileID: 176302777, guid: 21f80069eeab1a64d910515f0e1f7b27, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750746189171872795, guid: 21f80069eeab1a64d910515f0e1f7b27,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

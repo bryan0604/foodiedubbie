@@ -8,36 +8,41 @@ using UnityEngine.SocialPlatforms;
 
 public class GooglePlayManager : MonoBehaviour
 {
-    public GameObject LoginPanelInfo;
-    public Text GooglePlayUsername;
-    public Text GooglePlayCurrentLevel;
-    public Text DisplayInfo;
-    public Button GooglePlaySignIn;
-    public Button GooglePlayLeaderboard;
-    public Button GooglePlayAchievement;
-    public Button AddLevelPoints;
+    public static GooglePlayManager singletonGooglePlay;
+
+    public GoogleMainMenuManager MenuManager;
+
     private int CurrentLevel=1;
 
     private void Awake()
     {
-        if(GooglePlaySignIn)
+        DontDestroyOnLoad(this);
+
+        singletonGooglePlay = this;
+
+        if(MenuManager==null)
         {
-            GooglePlaySignIn.onClick.AddListener(TestAuthLogin);
+            MenuManager = Behaviour.FindObjectOfType<GoogleMainMenuManager>();
         }
 
-        if(GooglePlayLeaderboard)
+        if(MenuManager.GooglePlaySignIn)
         {
-            GooglePlayLeaderboard.onClick.AddListener(TestShowLeaderboard);
+            MenuManager.GooglePlaySignIn.onClick.AddListener(TestAuthLogin);
         }
 
-        if(GooglePlayAchievement)
+        if(MenuManager.GooglePlayLeaderboard)
         {
-            GooglePlayAchievement.onClick.AddListener(TestShowAchievement);
+            MenuManager.GooglePlayLeaderboard.onClick.AddListener(TestShowLeaderboard);
         }
 
-        if(AddLevelPoints)
+        if(MenuManager.GooglePlayAchievement)
         {
-            AddLevelPoints.onClick.AddListener(OnUpdateClearedLevel);
+            MenuManager.GooglePlayAchievement.onClick.AddListener(TestShowAchievement);
+        }
+
+        if(MenuManager.AddLevelPoints)
+        {
+            MenuManager.AddLevelPoints.onClick.AddListener(OnUpdateClearedLevel);
         }
 
         OnCheckingGooglePlayUser();
@@ -47,11 +52,11 @@ public class GooglePlayManager : MonoBehaviour
     {
         if (PlayGamesPlatform.Instance.localUser.authenticated)
         {
-            DisplayInfo.text = "You have already logged on";
+            MenuManager.DisplayInfo.text = "You have already logged on";
         }
         else
         {
-            DisplayInfo.text = "You have not log in";
+            MenuManager.DisplayInfo.text = "You have not log in";
         }
     }
 
@@ -95,7 +100,7 @@ public class GooglePlayManager : MonoBehaviour
     {
         ((GooglePlayGames.PlayGamesPlatform)Social.Active).SetGravityForPopups(Gravity.LEFT);
 
-        GooglePlayUsername.text = Social.localUser.userName;
+        MenuManager.GooglePlayUsername.text = Social.localUser.userName;
 
         Social.LoadScores(GPGSIds.leaderboard_test_leaderboard_01, success =>
          {
@@ -105,7 +110,7 @@ public class GooglePlayManager : MonoBehaviour
                  {
                      //DebugManager.OnDebugging(item.value.ToString());
 
-                     GooglePlayCurrentLevel.text = item.value.ToString();
+                     MenuManager.GooglePlayCurrentLevel.text = item.value.ToString();
 
                      CurrentLevel = int.Parse(item.value.ToString());
 
@@ -117,7 +122,7 @@ public class GooglePlayManager : MonoBehaviour
 
         LoadingManager.singleton.LoadingScreen(false);
 
-        LoginPanelInfo.SetActive(true);
+        MenuManager.LoginPanelInfo.SetActive(true);
 
         OnCheckingGooglePlayUser();
 
@@ -151,7 +156,7 @@ public class GooglePlayManager : MonoBehaviour
 
         AddScoreToLeaderboard(GPGSIds.leaderboard_test_leaderboard_01, CurrentLevel);
 
-        GooglePlayCurrentLevel.text = CurrentLevel.ToString();
+        MenuManager.GooglePlayCurrentLevel.text = CurrentLevel.ToString();
     }
 
     public void AddScoreToLeaderboard(string id, long score)
