@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseGameManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PauseGameManager : MonoBehaviour
         singleTon = this;
         Button_Pause.onClick.AddListener(() => { PauseActivate(true); });
         Button_Unpause.onClick.AddListener(() => { PauseActivate(false); });
+        Button_MainMenu.onClick.AddListener(ReturnToMainMenu);
     }
 
     public void PauseActivate(bool activate)
@@ -41,7 +43,9 @@ public class PauseGameManager : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        Time.timeScale = 1f;
 
+        SceneManager.LoadScene(0);
     }
 
     public void ShowGuidance()

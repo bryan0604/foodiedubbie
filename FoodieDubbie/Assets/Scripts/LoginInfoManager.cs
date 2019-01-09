@@ -22,6 +22,14 @@ public class LoginInfoManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if(Social.localUser.authenticated)
+        {
+            
+        }
+    }
+
     void LoginPanel(bool ShowPanel)
     {
         if(ShowPanel)

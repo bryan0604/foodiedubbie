@@ -12,7 +12,8 @@ public class GooglePlayManager : MonoBehaviour
 
     public GoogleMainMenuManager MenuManager;
 
-    private int CurrentLevel=1;
+    public string GooglePlayUsername="";
+    public int GooglePlayCurrentLevel=1;
 
     private void Awake()
     {
@@ -20,71 +21,54 @@ public class GooglePlayManager : MonoBehaviour
 
         singletonGooglePlay = this;
 
-        if(MenuManager==null)
+        if (MenuManager == null)
         {
             MenuManager = Behaviour.FindObjectOfType<GoogleMainMenuManager>();
         }
 
-        if(MenuManager.GooglePlaySignIn)
+        if (!PlayGamesPlatform.Instance.localUser.authenticated)
         {
-            MenuManager.GooglePlaySignIn.onClick.AddListener(TestAuthLogin);
-        }
+            PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
 
-        if(MenuManager.GooglePlayLeaderboard)
-        {
-            MenuManager.GooglePlayLeaderboard.onClick.AddListener(TestShowLeaderboard);
-        }
+            PlayGamesPlatform.InitializeInstance(config);
 
-        if(MenuManager.GooglePlayAchievement)
-        {
-            MenuManager.GooglePlayAchievement.onClick.AddListener(TestShowAchievement);
-        }
+            PlayGamesPlatform.Activate();
 
-        if(MenuManager.AddLevelPoints)
-        {
-            MenuManager.AddLevelPoints.onClick.AddListener(OnUpdateClearedLevel);
+            PlayGamesPlatform.DebugLogEnabled = true;
         }
-
         OnCheckingGooglePlayUser();
     }
 
-    void OnCheckingGooglePlayUser()
+    public void OnCheckingGooglePlayUser()
     {
         if (PlayGamesPlatform.Instance.localUser.authenticated)
         {
             MenuManager.DisplayInfo.text = "You have already logged on";
+
+            MenuManager.GooglePlaySignIn.gameObject.SetActive(false);
+
+            MenuManager.LoginPanelInfo.SetActive(true);
+
+            GetUserInfos();
         }
         else
         {
             MenuManager.DisplayInfo.text = "You have not log in";
+
+            Debug.LogWarning("You have not log in");
         }
-    }
-
-    private void Start()
-    {
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
-
-        PlayGamesPlatform.InitializeInstance(config);
-
-        PlayGamesPlatform.Activate();
-
-        PlayGamesPlatform.DebugLogEnabled = true;
-
-        //Social.CreateAchievement();
-
-        //Social.LoadAchievements(success => { Debug.Log(success); });
     }
 
     public void TestAuthLogin()
     {
+        Debug.Log("Processing Google Play Login");
+
         LoadingManager.singleton.LoadingScreen(true);
 
         Social.localUser.Authenticate((bool success) =>
         {
             Debug.Log("Success or Fail = " + success);
 
-            Debug.Log(Social.localUser.userName + " " + Social.localUser.id + " " + Social.localUser.isFriend + " " + Social.localUser.authenticated);
-            
             if (success)
             {
                 ShowLoginInfo();
@@ -98,35 +82,37 @@ public class GooglePlayManager : MonoBehaviour
 
     void ShowLoginInfo()
     {
-        ((GooglePlayGames.PlayGamesPlatform)Social.Active).SetGravityForPopups(Gravity.LEFT);
+        ((GooglePlayGames.PlayGamesPlatform)Social.Active).SetGravityForPopups(Gravity.TOP);
 
-        MenuManager.GooglePlayUsername.text = Social.localUser.userName;
-
-        Social.LoadScores(GPGSIds.leaderboard_test_leaderboard_01, success =>
-         {
-             foreach (var item in success)
-             {
-                 if(item.userID == Social.localUser.id)
-                 {
-                     //DebugManager.OnDebugging(item.value.ToString());
-
-                     MenuManager.GooglePlayCurrentLevel.text = item.value.ToString();
-
-                     CurrentLevel = int.Parse(item.value.ToString());
-
-                     Game_GlobalInfo.singleton.OnUpdatePlayerInfo(Social.localUser.userName, CurrentLevel);
-                 }
-                 //DebugManager.OnDebugging( item.value.ToString());
-             }
-         });
+        GetUserInfos();
 
         LoadingManager.singleton.LoadingScreen(false);
 
         MenuManager.LoginPanelInfo.SetActive(true);
 
         OnCheckingGooglePlayUser();
+    }
 
-        //});
+    void GetUserInfos()
+    {
+        MenuManager.GooglePlayUsername.text = Social.localUser.userName;
+
+        GooglePlayUsername = Social.localUser.userName; // username
+
+        Social.LoadScores(GPGSIds.leaderboard_test_leaderboard_01, success =>
+        {
+            foreach (var item in success)
+            {
+                if (item.userID == Social.localUser.id)
+                {
+                    MenuManager.GooglePlayCurrentLevel.text = item.value.ToString(); // score
+
+                    GooglePlayCurrentLevel = int.Parse(item.value.ToString());
+
+                    Game_GlobalInfo.singleton.OnUpdatePlayerInfo(Social.localUser.userName, GooglePlayCurrentLevel);
+                }
+            }
+        });
     }
 
     void TestSignOut()
@@ -150,13 +136,16 @@ public class GooglePlayManager : MonoBehaviour
         Social.ReportProgress(id, 100 , success => { });
     }
 
-    public void OnUpdateClearedLevel()
+    public void OnUpdateClearedLevel(int _NewDefeatedLevel)
     {
-        CurrentLevel++;
+        if(_NewDefeatedLevel == 0)
+        {
+            return;
+        }
+        
+        AddScoreToLeaderboard(GPGSIds.leaderboard_test_leaderboard_01, _NewDefeatedLevel);
 
-        AddScoreToLeaderboard(GPGSIds.leaderboard_test_leaderboard_01, CurrentLevel);
-
-        MenuManager.GooglePlayCurrentLevel.text = CurrentLevel.ToString();
+        //TestAuthLogin();
     }
 
     public void AddScoreToLeaderboard(string id, long score)

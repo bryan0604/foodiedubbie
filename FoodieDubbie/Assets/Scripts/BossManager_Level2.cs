@@ -149,7 +149,8 @@ public class BossManager_Level2 : MonoBehaviour
                     CurrentPhase = i;
 
                     Debug.Log("=====Changing Phase=====");
-                    BossConvoManager.singleton.OnActivateBossConvo();
+                    BossConvoManager.singleton.StartCoroutine(BossConvoManager.singleton.ClearQueue());
+                    //BossConvoManager.singleton.OnActivateBossConvo();
                     BossPhaseManager.singleton.CurrentPhaseMain ++;
                     BossPhaseManager.singleton.CurrentPhaseisAt = 0;
                 }

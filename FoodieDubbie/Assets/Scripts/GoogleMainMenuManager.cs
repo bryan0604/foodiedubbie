@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GoogleMainMenuManager : MonoBehaviour
 {
     public static GoogleMainMenuManager singleTonGooglePlayMenu;
+    public GooglePlayManager gpm;
+
     public GameObject LoginPanelInfo;
     public Text GooglePlayUsername;
     public Text GooglePlayCurrentLevel;
@@ -18,5 +20,19 @@ public class GoogleMainMenuManager : MonoBehaviour
     private void Awake()
     {
         singleTonGooglePlayMenu = this;
+
+        if(gpm==null)
+        {
+            gpm = Behaviour.FindObjectOfType<GooglePlayManager>();
+        }
+    }
+
+    private void Start()
+    {
+        GooglePlaySignIn.onClick.AddListener(gpm.TestAuthLogin);
+        GooglePlayLeaderboard.onClick.AddListener(gpm.TestShowLeaderboard);
+        GooglePlayAchievement.onClick.AddListener(gpm.TestShowAchievement);
+        AddLevelPoints.onClick.AddListener(() => gpm.OnUpdateClearedLevel(0));
+
     }
 }

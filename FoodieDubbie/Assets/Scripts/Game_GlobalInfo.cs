@@ -6,7 +6,7 @@ public class Game_GlobalInfo : MonoBehaviour
 {
     public static Game_GlobalInfo singleton;
     public string Player_Username = "AnduinLothar";
-    public List<int> Player_Achievement;
+    //public List<int> Player_Achievement;
     public int Player_NextLevel = 0;
     public int Player_LatestDefeatedLevel = 0;
 
@@ -29,7 +29,7 @@ public class Game_GlobalInfo : MonoBehaviour
 
     public void OnDefeatedLevel(int Level)
     {
-        if(Level == Player_LatestDefeatedLevel)
+        if(Level <= Player_LatestDefeatedLevel)
         {
             Debug.Log("Player defeated a level that was defeated earlier ago");
         }
@@ -37,7 +37,9 @@ public class Game_GlobalInfo : MonoBehaviour
         {
             Player_LatestDefeatedLevel = Level;
 
-            Player_Achievement.Add(Level);
+            GooglePlayManager.singletonGooglePlay.OnUpdateClearedLevel(Level);
+
+            //Player_Achievement.Add(Level);
         }
 
         OnNextLevelCheck();
@@ -60,7 +62,7 @@ public class Game_GlobalInfo : MonoBehaviour
     {
         Player_Username = "";
         Player_NextLevel = 0;
-        Player_Achievement = new List<int>(0);
+        //Player_Achievement = new List<int>(0);
         Player_LatestDefeatedLevel = 0;
     }
 }

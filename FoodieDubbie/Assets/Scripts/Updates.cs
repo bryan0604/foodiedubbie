@@ -11,7 +11,7 @@
 //10. Display Damage text when got hit. (Not important)
 //11. 
 //12. Loading Display before game start.
-//13. 
+//13. Loading Screen Design
 //14. 
 //15. 
 //16.

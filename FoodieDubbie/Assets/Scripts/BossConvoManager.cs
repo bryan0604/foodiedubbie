@@ -31,6 +31,16 @@ public class BossConvoManager : MonoBehaviour
         }
     }
 
+    public IEnumerator ClearQueue()
+    {
+        StopCoroutine(CountDownTimer(0, false));
+        StopCoroutine(OutPutPhrase(false));
+
+        yield return new WaitForSeconds(2f);
+
+        OnActivateBossConvo();
+    }
+
     public void OnActivateBossConvo()
     {
         int _Time;
