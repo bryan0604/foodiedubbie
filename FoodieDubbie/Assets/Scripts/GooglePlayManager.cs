@@ -86,10 +86,6 @@ public class GooglePlayManager : MonoBehaviour
 
         GetUserInfos();
 
-        LoadingManager.singleton.LoadingScreen(false);
-
-        MenuManager.LoginPanelInfo.SetActive(true);
-
         OnCheckingGooglePlayUser();
     }
 
@@ -99,20 +95,27 @@ public class GooglePlayManager : MonoBehaviour
 
         GooglePlayUsername = Social.localUser.userName; // username
 
-        Social.LoadScores(GPGSIds.leaderboard_test_leaderboard_01, success =>
-        {
-            foreach (var item in success)
+        PlayGamesPlatform.Instance.LoadScores
+            (
+            GPGSIds.leaderboard_test_leaderboard_02,
+            LeaderboardStart.PlayerCentered,
+            100,
+            LeaderboardCollection.Public,
+            LeaderboardTimeSpan.AllTime,
+            (data) =>
             {
-                if (item.userID == Social.localUser.id)
-                {
-                    MenuManager.GooglePlayCurrentLevel.text = item.value.ToString(); // score
+                Debug.Log("USERNAME = " + Social.localUser.userName + "| SCORE = " + data.PlayerScore.formattedValue);
 
-                    GooglePlayCurrentLevel = int.Parse(item.value.ToString());
+                MenuManager.GooglePlayCurrentLevel.text = data.PlayerScore.formattedValue.ToString(); // score
 
-                    Game_GlobalInfo.singleton.OnUpdatePlayerInfo(Social.localUser.userName, GooglePlayCurrentLevel);
-                }
-            }
-        });
+                GooglePlayCurrentLevel = int.Parse(MenuManager.GooglePlayCurrentLevel.text);
+
+                Game_GlobalInfo.singleton.OnUpdatePlayerInfo(Social.localUser.userName, GooglePlayCurrentLevel);
+
+                LoadingManager.singleton.LoadingScreen(false);
+
+                MenuManager.LoginPanelInfo.SetActive(true);
+            });
     }
 
     void TestSignOut()
@@ -127,7 +130,7 @@ public class GooglePlayManager : MonoBehaviour
 
     public void TestShowLeaderboard()
     {
-        PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_test_leaderboard_01);
+        PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_test_leaderboard_02);
         //Social.ShowLeaderboardUI(GPGSIds.leaderboard_test_leaderboard_01)
     }
 
@@ -143,7 +146,7 @@ public class GooglePlayManager : MonoBehaviour
             return;
         }
         
-        AddScoreToLeaderboard(GPGSIds.leaderboard_test_leaderboard_01, _NewDefeatedLevel);
+        AddScoreToLeaderboard(GPGSIds.leaderboard_test_leaderboard_02, _NewDefeatedLevel);
 
         //TestAuthLogin();
     }
