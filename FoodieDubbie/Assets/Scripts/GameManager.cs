@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameVictory UI_GameRoundEnd;
     public Boss_1_Ultimate Boss1Ultimate;
     public Boss_1_Ultimate_2 Boss1UltimateTwo;
+    public LineTargetingSystem AoeLineTargetingSystem;
     [Range(0,50)]
     public int MaxSmallAoe;
     [Range(0, 25)]
@@ -106,67 +107,67 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SkillOne_SingleRandom();
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SkillTwo_MultiRandom();
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SkillThree_SingleTarget();
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SkillFour_MultiTarget();
-        }       
-        if(Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            DropAdvantageBuff();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            DropDisadvantageBuff();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            DropBuffsAtRandomSpot();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            NormalAttack();
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            BossOne_UltimateOne();
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            BossOne_UltimateTwo();
-        }
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            SkillFive_SingleSpot();
-        }
+        //if(Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    SkillOne_SingleRandom();
+        //}
+        //if(Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    SkillTwo_MultiRandom();
+        //}
+        //if(Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    SkillThree_SingleTarget();
+        //}
+        //if(Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    SkillFour_MultiTarget();
+        //}       
+        //if(Input.GetKeyDown(KeyCode.Alpha5))
+        //{
+        //    DropAdvantageBuff();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha6))
+        //{
+        //    DropDisadvantageBuff();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha7))
+        //{
+        //    DropBuffsAtRandomSpot();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha8))
+        //{
+        //    NormalAttack();
+        //}
+        //if(Input.GetKeyDown(KeyCode.Alpha9))
+        //{
+        //    BossOne_UltimateOne();
+        //}
+        //if(Input.GetKeyDown(KeyCode.Alpha0))
+        //{
+        //    BossOne_UltimateTwo();
+        //}
+        //if(Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    SkillFive_SingleSpot();
+        //}
 
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            SkillOne_Upgraded();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            SkillTwo_Upgraded();
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SkillThree_Upgraded();
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            SkillFour_Upgraded();
-        }
+        //if(Input.GetKeyDown(KeyCode.W))
+        //{
+        //    SkillOne_Upgraded();
+        //}
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    SkillTwo_Upgraded();
+        //}
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    SkillThree_Upgraded();
+        //}
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    SkillFour_Upgraded();
+        //}
     }
 
     #region Ability/Skill Management
@@ -265,6 +266,11 @@ public class GameManager : MonoBehaviour
 
             SkillFour_Upgraded();
         }
+    }
+
+    public void SkillSix_AoeLine_Small()
+    {
+        AoeLineTargetingSystem.CastLineAoe();
     }
 
     public void DropAdvantageBuff()

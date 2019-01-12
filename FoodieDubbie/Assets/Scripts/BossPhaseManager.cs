@@ -246,6 +246,10 @@ public class BossPhaseManager : MonoBehaviour
         {
             GameManager.singleton.SkillFive_SingleSpot();
         }
+        else if(_skill == "SmallAoeLine")
+        {
+            GameManager.singleton.SkillSix_AoeLine_Small();
+        }
 
         OnCheckingPhase();
     }
