@@ -531,7 +531,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (var item in Buffs_SpecificPosition)
         {
-            if(item.tag == "aoept")
+            if(item.CompareTag("aoept"))
             {
                 TargetOnSpecificSpotsPattern(item.position, 3);
 

@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class LineTargetingSystem : MonoBehaviour
 {
+    public Transform TargetedPlayer;
     public Transform PlayerObject;
     public Transform AoeLine;
     public List<Transform> SpecialEffectPoints = new List<Transform>();
-
+    public List<Transform> SpecialEffects_Explosion = new List<Transform>();
     public float ExplodeEffectTiming=0.2f;
     public float ChannelTiming=3f;
-
+    public int Damage = 65;
+    private float _endSEtiming;
     private int _amountOfExplodesSE;
+
+
+    private void Start()
+    {
+        _endSEtiming = SpecialEffects_Explosion[0].GetComponent<ParticleSystem>().main.startLifetimeMultiplier;    
+    }
 
     private void Update()
     {
@@ -46,6 +54,11 @@ public class LineTargetingSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(ChannelTiming); // Explode
 
+        if(TargetedPlayer)
+        {
+            TargetedPlayer.GetComponent<PlayerManager>().OnTakenDamage(Damage);
+        }
+
         AoeLine.gameObject.SetActive(false);
 
         StartCoroutine(SpecialEffectsExplode());
@@ -58,14 +71,44 @@ public class LineTargetingSystem : MonoBehaviour
         if(_amountOfExplodesSE >= SpecialEffectPoints.Count)
         {
             _amountOfExplodesSE = 0;
+
+            Invoke("EndSpecialEffects", 3f);   
         }
         else
         {
-            Debug.Log("Exploding at " + SpecialEffectPoints[_amountOfExplodesSE], gameObject);
+            //Debug.Log("Exploding at " + SpecialEffectPoints[_amountOfExplodesSE], gameObject);
+
+            SpecialEffects_Explosion[_amountOfExplodesSE].gameObject.SetActive(true);
+
+            SpecialEffects_Explosion[_amountOfExplodesSE].transform.position = SpecialEffectPoints[_amountOfExplodesSE].transform.position;
 
             _amountOfExplodesSE++;
 
             StartCoroutine(SpecialEffectsExplode());
+        }
+    }
+
+    void EndSpecialEffects()
+    {
+        for (int i = 0; i < SpecialEffects_Explosion.Count; i++)
+        {
+            SpecialEffects_Explosion[i].gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            TargetedPlayer = other.transform;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            TargetedPlayer = null;
         }
     }
 }
