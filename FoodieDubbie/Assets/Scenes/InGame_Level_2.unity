@@ -717,6 +717,26 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3675883804406884897, guid: 20eb7d50dcaead34fb8c39f965fa6371,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1900
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675883804406884897, guid: 20eb7d50dcaead34fb8c39f965fa6371,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1160.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675883804406884897, guid: 20eb7d50dcaead34fb8c39f965fa6371,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675883804406884897, guid: 20eb7d50dcaead34fb8c39f965fa6371,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2536622015641342647, guid: 20eb7d50dcaead34fb8c39f965fa6371,
         type: 3}
       propertyPath: m_IsActive
@@ -762,35 +782,15 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 1080
       objectReference: {fileID: 0}
-    - target: {fileID: 371064623670503010, guid: 20eb7d50dcaead34fb8c39f965fa6371,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6317231245144969970, guid: 20eb7d50dcaead34fb8c39f965fa6371,
         type: 3}
       propertyPath: m_PixelPerfect
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3675883804406884897, guid: 20eb7d50dcaead34fb8c39f965fa6371,
+    - target: {fileID: 371064623670503010, guid: 20eb7d50dcaead34fb8c39f965fa6371,
         type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1900
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675883804406884897, guid: 20eb7d50dcaead34fb8c39f965fa6371,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1160.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675883804406884897, guid: 20eb7d50dcaead34fb8c39f965fa6371,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.00002073
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675883804406884897, guid: 20eb7d50dcaead34fb8c39f965fa6371,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20eb7d50dcaead34fb8c39f965fa6371, type: 3}
@@ -1228,6 +1228,131 @@ PrefabInstance:
         type: 3}
       propertyPath: Phrases.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[0].TotalPhrases.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[1].TotalPhrases.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[2].TotalPhrases.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[3].TotalPhrases.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[4].TotalPhrases.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: EndPhrase.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[0].TotalPhrases.Array.data[1]
+      value: 'Mom: Level 2 of me! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[0].TotalPhrases.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[0].TotalPhrases.Array.data[3]
+      value: 'Mom: I like you! My baby!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[1].TotalPhrases.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[1].TotalPhrases.Array.data[3]
+      value: 'Mom: Give it up baby! Dads gonna be back'
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[1].TotalPhrases.Array.data[1]
+      value: 'Mom: Tired of running?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[2].TotalPhrases.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[2].TotalPhrases.Array.data[3]
+      value: 'Mom: Cooperate! Veges for Life!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[2].TotalPhrases.Array.data[1]
+      value: 'Mom: Dad gonna be mad at you'
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[3].TotalPhrases.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[3].TotalPhrases.Array.data[3]
+      value: 'Mom: You will not pass this level!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[3].TotalPhrases.Array.data[1]
+      value: 'Mom: No!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[4].TotalPhrases.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[4].TotalPhrases.Array.data[3]
+      value: 'Mom: Oh! I have a baby...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: Phrases.Array.data[4].TotalPhrases.Array.data[1]
+      value: Mom take a peek at her K-drama
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: EndPhrase.Array.data[1]
+      value: Mom's limit reaches 50%
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: EndPhrase.Array.data[3]
+      value: 'Mom: Dont give up level 3 will put a stop'
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: EndPhrase.Array.data[4]
+      value: 'Mom: to you.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 348524602797043348, guid: c285116977cbd0141ab3c9994af8c23d,
+        type: 3}
+      propertyPath: EndPhrase.Array.data[5]
+      value: 'Mom: Dont give up level 3 will put a stop'
       objectReference: {fileID: 0}
     - target: {fileID: 1341232354105725, guid: c285116977cbd0141ab3c9994af8c23d, type: 3}
       propertyPath: Healthbar_Original
@@ -3257,6 +3382,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
+        type: 3}
+      propertyPath: TargetPlayer
+      value: 
+      objectReference: {fileID: 2044029007}
     - target: {fileID: 4482779045061312, guid: ca5026be1fc80b04499943bb933a891e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.72
@@ -3289,11 +3419,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
-        type: 3}
-      propertyPath: TargetPlayer
-      value: 
-      objectReference: {fileID: 2044029007}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5026be1fc80b04499943bb933a891e, type: 3}
 --- !u!1 &387141404 stripped

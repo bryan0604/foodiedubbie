@@ -3115,6 +3115,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
+        type: 3}
+      propertyPath: TargetPlayer
+      value: 
+      objectReference: {fileID: 2044029007}
     - target: {fileID: 20799806990342172, guid: ca5026be1fc80b04499943bb933a891e,
         type: 3}
       propertyPath: orthographic
@@ -3152,11 +3157,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
-        type: 3}
-      propertyPath: TargetPlayer
-      value: 
-      objectReference: {fileID: 2044029007}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5026be1fc80b04499943bb933a891e, type: 3}
 --- !u!1 &388888050
@@ -4908,23 +4908,37 @@ MonoBehaviour:
   Phrases:
   - TotalPhrases:
     - 2
-    - dffgdfg
-    - 2
-    - ytuybf
+    - 'Mom: Hellloooo ma baby!'
+    - 4
+    - 'Mom: You''re gonna stop right!'
+    - 4
+    - 'Mom: Here!'
   - TotalPhrases:
     - 2
-    - fcvbvc
-    - 2
-    - yuir
-  - TotalPhrases:
-    - 2
-    - etwt
-  - TotalPhrases:
+    - 'Mom: My evil form! Veges bring peace!'
     - 5
-    - erw
+    - 'Mom: Irony right!? '
+    - 5
+    - 'Mom: Mwahahahahhaa!'
+  - TotalPhrases:
+    - 2
+    - Mom's evolved*
+    - 5
+    - 'Mom: You know i''m healthy and greater'
+    - 5
+    - 'Mom: Than you 50 times right :)'
+  - TotalPhrases:
+    - 2
+    - 'Mom: Adorably performed my baby!'
+    - 5
+    - 'Mom: Feel me my baby? feel the veges!'
   EndPhrase:
+  - 'Mom: ughh what a kid!'
+  - 5
+  - Mom fall asleep*
   - 3
-  - re
+  - 'Dad: Ho ho ho! Look what is happening '
+  - 'Dad: Right here!'
   _currentPhrasesIsAt: 0
 --- !u!114 &508800870
 MonoBehaviour:
@@ -13380,6 +13394,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1971512261210772122, guid: da06f818909affe479f67b646cb585e1,
+        type: 3}
+      propertyPath: ZapTiming
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1971512261210772101, guid: da06f818909affe479f67b646cb585e1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13434,11 +13453,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1971512261210772122, guid: da06f818909affe479f67b646cb585e1,
-        type: 3}
-      propertyPath: ZapTiming
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1971512260909737707, guid: da06f818909affe479f67b646cb585e1,
         type: 3}

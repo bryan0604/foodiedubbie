@@ -622,8 +622,10 @@ public class GameManager : MonoBehaviour
             {
                 BossConvoManager.singleton.OnSendingEndGamePhrase();
                 UI_GameRoundEnd.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Victory LOL!";
+
                 isGameEnd = true;
                 Game_GlobalInfo.singleton.OnDefeatedLevel(CurrentGameLevel);
+
                 if(BossPhaseManager.singleton!=null)
                     BossPhaseManager.singleton.StopAllCoroutines();
             }

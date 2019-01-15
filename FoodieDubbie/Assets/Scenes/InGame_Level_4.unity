@@ -6884,12 +6884,12 @@ PrefabInstance:
     - target: {fileID: 9036018739927692528, guid: 9f8740e4bc085524eb7be9cfd041cc84,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[12]
-      value: DisadvantageBuffs
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9036018739927692528, guid: 9f8740e4bc085524eb7be9cfd041cc84,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[1].BossCommands.Array.data[13]
-      value: 4
+      value: DisadvantageBuffs
       objectReference: {fileID: 0}
     - target: {fileID: 9036018739927692528, guid: 9f8740e4bc085524eb7be9cfd041cc84,
         type: 3}
@@ -7034,7 +7034,7 @@ PrefabInstance:
     - target: {fileID: 9036018739927692528, guid: 9f8740e4bc085524eb7be9cfd041cc84,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[15]
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9036018739927692528, guid: 9f8740e4bc085524eb7be9cfd041cc84,
         type: 3}
@@ -7080,6 +7080,86 @@ PrefabInstance:
         type: 3}
       propertyPath: TotalOfPhase.Array.data[3].BossCommands.Array.data[1]
       value: SingleSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[0].TotalPhrases.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[3].TotalPhrases.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: EndPhrase.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[0].TotalPhrases.Array.data[1]
+      value: 'Dad: Lookey lookey here kiddo!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[0].TotalPhrases.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[0].TotalPhrases.Array.data[3]
+      value: 'Dad: Eat healthy but not too healthy EH'
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[0].TotalPhrases.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[0].TotalPhrases.Array.data[5]
+      value: 'Dad: How about taste a little of me!!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[1].TotalPhrases.Array.data[1]
+      value: 'Dad: Boop you with veges soup! haha'
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[1].TotalPhrases.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[1].TotalPhrases.Array.data[3]
+      value: 'Dad: This is fun isn''t it! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[2].TotalPhrases.Array.data[1]
+      value: 'Dad: Dont stop kiddo!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[3].TotalPhrases.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[3].TotalPhrases.Array.data[1]
+      value: 'Dad: meow meow meow'
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[3].TotalPhrases.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: Phrases.Array.data[3].TotalPhrases.Array.data[3]
+      value: 'Dad: Run Kitty Run!! haha'
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: EndPhrase.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: EndPhrase.Array.data[1]
+      value: 'Dad: Yaay! Let''s get it on!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: EndPhrase.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 508800869, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
+      propertyPath: EndPhrase.Array.data[3]
+      value: 'Dad: Easy kiddo!'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f8740e4bc085524eb7be9cfd041cc84, type: 3}
