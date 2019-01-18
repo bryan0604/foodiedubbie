@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject MainPlayer;
     public GameObject Platform;
     public Button Button_Dismount;
+    public Button Button_Mount;
     public GameVictory UI_GameRoundEnd;
     public Boss_1_Ultimate Boss1Ultimate;
     public Boss_1_Ultimate_2 Boss1UltimateTwo;

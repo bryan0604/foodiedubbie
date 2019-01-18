@@ -16,9 +16,11 @@ public class PlayerManager : MonoBehaviour
     public PlayerUIs PlayerUIs;
     private TurretManager _mountTurret;
     private int _HealthPoints;
+    private float Default_MovementSpeed;
 
     private void Start()
     {
+        Default_MovementSpeed = MovementSpeed;
         //HP
         PlayerUIs.HealthPoints = HealthPoints;
 
@@ -159,8 +161,12 @@ public class PlayerManager : MonoBehaviour
 
     public void DismountTurret()
     {
-        MovementSpeed = 3;
+        MovementSpeed = Default_MovementSpeed;
 
         _mountTurret.DeactivateTurret();
+
+        _mountTurret.PlayerManage = null;
+
+        _mountTurret = null;
     }
 }

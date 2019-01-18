@@ -15,6 +15,8 @@ public class TurretManager : MonoBehaviour
 
     public Transform ShootPoint2;
 
+    public PlayerManager PlayerManage;
+
     public bool isActivated;
 
     public bool isRecharging;
@@ -137,11 +139,20 @@ public class TurretManager : MonoBehaviour
     public void DeactivateTurret()
     {
         //Debug.Log("Deactivate Turret");
+        //PlayerManage = null;
 
         isActivated = false;
 
         Recharge();
 
+    }
+
+    void MountTurret()
+    {
+        Debug.Log(PlayerManage +  " " + Seat);
+        PlayerManage.MountTurret(Seat.position, this);
+
+        GameManager.singleton.Button_Mount.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -150,9 +161,26 @@ public class TurretManager : MonoBehaviour
         {
             if (other.gameObject.tag == "Player")
             {
-                PlayerManager player = other.GetComponent<PlayerManager>();
+                PlayerManage = other.GetComponent<PlayerManager>();
 
-                player.MountTurret(Seat.position, this);
+                GameManager.singleton.Button_Mount.gameObject.SetActive(true);
+
+                GameManager.singleton.Button_Mount.onClick.AddListener(MountTurret);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (_batterylife >= BatteryLife)
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                PlayerManage = null;
+
+                GameManager.singleton.Button_Mount.gameObject.SetActive(false);
+
+                GameManager.singleton.Button_Mount.onClick.RemoveListener(MountTurret);
             }
         }
     }
