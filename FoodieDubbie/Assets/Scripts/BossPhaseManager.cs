@@ -248,7 +248,7 @@ public class BossPhaseManager : MonoBehaviour
         }
         else if(_skill == "SmallAoeLine")
         {
-            GameManager.singleton.SkillSix_AoeLine_Small();
+            GameManager.singleton.SkillSix_AoeLine(1);
         }
 
         OnCheckingPhase();

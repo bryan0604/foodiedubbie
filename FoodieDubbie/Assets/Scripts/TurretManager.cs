@@ -139,7 +139,10 @@ public class TurretManager : MonoBehaviour
     public void DeactivateTurret()
     {
         //Debug.Log("Deactivate Turret");
-        //PlayerManage = null;
+
+        GameManager.singleton.Button_Mount.onClick.RemoveListener(MountTurret);
+
+        PlayerManage = null;
 
         isActivated = false;
 
@@ -149,7 +152,7 @@ public class TurretManager : MonoBehaviour
 
     void MountTurret()
     {
-        Debug.Log(PlayerManage +  " " + Seat);
+        Debug.Log( transform.name +" "+PlayerManage + " " + Seat);
         PlayerManage.MountTurret(Seat.position, this);
 
         GameManager.singleton.Button_Mount.gameObject.SetActive(false);
@@ -166,6 +169,8 @@ public class TurretManager : MonoBehaviour
                 GameManager.singleton.Button_Mount.gameObject.SetActive(true);
 
                 GameManager.singleton.Button_Mount.onClick.AddListener(MountTurret);
+
+                Debug.Log("Turret in range = " + transform.name);
             }
         }
     }
@@ -181,6 +186,8 @@ public class TurretManager : MonoBehaviour
                 GameManager.singleton.Button_Mount.gameObject.SetActive(false);
 
                 GameManager.singleton.Button_Mount.onClick.RemoveListener(MountTurret);
+
+                Debug.Log("Turret info cleared! = " + transform.name);
             }
         }
     }

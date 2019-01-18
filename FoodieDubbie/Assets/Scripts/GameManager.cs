@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public List<BuffsManager> Buff_Pools = new List<BuffsManager>();
     public List<Transform> Buffs_SpecificPosition = new List<Transform>();
     public List<Behaviour> BehaviourScripts_toDisable = new List<Behaviour>();
+    public List<LineTargetingSystem> LineAoes = new List<LineTargetingSystem>();
     [HideInInspector]
     public Vector3 SingleTarget_Position;
     public bool isGameEnd;
@@ -161,15 +162,18 @@ public class GameManager : MonoBehaviour
         //{
         //    SkillTwo_Upgraded();
         //}
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    SkillThree_Upgraded();
-        //}
-        //if (Input.GetKeyDown(KeyCode.T))
-        //{
-        //    SkillFour_Upgraded();
-        //}
-    }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //    SkillThree_Upgraded();
+            SkillSix_AoeLine(1);
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            //    SkillFour_Upgraded();
+            SkillSix_AoeLine(3);
+        }
+
+}
 
     #region Ability/Skill Management
     public void SkillOne_Upgraded()
@@ -269,9 +273,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SkillSix_AoeLine_Small()
+    public void SkillSix_AoeLine(int Amount)
     {
-        AoeLineTargetingSystem.CastLineAoe();
+        for (int i = 0; i < Amount; i++)
+        {
+            LineAoes[i].CastLineAoe();
+        }
+        //AoeLineTargetingSystem.CastLineAoe();
     }
 
     public void DropAdvantageBuff()
@@ -602,7 +610,9 @@ public class GameManager : MonoBehaviour
     public void OnMountingTurret()
     {
         Button_Dismount.gameObject.SetActive(true);
-        
+
+        Button_Dismount.onClick.RemoveAllListeners();
+
         Button_Dismount.onClick.AddListener(OnDismountTurret);
     }
 

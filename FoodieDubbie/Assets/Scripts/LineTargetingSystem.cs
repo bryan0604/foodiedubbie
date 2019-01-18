@@ -9,7 +9,7 @@ public class LineTargetingSystem : MonoBehaviour
     public Transform AoeLine;
     public List<Transform> SpecialEffectPoints = new List<Transform>();
     public List<Transform> SpecialEffects_Explosion = new List<Transform>();
-    public List<LineTargetingSystem> SameBehaviour = new List<LineTargetingSystem>();
+    //public List<LineTargetingSystem> SameBehaviour = new List<LineTargetingSystem>();
     public float ExplodeEffectTiming=0.2f;
     public float ChannelTiming=3f;
     public int Damage = 65;
@@ -23,27 +23,9 @@ public class LineTargetingSystem : MonoBehaviour
         _endSEtiming = SpecialEffects_Explosion[0].GetComponent<ParticleSystem>().main.startLifetimeMultiplier;    
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            if(AoeLine.gameObject.activeInHierarchy)
-            {
-                return;
-            }
-
-            CastLineAoe();
-        }
-    }
-
     public void CastLineAoe()
     {
-        foreach (var item in SameBehaviour)
-        {
-            item.CastLineAoe();
-        }
-
-        if(TargetAtPlayerDirection)
+        if (TargetAtPlayerDirection)
         {
             transform.LookAt(PlayerObject.position);
         }

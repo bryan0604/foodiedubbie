@@ -3398,7 +3398,6 @@ MonoBehaviour:
   - {fileID: 1898703115}
   - {fileID: 660339890}
   - {fileID: 1921822378}
-  SameBehaviour: []
   ExplodeEffectTiming: 0.08
   ChannelTiming: 3
   Damage: 65
@@ -3748,7 +3747,6 @@ MonoBehaviour:
   - {fileID: 676350730}
   - {fileID: 1484988402}
   - {fileID: 1069448470}
-  SameBehaviour: []
   ExplodeEffectTiming: 0.08
   ChannelTiming: 3
   Damage: 65
@@ -7295,6 +7293,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1220838954}
     m_Modifications:
+    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
+        type: 3}
+      propertyPath: TargetPlayer
+      value: 
+      objectReference: {fileID: 2044029007}
     - target: {fileID: 20799806990342172, guid: ca5026be1fc80b04499943bb933a891e,
         type: 3}
       propertyPath: orthographic
@@ -7332,11 +7335,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
-        type: 3}
-      propertyPath: TargetPlayer
-      value: 
-      objectReference: {fileID: 2044029007}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5026be1fc80b04499943bb933a891e, type: 3}
 --- !u!1 &388888050
@@ -21289,9 +21287,6 @@ MonoBehaviour:
   - {fileID: 17242793}
   - {fileID: 1032591677}
   - {fileID: 333476035}
-  SameBehaviour:
-  - {fileID: 240711380}
-  - {fileID: 255201793}
   ExplodeEffectTiming: 0.08
   ChannelTiming: 3
   Damage: 65
@@ -27694,6 +27689,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager_Lv5
       objectReference: {fileID: 0}
+    - target: {fileID: 438728709858339256, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: Healthbar_Original
+      value: 
+      objectReference: {fileID: 19115772}
+    - target: {fileID: 438728709858339256, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: Healthbar_Background
+      value: 
+      objectReference: {fileID: 587926412}
     - target: {fileID: 1893586578655024330, guid: 8e2534a8b6b590641b582411f53487ff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27768,6 +27773,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Buffs_SpecificPosition.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302481629091355974, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: LineAoes.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5302481629091355974, guid: 8e2534a8b6b590641b582411f53487ff,
         type: 3}
@@ -27884,20 +27894,50 @@ PrefabInstance:
       propertyPath: Button_Mount
       value: 
       objectReference: {fileID: 1857446445}
-    - target: {fileID: 438728709858339256, guid: 8e2534a8b6b590641b582411f53487ff,
+    - target: {fileID: 5302481629091355974, guid: 8e2534a8b6b590641b582411f53487ff,
         type: 3}
-      propertyPath: Healthbar_Original
+      propertyPath: LineAoes.Array.data[0]
       value: 
-      objectReference: {fileID: 19115772}
-    - target: {fileID: 438728709858339256, guid: 8e2534a8b6b590641b582411f53487ff,
+      objectReference: {fileID: 1696717859}
+    - target: {fileID: 5302481629091355974, guid: 8e2534a8b6b590641b582411f53487ff,
         type: 3}
-      propertyPath: Healthbar_Background
+      propertyPath: LineAoes.Array.data[1]
       value: 
-      objectReference: {fileID: 587926412}
+      objectReference: {fileID: 240711380}
+    - target: {fileID: 5302481629091355974, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: LineAoes.Array.data[2]
+      value: 
+      objectReference: {fileID: 255201793}
+    - target: {fileID: 4197051860609581821, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.size
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4197051860609581821, guid: 8e2534a8b6b590641b582411f53487ff,
         type: 3}
       propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[0]
       value: 9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197051860609581821, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[10]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197051860609581821, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[11]
+      value: NormalAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197051860609581821, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[12]
+      value: NormalAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197051860609581821, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: TotalOfPhase.Array.data[0].BossCommands.Array.data[13]
+      value: NormalAttack
       objectReference: {fileID: 0}
     - target: {fileID: 8023029931318443693, guid: 8e2534a8b6b590641b582411f53487ff,
         type: 3}
@@ -27929,6 +27969,11 @@ PrefabInstance:
       propertyPath: Button_Unpause
       value: 
       objectReference: {fileID: 4577463315248181702}
+    - target: {fileID: 808330049053498382, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: Phrases.Array.data[0].TotalPhrases.Array.data[0]
+      value: 9999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e2534a8b6b590641b582411f53487ff, type: 3}
 --- !u!135 &464339889160819125
