@@ -9,16 +9,35 @@ public class AoeManager : MonoBehaviour
     public int Damage;
     public int Level;
     public float ExplodeTiming = 5f;
+    public PlayerManager PlayerInArea;
 
     public void OnBeingCast(Vector3 pos)
     {
         isBeingCast = true;
 
-        transform.position = new Vector3(pos.x, pos.y + 0.2f, pos.z);
+        //transform.position = new Vector3(pos.x, 0.2f, pos.z);
 
         gameObject.SetActive(true);
 
+        transform.parent.position = new Vector3(pos.x, 0.5f, pos.z);
+
         StartCoroutine(CastAoe());
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            PlayerInArea = other.GetComponent<PlayerManager>();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            PlayerInArea = null;
+        }
     }
 
     public IEnumerator CastAoe()
@@ -26,19 +45,16 @@ public class AoeManager : MonoBehaviour
         yield return new WaitForSeconds(ExplodeTiming);
 
         isBeingCast = false;
-        float radius = (transform.localScale.x + transform.localScale.y + transform.localScale.z) / 3f;
-        Collider[] Objects = Physics.OverlapSphere(transform.position, radius);
-        foreach (var item in Objects)
+
+        if(PlayerInArea && !GameManager.singleton.isGameEnd)
         {
-            if(item.gameObject.tag == "Player" && !GameManager.singleton.isGameEnd)
-            {
-                Debug.Log("Hit!");
+            Debug.Log("Hit!");
 
-                PlayerManager Player = item.GetComponent<PlayerManager>();
+            PlayerInArea.OnTakenDamage(Damage);
 
-                Player.OnTakenDamage(Damage);
-            }
+            PlayerInArea = null;
         }
+        
 
         #region SE
         SpecialEffectsManager _se;
@@ -73,6 +89,6 @@ public class AoeManager : MonoBehaviour
 
         #endregion
 
-        GameManager.singleton.OnExplode(gameObject);
+        GameManager.singleton.OnExplode(transform.parent.gameObject);
     }
 }

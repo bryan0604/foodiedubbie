@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     [Header("Put all buffs here!")]
     public List<GameObject> AllBuffTypes = new List<GameObject>();
     [HideInInspector]
-    public List<AoeManager> Aoes_Pools = new List<AoeManager>();
+    public List<GameObject> Aoes_Pools = new List<GameObject>();
     [HideInInspector]
     public List<ParticleSystem> SpecialEffects_Pools = new List<ParticleSystem>();
     [HideInInspector]
@@ -84,9 +84,9 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < AllAoes.Count; j++)
             {
-                AoeManager _aoe = Instantiate(AllAoes[j].GetComponent<AoeManager>());
+                GameObject _aoe = Instantiate(AllAoes[j]);
 
-                _aoe.gameObject.SetActive(false);
+                _aoe.SetActive(false);
 
                 _aoe.transform.SetParent(transform);
 
@@ -109,71 +109,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Alpha1))
-        //{
-        //    SkillOne_SingleRandom();
-        //}
-        //if(Input.GetKeyDown(KeyCode.Alpha2))
-        //{
-        //    SkillTwo_MultiRandom();
-        //}
-        //if(Input.GetKeyDown(KeyCode.Alpha3))
-        //{
-        //    SkillThree_SingleTarget();
-        //}
-        //if(Input.GetKeyDown(KeyCode.Alpha4))
-        //{
-        //    SkillFour_MultiTarget();
-        //}       
-        //if(Input.GetKeyDown(KeyCode.Alpha5))
-        //{
-        //    DropAdvantageBuff();
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha6))
-        //{
-        //    DropDisadvantageBuff();
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha7))
-        //{
-        //    DropBuffsAtRandomSpot();
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha8))
-        //{
-        //    NormalAttack();
-        //}
-        //if(Input.GetKeyDown(KeyCode.Alpha9))
-        //{
-        //    BossOne_UltimateOne();
-        //}
-        //if(Input.GetKeyDown(KeyCode.Alpha0))
-        //{
-        //    BossOne_UltimateTwo();
-        //}
-        //if(Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    SkillFive_SingleSpot();
-        //}
-
-        //if(Input.GetKeyDown(KeyCode.W))
-        //{
-        //    SkillOne_Upgraded();
-        //}
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    SkillTwo_Upgraded();
-        //}
-        if (Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.T))
         {
-            //    SkillThree_Upgraded();
-            SkillSix_AoeLine(1);
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            //    SkillFour_Upgraded();
             SkillSix_AoeLine(3);
         }
-
-}
+    }
 
     #region Ability/Skill Management
     public void SkillOne_Upgraded()
@@ -499,7 +439,7 @@ public class GameManager : MonoBehaviour
                 RandomX = Random.Range(-X, X);
                 RandomZ = Random.Range(-Z, Z);
 
-                SingleTarget_Position = new Vector3(RandomX, 1.5f, RandomZ);
+                SingleTarget_Position = new Vector3(RandomX, 0, RandomZ);
 
                 SingleTarget_Position = Platform.transform.TransformPoint(SingleTarget_Position / 2f);
 
@@ -551,35 +491,17 @@ public class GameManager : MonoBehaviour
 
     public void TargetOnSpecificSpotsPattern(Vector3 _spot, int Level)
     {
-        foreach (AoeManager item in Aoes_Pools)
+        foreach (GameObject item in Aoes_Pools)
         {
-            if (item.Level == Level && !item.gameObject.activeInHierarchy)
+            if (item.transform.GetChild(0).GetComponent<AoeManager>())
             {
-                AoeManager Aoe = item;
+                AoeManager am = item.transform.GetChild(0).GetComponent<AoeManager>();
 
-                Aoe.OnBeingCast(_spot);
-
-                return;
-            }
-            else
-            {
-
-            }
-        }
-    }
-
-    void AbilitiesManagement(int Level, bool isSmall, bool isMedium, bool isLarge)
-    {
-        AoeManager Aoe;
-        //Debug.Log(Level);
-
-            foreach (AoeManager item in Aoes_Pools)
-            {
-                if(item.Level == Level && !item.gameObject.activeInHierarchy)
+                if (am.Level == Level && !item.gameObject.activeInHierarchy)
                 {
-                    Aoe = item;
+                    item.SetActive(true);
 
-                    Aoe.OnBeingCast(SingleTarget_Position);
+                    am.OnBeingCast(_spot);
 
                     return;
                 }
@@ -588,6 +510,31 @@ public class GameManager : MonoBehaviour
 
                 }
             }
+        }
+    }
+
+    void AbilitiesManagement(int Level, bool isSmall, bool isMedium, bool isLarge)
+    {
+        foreach (GameObject item in Aoes_Pools)
+        {
+            if(item.transform.GetChild(0).GetComponent<AoeManager>())
+            {
+                AoeManager am = item.transform.GetChild(0).GetComponent<AoeManager>();
+
+                if (am.Level == Level && !item.gameObject.activeInHierarchy)
+                {
+                    item.SetActive(true);
+
+                    am.OnBeingCast(SingleTarget_Position);
+
+                    return;
+                }
+                else
+                {
+
+                }
+            }
+        }
         
     }
 
