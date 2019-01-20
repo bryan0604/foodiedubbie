@@ -590,10 +590,17 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            UI_GameRoundEnd.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Victory-NOT TODAY!";
+            if(!isGameEnd)
+            {
+                isGameEnd = true;
 
-            if (BossPhaseManager.singleton != null)
-                BossPhaseManager.singleton.StopAllCoroutines();
+                UI_GameRoundEnd.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Victory-NOT TODAY!";
+
+                Game_GlobalInfo.singleton.Player_Lives--;
+
+                if (BossPhaseManager.singleton != null)
+                    BossPhaseManager.singleton.StopAllCoroutines();
+            }
         }
         UI_GameRoundEnd.gameObject.SetActive(true);
 

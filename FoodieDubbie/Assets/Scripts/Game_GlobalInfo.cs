@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Game_GlobalInfo : MonoBehaviour
 {
     public static Game_GlobalInfo singleton;
     public string Player_Username = "AnduinLothar";
-    //public List<int> Player_Achievement;
+    public int Player_Lives = 5;
     public int Player_NextLevel = 0;
     public int Player_LatestDefeatedLevel = 0;
 
@@ -21,7 +19,7 @@ public class Game_GlobalInfo : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //singleton = this;
+        
         DontDestroyOnLoad(this);
 
         OnNextLevelCheck();

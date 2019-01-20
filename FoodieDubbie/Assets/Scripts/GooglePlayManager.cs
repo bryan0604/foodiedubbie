@@ -20,10 +20,13 @@ public class GooglePlayManager : MonoBehaviour
         DontDestroyOnLoad(this);
 
         singletonGooglePlay = this;
+    }
 
+    private void Start()
+    {
         if (MenuManager == null)
         {
-            MenuManager = Behaviour.FindObjectOfType<GoogleMainMenuManager>();
+            MenuManager = GoogleMainMenuManager.singleTonGooglePlayMenu;
         }
 
         if (!PlayGamesPlatform.Instance.localUser.authenticated)
@@ -36,6 +39,7 @@ public class GooglePlayManager : MonoBehaviour
 
             PlayGamesPlatform.DebugLogEnabled = true;
         }
+
         OnCheckingGooglePlayUser();
     }
 

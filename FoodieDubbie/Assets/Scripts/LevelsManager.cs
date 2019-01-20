@@ -45,6 +45,12 @@ public class LevelsManager : MonoBehaviour
                 }
                 else
                 {
+                    if(Game_GlobalInfo.singleton.Player_Lives <= 0)
+                    {
+                        Debug.Log("No Lives No Lives");
+
+                        return;
+                    }
                     SceneManager.LoadScene(item.transform.GetSiblingIndex() + 1, LoadSceneMode.Single);
                 }
             }
