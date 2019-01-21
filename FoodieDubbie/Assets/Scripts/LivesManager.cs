@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.UI;
+using System;
 
 public class LivesManager : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class LivesManager : MonoBehaviour
         Button_WatchAds.onClick.AddListener(ShowRewardedAd);
 
         OnUpdateLivesDisplay();
+    }
+
+    private void Update()
+    {
+        Debug.Log(System.DateTime.UtcNow.ToLocalTime());
     }
 
     public void ShowRewardedAd()

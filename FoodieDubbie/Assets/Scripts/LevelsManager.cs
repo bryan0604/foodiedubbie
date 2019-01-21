@@ -41,13 +41,13 @@ public class LevelsManager : MonoBehaviour
 
                 if(item.transform.GetSiblingIndex() + 1 >= SceneManager.sceneCountInBuildSettings)
                 {
-                    Debug.LogWarning("Scene coming soon!");
+                    NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 1);
                 }
                 else
                 {
                     if(Game_GlobalInfo.singleton.Player_Lives <= 0)
                     {
-                        Debug.Log("No Lives No Lives");
+                        NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 0);
 
                         return;
                     }

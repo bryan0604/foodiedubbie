@@ -213,7 +213,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh70258
+  m_Name: pb_Mesh13706
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -373,7 +373,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69818
+  m_Name: pb_Mesh13380
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -687,7 +687,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69678
+  m_Name: pb_Mesh13238
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1184,7 +1184,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69690
+  m_Name: pb_Mesh13250
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1344,7 +1344,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69116
+  m_Name: pb_Mesh12758
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3024,7 +3024,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69640
+  m_Name: pb_Mesh13196
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3583,7 +3583,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh70082
+  m_Name: pb_Mesh13570
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -5025,7 +5025,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69952
+  m_Name: pb_Mesh13498
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -5475,7 +5475,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 78
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -6205,7 +6205,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh68918
+  m_Name: pb_Mesh12582
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -10598,7 +10598,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh68620
+  m_Name: pb_Mesh12302
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -11270,7 +11270,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69662
+  m_Name: pb_Mesh13226
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -21198,6 +21198,7 @@ GameObject:
   - component: {fileID: 1367523115}
   - component: {fileID: 1367523116}
   - component: {fileID: 1367523117}
+  - component: {fileID: 1367523118}
   m_Layer: 0
   m_Name: _globalInfo
   m_TagString: Untagged
@@ -21234,8 +21235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player_Username: NoName
   Player_Lives: 5
-  Player_NextLevel: 0
-  Player_LatestDefeatedLevel: 0
+  Player_NextLevel: 6
+  Player_LatestDefeatedLevel: 5
 --- !u!114 &1367523116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21265,13 +21266,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoadingScreen_Panel: {fileID: 469031177}
   Prefab: {fileID: 8690881975611071746, guid: cd9560e5291ff7a409535567902e56fe, type: 3}
+--- !u!114 &1367523118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367523113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 068ad0895cca8ff449545b15a5d9fcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Descriptions:
+  - Not enough lives. Please have at least 1 live on hands. Thank you!
+  - This level will be coming soon!
+  Text_Content: {fileID: 345817844}
+  NoticePanel: {fileID: 1496134252}
+  Button_Closed: {fileID: 1228437226}
 --- !u!43 &1377250079
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69886
+  m_Name: pb_Mesh13442
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -22076,7 +22095,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69600
+  m_Name: pb_Mesh13160
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -28656,7 +28675,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh68696
+  m_Name: pb_Mesh12376
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -29365,7 +29384,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh69348
+  m_Name: pb_Mesh12942
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2

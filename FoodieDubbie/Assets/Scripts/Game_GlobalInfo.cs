@@ -7,9 +7,26 @@ public class Game_GlobalInfo : MonoBehaviour
     public int Player_Lives = 5;
     public int Player_NextLevel = 0;
     public int Player_LatestDefeatedLevel = 0;
+    public int Hours;
+    public int Minutes;
+    public int Seconds;
+    public int Milliseconds;
 
     private void Awake()
     {
+        if (PlayerPrefs.HasKey("TimeOnExit"))
+        {
+            miliseconds = PlayerPrefs.GetFloat("TimeOnExit");
+
+            minutes = (int)miliseconds / 60;
+            miliseconds -= (minutes * 60);
+
+            seconds = (int)miliseconds;
+            miliseconds -= seconds;
+
+            PlayerPrefs.DeleteKey("TimeOnExit");
+        }
+
         if (singleton == null)
         {
             singleton = this;
@@ -23,6 +40,12 @@ public class Game_GlobalInfo : MonoBehaviour
         DontDestroyOnLoad(this);
 
         OnNextLevelCheck();
+    }
+
+    private void OnApplicationQuit()
+    {
+        miliseconds += ((minutes * 60) + seconds);
+        PlayerPrefs.SetFloat("TimeOnExit", miliseconds);
     }
 
     public void OnDefeatedLevel(int Level)
