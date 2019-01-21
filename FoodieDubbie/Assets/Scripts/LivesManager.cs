@@ -18,10 +18,10 @@ public class LivesManager : MonoBehaviour
 
     public void ShowRewardedAd()
     {
-        if (Advertisement.IsReady("rewardedVideo"))
+        if (Advertisement.IsReady("AddingLives"))
         {
             var options = new ShowOptions { resultCallback = HandleShowResult };
-            Advertisement.Show("rewardedVideo", options);
+            Advertisement.Show("AddingLives", options);
         }
     }
 

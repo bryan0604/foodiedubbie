@@ -18,6 +18,7 @@ public class GameManager_MainMenu : MonoBehaviour
     public GameObject _LevelsPanel;
     public GameObject _MainPanel;
     public GameObject _LoginInfoPanel;
+    public GameObject _LivesPanel;
 
     private void Awake()
     {
@@ -27,12 +28,6 @@ public class GameManager_MainMenu : MonoBehaviour
         Button_OnCheckNextLevel.onClick.AddListener(OnCheckingLevel);
     }
 
-    //void StartGame()
-    //{
-    //    Debug.Log("Start Game - Level 1");
-    //    SceneManager.LoadScene(BossBattle_Levels[0],LoadSceneMode.Single);
-    //}
-
     void Quit()
     {
         Application.Quit();
@@ -40,8 +35,6 @@ public class GameManager_MainMenu : MonoBehaviour
 
     void Continue()
     {
-        //Debug.Log("Next Level = " + Game_GlobalInfo.singleton.Player_NextLevel);
-
         if (Game_GlobalInfo.singleton.Player_NextLevel >= SceneManager.sceneCountInBuildSettings)
         {
             Debug.LogWarning("Scene coming soon!");
@@ -57,11 +50,13 @@ public class GameManager_MainMenu : MonoBehaviour
         _LevelsPanel.SetActive(true);
         _MainPanel.SetActive(false);
         _LoginInfoPanel.SetActive(false);
+        _LivesPanel.SetActive(false);
     }
 
     public void BackFromLevelSelect()
     {
         _MainPanel.SetActive(true);
+        _LivesPanel.SetActive(true);
         _LevelsPanel.SetActive(false);
         if (Social.localUser.authenticated)
         {
