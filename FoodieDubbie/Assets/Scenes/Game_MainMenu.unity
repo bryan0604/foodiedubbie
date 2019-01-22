@@ -21237,6 +21237,11 @@ MonoBehaviour:
   Player_Lives: 5
   Player_NextLevel: 6
   Player_LatestDefeatedLevel: 5
+  Hours: 0
+  Minutes: 0
+  Seconds: 0
+  Milliseconds: 0
+  TotalTimeInMillisecondsInGame: 20000
 --- !u!114 &1367523116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38525,7 +38530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1043, y: 221.55}
+  m_AnchoredPosition: {x: 1043, y: 221.5498}
   m_SizeDelta: {x: 515.3, y: 77.7}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1750746189663145185

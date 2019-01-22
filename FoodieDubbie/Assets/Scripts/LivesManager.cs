@@ -17,11 +17,6 @@ public class LivesManager : MonoBehaviour
         OnUpdateLivesDisplay();
     }
 
-    private void Update()
-    {
-        Debug.Log(System.DateTime.UtcNow.ToLocalTime());
-    }
-
     public void ShowRewardedAd()
     {
         if (Advertisement.IsReady("AddingLives"))

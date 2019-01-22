@@ -7,24 +7,44 @@ public class Game_GlobalInfo : MonoBehaviour
     public int Player_Lives = 5;
     public int Player_NextLevel = 0;
     public int Player_LatestDefeatedLevel = 0;
-    public int Hours;
-    public int Minutes;
-    public int Seconds;
-    public int Milliseconds;
+    public float Hours;
+    public float Minutes;
+    public float Seconds;
+    public float Milliseconds;
+    public float TotalTimeInMillisecondsInGame;
 
     private void Awake()
     {
-        if (PlayerPrefs.HasKey("TimeOnExit"))
+        Hours = Mathf.Round((TotalTimeInMillisecondsInGame / 60f)*100)/100;
+        float _hours = Mathf.Round((Hours % 1)*100);
+        Hours = Mathf.Round(Hours);
+        Debug.Log(_hours);
+
+
+        //Minutes = Mathf.Round(((Hours % 1)* 60));
+        //Seconds = Mathf.Round(((Minutes % 1) * 60));
+        //Milliseconds = (Seconds % 1) * 60;
+
+
+        if (PlayerPrefs.HasKey("TimeOutTiming"))
         {
-            miliseconds = PlayerPrefs.GetFloat("TimeOnExit");
+            Debug.Log("Key found!");
 
-            minutes = (int)miliseconds / 60;
-            miliseconds -= (minutes * 60);
+            TotalTimeInMillisecondsInGame = PlayerPrefs.GetInt("TimeOutTiming");
 
-            seconds = (int)miliseconds;
-            miliseconds -= seconds;
+            // S = 20000
+            // S = 20000 / 60 = 333.33minutes
+            // S = 0.33 * 60 = 19.8 seconds
+            // S = 0.8 * 60 = 48 milliseconds
+            // Time = 333 minutes 19 seconds 48 milliseconds
 
-            PlayerPrefs.DeleteKey("TimeOnExit");
+
+
+            PlayerPrefs.DeleteKey("TimeOutTiming");
+        }
+        else
+        {
+            Debug.Log("No key found!");
         }
 
         if (singleton == null)
@@ -42,10 +62,48 @@ public class Game_GlobalInfo : MonoBehaviour
         OnNextLevelCheck();
     }
 
+    private void Update()
+    {
+        //if(Milliseconds >= 60)
+        //{
+        //    Seconds++;
+        //    Milliseconds = 0;
+
+        //    if(Seconds >= 60)
+        //    {
+        //        Minutes++;
+        //        Seconds = 0;
+
+        //        if(Minutes >= 60)
+        //        {
+        //            Hours++;
+        //            Minutes = 0;
+
+        //            if(Hours >= 24)
+        //            {
+        //                //Days ++;
+        //                //Hours=0;
+        //            }
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    Milliseconds++;
+        //}
+    }
+
     private void OnApplicationQuit()
     {
-        miliseconds += ((minutes * 60) + seconds);
-        PlayerPrefs.SetFloat("TimeOnExit", miliseconds);
+        //1 day = 24 hours
+        //1 hour = 60 Minutes
+        //1 minutes = 60 seconds
+        //1 seconds = 60 milliseconds
+        //TotalTimeInMillisecondsInGame = (Hours * 60 * 60 * 60) + (Minutes * 60 * 60) + (Seconds * 60) + Milliseconds;
+
+        //PlayerPrefs.SetInt("TimeOutTiming", TotalTimeInMillisecondsInGame);
+
+        //Debug.Log("Saving timeOut timing = " );
     }
 
     public void OnDefeatedLevel(int Level)
