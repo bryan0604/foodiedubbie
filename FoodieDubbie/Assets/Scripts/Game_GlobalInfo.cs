@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class Game_GlobalInfo : MonoBehaviour
 {
@@ -7,40 +8,43 @@ public class Game_GlobalInfo : MonoBehaviour
     public int Player_Lives = 5;
     public int Player_NextLevel = 0;
     public int Player_LatestDefeatedLevel = 0;
-    public float Hours;
-    public float Minutes;
-    public float Seconds;
-    public float Milliseconds;
-    public float TotalTimeInMillisecondsInGame;
+    //public float Hours;
+    //public float Minutes;
+    //public float Seconds;
+    //public float Milliseconds;
+    //public float TotalTimeInGame;
+
+    DateTime currentDate;
+    DateTime oldDate;
 
     private void Awake()
     {
-        Hours = Mathf.Round((TotalTimeInMillisecondsInGame / 60f)*100)/100;
-        float _hours = Mathf.Round((Hours % 1)*100);
-        Hours = Mathf.Round(Hours);
-        Debug.Log(_hours);
-
-
-        //Minutes = Mathf.Round(((Hours % 1)* 60));
-        //Seconds = Mathf.Round(((Minutes % 1) * 60));
-        //Milliseconds = (Seconds % 1) * 60;
-
+        //PlayerPrefs.DeleteKey("TimeOutTiming");
 
         if (PlayerPrefs.HasKey("TimeOutTiming"))
         {
-            Debug.Log("Key found!");
+            //Debug.Log("Key found!");
 
-            TotalTimeInMillisecondsInGame = PlayerPrefs.GetInt("TimeOutTiming");
+            //TotalTimeInGame = PlayerPrefs.GetFloat("TimeOutTiming");
 
-            // S = 20000
-            // S = 20000 / 60 = 333.33minutes
-            // S = 0.33 * 60 = 19.8 seconds
-            // S = 0.8 * 60 = 48 milliseconds
-            // Time = 333 minutes 19 seconds 48 milliseconds
+            //Seconds = TotalTimeInGame;
 
+            //Debug.Log("Current time = " + Seconds);
 
+            //currentDate = System.DateTime.Now;
 
-            PlayerPrefs.DeleteKey("TimeOutTiming");
+            //long temp = Convert.ToInt64(PlayerPrefs.GetString("TimeOutTiming"));
+    
+            //DateTime oldDate = DateTime.FromBinary(temp);
+
+            //print("old Date: " + oldDate);
+            //print("new Date: " + currentDate);
+  
+            //TimeSpan difference = currentDate.Subtract(oldDate);
+
+            //print("Difference - Minutes:" + difference.Minutes + " Seconds:" + difference.Seconds + " Total:" + difference.TotalSeconds);
+
+            //PlayerPrefs.DeleteKey("TimeOutTiming");
         }
         else
         {
@@ -64,28 +68,29 @@ public class Game_GlobalInfo : MonoBehaviour
 
     private void Update()
     {
-        //if(Milliseconds >= 60)
+        //Debug.Log(Time.realtimeSinceStartup);
+        //if (Milliseconds >= 60)
         //{
         //    Seconds++;
         //    Milliseconds = 0;
 
-        //    if(Seconds >= 60)
-        //    {
-        //        Minutes++;
-        //        Seconds = 0;
+            //    if(Seconds >= 60)
+            //    {
+            //        Minutes++;
+            //        Seconds = 0;
 
-        //        if(Minutes >= 60)
-        //        {
-        //            Hours++;
-        //            Minutes = 0;
+            //        if(Minutes >= 60)
+            //        {
+            //            Hours++;
+            //            Minutes = 0;
 
-        //            if(Hours >= 24)
-        //            {
-        //                //Days ++;
-        //                //Hours=0;
-        //            }
-        //        }
-        //    }
+            //            if(Hours >= 24)
+            //            {
+            //                //Days ++;
+            //                //Hours=0;
+            //            }
+            //        }
+            //    }
         //}
         //else
         //{
@@ -95,15 +100,16 @@ public class Game_GlobalInfo : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        //1 day = 24 hours
-        //1 hour = 60 Minutes
-        //1 minutes = 60 seconds
-        //1 seconds = 60 milliseconds
-        //TotalTimeInMillisecondsInGame = (Hours * 60 * 60 * 60) + (Minutes * 60 * 60) + (Seconds * 60) + Milliseconds;
+        //TotalTimeInGame = Seconds;
 
-        //PlayerPrefs.SetInt("TimeOutTiming", TotalTimeInMillisecondsInGame);
+        //PlayerPrefs.SetFloat("TimeOutTiming", TotalTimeInGame);
 
-        //Debug.Log("Saving timeOut timing = " );
+        //Debug.Log("Saving timeOut timing = " + TotalTimeInGame);
+
+        //Savee the current system time as a string in the player prefs class
+        //PlayerPrefs.SetString("TimeOutTiming", System.DateTime.Now.ToBinary().ToString());
+
+        //print("Saving this date to prefs: " + System.DateTime.Now);
     }
 
     public void OnDefeatedLevel(int Level)
