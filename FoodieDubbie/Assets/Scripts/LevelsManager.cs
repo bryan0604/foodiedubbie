@@ -7,16 +7,25 @@ using UnityEngine.EventSystems;
 
 public class LevelsManager : MonoBehaviour
 {
+    public List<int> LevelsRequirements = new List<int>();
     public List<Button> AllLevels = new List<Button>();
     public Button BackButton;
     public GameManager_MainMenu Main;
+    public NoticeManager _NoticeManager;
 
     private void OnEnable()
     {
         //Debug.Log("Level Manager begins to process...");
+        if(_NoticeManager==null)
+        {
+            _NoticeManager = FindObjectOfType<NoticeManager>();
+        }
+
         BackButton.onClick.AddListener(Back);
 
         ProcessLevelsProgress();
+
+        //gameObject.SetActive(false);
     }
 
     void ProcessLevelsProgress()
@@ -33,6 +42,8 @@ public class LevelsManager : MonoBehaviour
 
     void DebugButton(GameObject number)
     {
+        
+
         foreach (var item in AllLevels)
         {
             if(item.gameObject == number)
@@ -41,13 +52,13 @@ public class LevelsManager : MonoBehaviour
 
                 if(item.transform.GetSiblingIndex() + 1 >= SceneManager.sceneCountInBuildSettings)
                 {
-                    NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 1);
+                    _NoticeManager.OnActivationNoticeBoard(true, 1);
                 }
                 else
                 {
-                    if(Game_GlobalInfo.singleton.Player_Lives <= 0)
+                    if(Game_GlobalInfo.singleton.Player_Lives <= LevelsRequirements[item.transform.GetSiblingIndex()])
                     {
-                        NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 0);
+                        _NoticeManager.OnActivationNoticeBoard(true, 0);
 
                         return;
                     }

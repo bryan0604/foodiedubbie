@@ -583,8 +583,8 @@ public class GameManager : MonoBehaviour
 
                 isGameEnd = true;
                 Game_GlobalInfo.singleton.OnDefeatedLevel(CurrentGameLevel);
-
-                if(BossPhaseManager.singleton!=null)
+                Game_GlobalInfo.singleton.Player_Lives += 150;
+                if (BossPhaseManager.singleton!=null)
                     BossPhaseManager.singleton.StopAllCoroutines();
             }
         }
@@ -596,7 +596,7 @@ public class GameManager : MonoBehaviour
 
                 UI_GameRoundEnd.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Victory-NOT TODAY!";
 
-                Game_GlobalInfo.singleton.Player_Lives--;
+                Game_GlobalInfo.singleton.Player_Lives -= 120;
 
                 if (BossPhaseManager.singleton != null)
                     BossPhaseManager.singleton.StopAllCoroutines();

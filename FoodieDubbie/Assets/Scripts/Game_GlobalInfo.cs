@@ -1,69 +1,85 @@
 ﻿using UnityEngine;
-using System;
+
+//using System;
 
 public class Game_GlobalInfo : MonoBehaviour
 {
     public static Game_GlobalInfo singleton;
     public string Player_Username = "AnduinLothar";
-    public int Player_Lives = 5;
+    public int Player_Lives = 1000;
     public int Player_NextLevel = 0;
     public int Player_LatestDefeatedLevel = 0;
+    public static bool AppStarted;
     //public float Hours;
     //public float Minutes;
     //public float Seconds;
     //public float Milliseconds;
     //public float TotalTimeInGame;
 
-    DateTime currentDate;
-    DateTime oldDate;
+    //DateTime currentDate;
+    //DateTime oldDate;
 
     private void Awake()
     {
-        //PlayerPrefs.DeleteKey("TimeOutTiming");
-
-        if (PlayerPrefs.HasKey("TimeOutTiming"))
+        if(AppStarted == false)
         {
-            //Debug.Log("Key found!");
+            AppStarted = true;
+            if (PlayerPrefs.HasKey("PlayerData_Lives"))
+            {
+                #region UNUSED
+                //Debug.Log("Key found!");
 
-            //TotalTimeInGame = PlayerPrefs.GetFloat("TimeOutTiming");
+                //TotalTimeInGame = PlayerPrefs.GetFloat("TimeOutTiming");
 
-            //Seconds = TotalTimeInGame;
+                //Seconds = TotalTimeInGame;
 
-            //Debug.Log("Current time = " + Seconds);
+                //Debug.Log("Current time = " + Seconds);
 
-            //currentDate = System.DateTime.Now;
+                //currentDate = System.DateTime.Now;
 
-            //long temp = Convert.ToInt64(PlayerPrefs.GetString("TimeOutTiming"));
-    
-            //DateTime oldDate = DateTime.FromBinary(temp);
+                //long temp = Convert.ToInt64(PlayerPrefs.GetString("TimeOutTiming"));
 
-            //print("old Date: " + oldDate);
-            //print("new Date: " + currentDate);
-  
-            //TimeSpan difference = currentDate.Subtract(oldDate);
+                //DateTime oldDate = DateTime.FromBinary(temp);
 
-            //print("Difference - Minutes:" + difference.Minutes + " Seconds:" + difference.Seconds + " Total:" + difference.TotalSeconds);
+                //print("old Date: " + oldDate);
+                //print("new Date: " + currentDate);
 
-            //PlayerPrefs.DeleteKey("TimeOutTiming");
+                //TimeSpan difference = currentDate.Subtract(oldDate);
+
+                //print("Difference - Minutes:" + difference.Minutes + " Seconds:" + difference.Seconds + " Total:" + difference.TotalSeconds);
+
+                //PlayerPrefs.DeleteKey("TimeOutTiming");
+                #endregion
+
+                Player_Lives = PlayerPrefs.GetInt("PlayerData_Lives");
+
+                Debug.Log("Loading Lives = " + Player_Lives);
+            }
+            else
+            {
+                Debug.Log("New player no Live found!");
+
+                Player_Lives = 1000;
+            }
+
+            if (singleton == null)
+            {
+                singleton = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else if (singleton != this)
+            {
+                Destroy(gameObject);
+            }
+
+            DontDestroyOnLoad(this);
+
+            OnNextLevelCheck();
         }
         else
         {
-            Debug.Log("No key found!");
+            
         }
-
-        if (singleton == null)
-        {
-            singleton = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (singleton != this)
-        {
-            Destroy(gameObject);
-        }
-        
-        DontDestroyOnLoad(this);
-
-        OnNextLevelCheck();
     }
 
     private void Update()
@@ -102,7 +118,9 @@ public class Game_GlobalInfo : MonoBehaviour
     {
         //TotalTimeInGame = Seconds;
 
-        //PlayerPrefs.SetFloat("TimeOutTiming", TotalTimeInGame);
+        PlayerPrefs.SetInt("PlayerData_Lives", Player_Lives);
+
+        Debug.Log("Saving Lives = " + Player_Lives);
 
         //Debug.Log("Saving timeOut timing = " + TotalTimeInGame);
 

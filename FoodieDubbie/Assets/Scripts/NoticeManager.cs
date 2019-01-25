@@ -26,9 +26,8 @@ public class NoticeManager : MonoBehaviour
     {
         if(toActivate)
         {
-            UpdateContext(Code);
-
             NoticePanel.SetActive(toActivate);
+            UpdateContext(Code);
         }
         else
         {

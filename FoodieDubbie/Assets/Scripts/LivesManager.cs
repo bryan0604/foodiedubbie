@@ -7,8 +7,14 @@ using System;
 
 public class LivesManager : MonoBehaviour
 {
+    public static LivesManager singleTonnie;
     public Button Button_WatchAds;
     public Text Text_Lives;
+
+    private void Awake()
+    {
+        singleTonnie = this;
+    }
 
     private void Start()
     {
@@ -33,7 +39,7 @@ public class LivesManager : MonoBehaviour
             case ShowResult.Finished:
                 Debug.Log("The ad was successfully shown.");
 
-                OnAddingLives();
+                OnAddingLives(250);
 
 
                 break;
@@ -45,16 +51,24 @@ public class LivesManager : MonoBehaviour
                 break;
         }
     }
+    
+    public void OnConsumeLives(int Quantity)
+    {
+        Game_GlobalInfo.singleton.Player_Lives -= Quantity;
 
-    public void OnAddingLives()
+        OnUpdateLivesDisplay();
+    }
+
+    public void OnAddingLives(int Quantity)
     {
         if (Game_GlobalInfo.singleton.Player_Lives >= 5)
         {
-            Debug.Log("Max lives!");
+            //Debug.Log("Max lives!");
+            Game_GlobalInfo.singleton.Player_Lives += Quantity;
         }
         else
         {
-            Game_GlobalInfo.singleton.Player_Lives++;
+            Game_GlobalInfo.singleton.Player_Lives+= Quantity;
         }
 
         OnUpdateLivesDisplay();

@@ -7299,11 +7299,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1220838954}
     m_Modifications:
-    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
-        type: 3}
-      propertyPath: TargetPlayer
-      value: 
-      objectReference: {fileID: 2044029007}
     - target: {fileID: 20799806990342172, guid: ca5026be1fc80b04499943bb933a891e,
         type: 3}
       propertyPath: orthographic
@@ -7341,6 +7336,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114862359944134020, guid: ca5026be1fc80b04499943bb933a891e,
+        type: 3}
+      propertyPath: TargetPlayer
+      value: 
+      objectReference: {fileID: 2044029007}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5026be1fc80b04499943bb933a891e, type: 3}
 --- !u!1 &388888050
@@ -11110,7 +11110,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0.22745097, g: 0.28782874, b: 0.98039216, a: 1}
+  m_Color: {r: 0.754717, g: 0, b: 0.025881281, a: 1}
   m_Intensity: 13.74
   m_Range: 6.3
   m_SpotAngle: 30
@@ -20543,7 +20543,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0.22745097, g: 0.28782874, b: 0.98039216, a: 1}
+  m_Color: {r: 0.754717, g: 0, b: 0.025881281, a: 1}
   m_Intensity: 13.74
   m_Range: 6.3
   m_SpotAngle: 30
@@ -27696,16 +27696,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager_Lv5
       objectReference: {fileID: 0}
-    - target: {fileID: 438728709858339256, guid: 8e2534a8b6b590641b582411f53487ff,
-        type: 3}
-      propertyPath: Healthbar_Original
-      value: 
-      objectReference: {fileID: 19115772}
-    - target: {fileID: 438728709858339256, guid: 8e2534a8b6b590641b582411f53487ff,
-        type: 3}
-      propertyPath: Healthbar_Background
-      value: 
-      objectReference: {fileID: 587926412}
     - target: {fileID: 1893586578655024330, guid: 8e2534a8b6b590641b582411f53487ff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27776,6 +27766,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 438728709858339256, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: Healthbar_Original
+      value: 
+      objectReference: {fileID: 19115772}
+    - target: {fileID: 438728709858339256, guid: 8e2534a8b6b590641b582411f53487ff,
+        type: 3}
+      propertyPath: Healthbar_Background
+      value: 
+      objectReference: {fileID: 587926412}
     - target: {fileID: 5302481629091355974, guid: 8e2534a8b6b590641b582411f53487ff,
         type: 3}
       propertyPath: Buffs_SpecificPosition.Array.size

@@ -138,9 +138,24 @@ public class GooglePlayManager : MonoBehaviour
         //Social.ShowLeaderboardUI(GPGSIds.leaderboard_test_leaderboard_01)
     }
 
-    public void UnlockAchievement(string id)
+    public void UnlockAchievement(int _Code)
     {
-        Social.ReportProgress(id, 100 , success => { });
+        if(_Code == 1)
+        {
+            PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQBQ", 5, (bool success) =>
+            {
+                if(success)
+                {
+                    LivesManager.singleTonnie.OnConsumeLives(-1000);
+
+                    NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 2);
+                }
+                else
+                {
+                    NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 3);
+                }
+            });
+        }
     }
 
     public void OnUpdateClearedLevel(int _NewDefeatedLevel)

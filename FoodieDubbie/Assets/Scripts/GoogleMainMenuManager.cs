@@ -16,6 +16,7 @@ public class GoogleMainMenuManager : MonoBehaviour
     public Button GooglePlayLeaderboard;
     public Button GooglePlayAchievement;
     public Button AddLevelPoints;
+    public Button UpgradeAvatar;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class GoogleMainMenuManager : MonoBehaviour
         GooglePlayLeaderboard.onClick.AddListener(gpm.TestShowLeaderboard);
         GooglePlayAchievement.onClick.AddListener(gpm.TestShowAchievement);
         AddLevelPoints.onClick.AddListener(() => gpm.OnUpdateClearedLevel(0));
+        UpgradeAvatar.onClick.AddListener(()=> { gpm.UnlockAchievement(1); });
 
     }
 }
