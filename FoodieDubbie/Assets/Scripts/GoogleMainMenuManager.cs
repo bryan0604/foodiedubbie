@@ -25,6 +25,8 @@ public class GoogleMainMenuManager : MonoBehaviour
         if(gpm==null)
         {
             gpm = Behaviour.FindObjectOfType<GooglePlayManager>();
+
+            gpm.MenuManager = this;
         }
     }
 

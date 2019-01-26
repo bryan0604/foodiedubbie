@@ -163,7 +163,7 @@ public class PlayerManager : MonoBehaviour
     {
         MovementSpeed = Default_MovementSpeed;
 
-        Debug.Log(transform.name +_mountTurret.name);
+        //Debug.Log(transform.name +_mountTurret.name);
 
         _mountTurret.DeactivateTurret();
 

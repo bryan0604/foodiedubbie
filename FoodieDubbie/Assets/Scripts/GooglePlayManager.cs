@@ -11,13 +11,13 @@ public class GooglePlayManager : MonoBehaviour
     public static GooglePlayManager singletonGooglePlay;
 
     public GoogleMainMenuManager MenuManager;
-
+    public LoadingManager _LoadManager;
     public string GooglePlayUsername="";
     public int GooglePlayCurrentLevel=1;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
 
         singletonGooglePlay = this;
     }
@@ -26,7 +26,7 @@ public class GooglePlayManager : MonoBehaviour
     {
         if (MenuManager == null)
         {
-            MenuManager = GoogleMainMenuManager.singleTonGooglePlayMenu;
+            MenuManager = FindObjectOfType<GoogleMainMenuManager>();
         }
 
         if (!PlayGamesPlatform.Instance.localUser.authenticated)
@@ -67,7 +67,7 @@ public class GooglePlayManager : MonoBehaviour
     {
         Debug.Log("Processing Google Play Login");
 
-        LoadingManager.singleton.LoadingScreen(true);
+        _LoadManager.LoadingScreen(true);
 
         Social.localUser.Authenticate((bool success) =>
         {
@@ -79,7 +79,7 @@ public class GooglePlayManager : MonoBehaviour
             }
             else
             {
-                LoadingManager.singleton.LoadingScreen(false);
+                _LoadManager.LoadingScreen(false);
             }
         });
     }

@@ -54,7 +54,7 @@ public class LivesManager : MonoBehaviour
     
     public void OnConsumeLives(int Quantity)
     {
-        Game_GlobalInfo.singleton.Player_Lives -= Quantity;
+        Game_GlobalInfo.singleton.Player_Lives+= Quantity;
 
         OnUpdateLivesDisplay();
     }

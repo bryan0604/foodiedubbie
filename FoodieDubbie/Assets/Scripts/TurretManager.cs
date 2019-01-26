@@ -152,7 +152,7 @@ public class TurretManager : MonoBehaviour
 
     void MountTurret()
     {
-        Debug.Log( transform.name +" "+PlayerManage + " " + Seat);
+        //Debug.Log( transform.name +" "+PlayerManage + " " + Seat);
         PlayerManage.MountTurret(Seat.position, this);
 
         GameManager.singleton.Button_Mount.gameObject.SetActive(false);
@@ -187,7 +187,7 @@ public class TurretManager : MonoBehaviour
 
                 GameManager.singleton.Button_Mount.onClick.RemoveListener(MountTurret);
 
-                Debug.Log("Turret info cleared! = " + transform.name);
+                //Debug.Log("Turret info cleared! = " + transform.name);
             }
         }
     }

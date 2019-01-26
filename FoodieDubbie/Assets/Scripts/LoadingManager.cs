@@ -11,10 +11,14 @@ public class LoadingManager : MonoBehaviour
     private void Awake()
     {
         singleton = this;
+
+        //Debug.Log(singleton, gameObject);
     }
 
     public void LoadingScreen(bool activate)
     {
+        //Debug.Log(singleton + " " + LoadingScreen_Panel,gameObject);
+        
         LoadingScreen_Panel.SetActive(activate);
     }
 }

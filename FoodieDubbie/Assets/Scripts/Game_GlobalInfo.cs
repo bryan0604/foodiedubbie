@@ -10,6 +10,7 @@ public class Game_GlobalInfo : MonoBehaviour
     public int Player_NextLevel = 0;
     public int Player_LatestDefeatedLevel = 0;
     public static bool AppStarted;
+    public bool ThisIsMain;
     //public float Hours;
     //public float Minutes;
     //public float Seconds;
@@ -59,20 +60,16 @@ public class Game_GlobalInfo : MonoBehaviour
             {
                 Debug.Log("New player no Live found!");
 
-                Player_Lives = 1000;
+                Player_Lives = 100;
             }
 
-            if (singleton == null)
-            {
-                singleton = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else if (singleton != this)
-            {
-                Destroy(gameObject);
-            }
+            ThisIsMain = true;
 
-            DontDestroyOnLoad(this);
+            singleton = this;
+
+            DontDestroyOnLoad(gameObject);
+
+            Debug.Log(Game_GlobalInfo.singleton + " is main = " + ThisIsMain, gameObject);
 
             OnNextLevelCheck();
         }
@@ -82,8 +79,21 @@ public class Game_GlobalInfo : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if(!ThisIsMain)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            Player_Lives = 0;
+            PlayerPrefs.DeleteKey("PlayerData_Lives");
+        }
         //Debug.Log(Time.realtimeSinceStartup);
         //if (Milliseconds >= 60)
         //{

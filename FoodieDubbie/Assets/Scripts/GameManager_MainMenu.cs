@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager_MainMenu : MonoBehaviour
 {
-    //public List<string> BossBattle_Levels = new List<string>();
+    public LevelsManager _levelManager;
     public Button Button_Resume;
     public Button Button_Login;
     public Button Button_Quit;
@@ -22,6 +22,7 @@ public class GameManager_MainMenu : MonoBehaviour
 
     private void Awake()
     {
+
         Button_Resume.onClick.AddListener(Continue);
         Button_Quit.onClick.AddListener(Quit);
         Button_LevelSelect.onClick.AddListener(SelectLevel);
@@ -35,14 +36,23 @@ public class GameManager_MainMenu : MonoBehaviour
 
     void Continue()
     {
-        if (Game_GlobalInfo.singleton.Player_NextLevel >= SceneManager.sceneCountInBuildSettings)
+        if(Game_GlobalInfo.singleton.Player_Lives <= _levelManager.LevelsRequirements[Game_GlobalInfo.singleton.Player_NextLevel-1] )
         {
-            Debug.LogWarning("Scene coming soon!");
+            NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 0);
 
             return;
         }
+        else
+        {
+            if (Game_GlobalInfo.singleton.Player_NextLevel >= SceneManager.sceneCountInBuildSettings)
+            {
+                Debug.LogWarning("Scene coming soon!");
 
-        SceneManager.LoadScene(Game_GlobalInfo.singleton.Player_NextLevel);
+                return;
+            }
+
+            SceneManager.LoadScene(Game_GlobalInfo.singleton.Player_NextLevel);
+        }
     }
 
     void SelectLevel()
