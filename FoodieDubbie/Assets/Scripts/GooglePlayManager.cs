@@ -120,6 +120,40 @@ public class GooglePlayManager : MonoBehaviour
 
                 MenuManager.LoginPanelInfo.SetActive(true);
             });
+
+        Social.LoadAchievements(achievements => {
+            if (achievements.Length > 0)
+            {
+                string myAchievements = "My achievements:\n";
+                foreach (IAchievement achievement in achievements)
+                {
+                    if(achievement.id == "CgkI__DU0doGEAIQBQ") // test achievement
+                    {
+                        if(achievement.completed)
+                        {
+                            DebugManager.OnDebugging("Test Avatar is unlocked!");
+                        }
+                        else
+                        {
+                            DebugManager.OnDebugging("Test Avatar is not unlocked!");
+                        }                     
+                    }
+                    else if(achievement.id == "CgkI__DU0doGEAIQBw")
+                    {
+                        if (achievement.completed)
+                        {
+                            DebugManager.OnDebugging("Avatar 01 is unlocked!");
+                        }
+                        else
+                        {
+                            DebugManager.OnDebugging("Avatar 01 is not unlock!");
+                        }
+                    }
+                }
+            }
+            else
+                Debug.Log("No achievements returned");
+        });
     }
 
     void TestSignOut()
@@ -138,17 +172,15 @@ public class GooglePlayManager : MonoBehaviour
         //Social.ShowLeaderboardUI(GPGSIds.leaderboard_test_leaderboard_01)
     }
 
-    public void UnlockAchievement(int _Code)
+    public void UnlockAchievement(int _Code, int _ExpAmount)
     {
         if(_Code == 1)
         {
-            PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQBQ", 5, (bool success) =>
+            PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQBQ", _ExpAmount, (bool success) =>
             {
                 if(success)
                 {
                     LivesManager.singleTonnie.OnConsumeLives(-1000);
-
-                    NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 2);
                 }
                 else
                 {
