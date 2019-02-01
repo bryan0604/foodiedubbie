@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
-//using System;
 
 public class Game_GlobalInfo : MonoBehaviour
 {
@@ -9,6 +9,8 @@ public class Game_GlobalInfo : MonoBehaviour
     public int Player_Lives = 1000;
     public int Player_NextLevel = 0;
     public int Player_LatestDefeatedLevel = 0;
+    public int Player_SelectedCharacter;
+    public List<bool> AvatarsList = new List<bool>(2);
     public static bool AppStarted;
     public bool ThisIsMain;
     //public float Hours;

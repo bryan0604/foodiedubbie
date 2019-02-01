@@ -9,7 +9,7 @@ using UnityEngine.SocialPlatforms;
 public class GooglePlayManager : MonoBehaviour
 {
     public static GooglePlayManager singletonGooglePlay;
-
+    public Game_GlobalInfo _gameglobal;
     public GoogleMainMenuManager MenuManager;
     public LoadingManager _LoadManager;
     public string GooglePlayUsername="";
@@ -88,8 +88,6 @@ public class GooglePlayManager : MonoBehaviour
     {
         ((GooglePlayGames.PlayGamesPlatform)Social.Active).SetGravityForPopups(Gravity.TOP);
 
-        GetUserInfos();
-
         OnCheckingGooglePlayUser();
     }
 
@@ -132,6 +130,8 @@ public class GooglePlayManager : MonoBehaviour
                         if(achievement.completed)
                         {
                             DebugManager.OnDebugging("Test Avatar is unlocked!");
+
+                            _gameglobal.AvatarsList[0] = true;
                         }
                         else
                         {
@@ -143,6 +143,8 @@ public class GooglePlayManager : MonoBehaviour
                         if (achievement.completed)
                         {
                             DebugManager.OnDebugging("Avatar 01 is unlocked!");
+
+                            _gameglobal.AvatarsList[1] = true;
                         }
                         else
                         {

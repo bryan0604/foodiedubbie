@@ -20,6 +20,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        CharacterChecks();
+
         Default_MovementSpeed = MovementSpeed;
         //HP
         PlayerUIs.HealthPoints = HealthPoints;
@@ -107,7 +109,7 @@ public class PlayerManager : MonoBehaviour
 
         if (HealthPoints>=_HealthPoints)
         {
-            HealthPoints = 100;
+            HealthPoints = _HealthPoints;
         }
 
         PlayerUIs.OnHealthPointsChanged(HealthPoints, _HealthPoints, true);
@@ -169,4 +171,19 @@ public class PlayerManager : MonoBehaviour
 
         //_mountTurret = null;
     }
+    
+    public void CharacterChecks()
+    {
+        if(Game_GlobalInfo.singleton.Player_SelectedCharacter == 0)
+        {
+            HealthPoints += 25;
+        }
+        else if(Game_GlobalInfo.singleton.Player_SelectedCharacter == 1)
+        {
+            HealthPoints += 55;
+        }
+
+        Debug.Log("Character chosen = " + Game_GlobalInfo.singleton.Player_SelectedCharacter);
+    }
+
 }
