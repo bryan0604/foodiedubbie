@@ -1476,6 +1476,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115430103}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &123901560 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6070059868664057433, guid: 63f925ec6b36707489aa5fbf9e9b87d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1599533347}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &130459982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,7 +1501,7 @@ GameObject:
   - component: {fileID: 130459985}
   - component: {fileID: 130459984}
   m_Layer: 0
-  m_Name: Text
+  m_Name: AvatarText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15613,6 +15625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c3c23c8802aca47a3cfe68f23bcdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CSM: {fileID: 1206387557}
   _levelManager: {fileID: 176302779}
   Button_Resume: {fileID: 1863820520805279926}
   Button_Login: {fileID: 0}
@@ -15621,6 +15634,7 @@ MonoBehaviour:
   Button_LevelSelect: {fileID: 1861089117249638012}
   Button_OnCheckNextLevel: {fileID: 1750746189159502198}
   Button_Avatar: {fileID: 539667486}
+  Text_ChosenAvatar: {fileID: 130459985}
   Group_MainMenus: {fileID: 1819819302}
   Group_AvatarMenus: {fileID: 468906921}
   _InfoPanel_Bg: {fileID: 1750746190432094980}
@@ -15712,10 +15726,14 @@ MonoBehaviour:
   Button_AvatarSelected:
   - {fileID: 1114045314}
   - {fileID: 327017266}
+  - {fileID: 1501674532}
+  - {fileID: 123901560}
   MainRotateObj: {fileID: 749323270}
   AllCharacterCanvas:
   - {fileID: 4770725788434743}
   - {fileID: 1529563596}
+  - {fileID: 1701327300}
+  - {fileID: 1953731747}
   RotateSpeed: 8
   CurrentAngle: 90
   _angle: 0
@@ -24086,6 +24104,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1501674532 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6070059868664057433, guid: 63f925ec6b36707489aa5fbf9e9b87d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 55221628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1502095807
 GameObject:
   m_ObjectHideFlags: 0

@@ -49,11 +49,29 @@ public class CharacterSelectionManager : MonoBehaviour
         if(_ButtonObj.transform.parent.parent.parent.GetSiblingIndex() == 0)
         {
             Debug.Log("Avatar Default");
+
+            Game_GlobalInfo.singleton.Player_SelectedCharacter = 0;
         }
         else if (_ButtonObj.transform.parent.parent.parent.GetSiblingIndex() == 1)
         {
             Debug.Log("Avatar 00");
+
+            Game_GlobalInfo.singleton.Player_SelectedCharacter = 1;
         }
+        else if (_ButtonObj.transform.parent.parent.parent.GetSiblingIndex() == 2)
+        {
+            Debug.Log("Avatar 01");
+
+            Game_GlobalInfo.singleton.Player_SelectedCharacter = 2;
+        }
+        else if (_ButtonObj.transform.parent.parent.parent.GetSiblingIndex() == 3)
+        {
+            Debug.Log("Avatar 02");
+
+            Game_GlobalInfo.singleton.Player_SelectedCharacter = 3;
+        }
+
+        GetAvatarSelection();
     }
 
     void PreviousAvatar()
@@ -102,5 +120,26 @@ public class CharacterSelectionManager : MonoBehaviour
 
         RotateNow = true;
 
+    }
+
+    public void GetAvatarSelection()
+    {
+        if(Game_GlobalInfo.singleton.Player_SelectedCharacter == 0)
+        {
+            GameManager_MainMenu.Text_ChosenAvatar.text = "Avatar default selected";
+        }
+        else if (Game_GlobalInfo.singleton.Player_SelectedCharacter == 1)
+        {
+            GameManager_MainMenu.Text_ChosenAvatar.text = "Avatar 00 selected";
+        }
+        else if (Game_GlobalInfo.singleton.Player_SelectedCharacter == 2)
+        {
+            GameManager_MainMenu.Text_ChosenAvatar.text = "Avatar 01 selected";
+
+        }
+        else if (Game_GlobalInfo.singleton.Player_SelectedCharacter == 3)
+        {
+            GameManager_MainMenu.Text_ChosenAvatar.text = "Avatar 02 selected";
+        }
     }
 }

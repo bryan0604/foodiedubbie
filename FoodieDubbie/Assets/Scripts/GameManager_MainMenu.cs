@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager_MainMenu : MonoBehaviour
 {
+    public CharacterSelectionManager CSM;
     public LevelsManager _levelManager;
     public Button Button_Resume;
     public Button Button_Login;
@@ -14,7 +15,7 @@ public class GameManager_MainMenu : MonoBehaviour
     public Button Button_LevelSelect;
     public Button Button_OnCheckNextLevel;
     public Button Button_Avatar;
-
+    public Text Text_ChosenAvatar;
     public GameObject Group_MainMenus;
     public GameObject Group_AvatarMenus;
     public GameObject _InfoPanel_Bg;
@@ -91,6 +92,7 @@ public class GameManager_MainMenu : MonoBehaviour
 
     public void OnLeavingAvatarPage()
     {
+        //CSM.GetAvatarSelection();
         Group_AvatarMenus.SetActive(false);
         Group_MainMenus.SetActive(true);
     }
