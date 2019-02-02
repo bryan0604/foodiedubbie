@@ -13,7 +13,10 @@ public class GameManager_MainMenu : MonoBehaviour
     public Button Button_RankList;
     public Button Button_LevelSelect;
     public Button Button_OnCheckNextLevel;
+    public Button Button_Avatar;
 
+    public GameObject Group_MainMenus;
+    public GameObject Group_AvatarMenus;
     public GameObject _InfoPanel_Bg;
     public GameObject _LevelsPanel;
     public GameObject _MainPanel;
@@ -27,6 +30,7 @@ public class GameManager_MainMenu : MonoBehaviour
         Button_Quit.onClick.AddListener(Quit);
         Button_LevelSelect.onClick.AddListener(SelectLevel);
         Button_OnCheckNextLevel.onClick.AddListener(OnCheckingLevel);
+        Button_Avatar.onClick.AddListener(AvatarSelect);
     }
 
     void Quit()
@@ -55,6 +59,12 @@ public class GameManager_MainMenu : MonoBehaviour
         }
     }
 
+    void AvatarSelect()
+    {
+        Group_AvatarMenus.gameObject.SetActive(true);
+        Group_MainMenus.gameObject.SetActive(false);
+    }
+
     void SelectLevel()
     {
         _LevelsPanel.SetActive(true);
@@ -77,5 +87,11 @@ public class GameManager_MainMenu : MonoBehaviour
     void OnCheckingLevel()
     {
         NoticePromptManager.singLeTon.OnCheckNextLevel();
+    }
+
+    public void OnLeavingAvatarPage()
+    {
+        Group_AvatarMenus.SetActive(false);
+        Group_MainMenus.SetActive(true);
     }
 }
