@@ -11,8 +11,9 @@ public class CharacterSelectionManager : MonoBehaviour
     public Button Button_Prev;
     public Button Button_Next;
     public List<Button> Button_AvatarSelected = new List<Button>();
-    public Transform MainRotateObj;
     public List<Transform> AllCharacterCanvas = new List<Transform>();
+    public Transform MainRotateObj;
+    public int PageNo=0;
     public float RotateSpeed=50f;
     public float CurrentAngle = 90;
     public float _angle;
@@ -26,6 +27,8 @@ public class CharacterSelectionManager : MonoBehaviour
         }
         else
         {
+            Game_GlobalInfo.singleton.AvatarsList = new List<bool>(AllCharacterCanvas.Count);
+
             CurrentAngle = 90;
         }
 
@@ -116,9 +119,34 @@ public class CharacterSelectionManager : MonoBehaviour
     {
         if (RotateNow) return;
 
+        CheckPage();
+
         _angle += CurrentAngle;
 
         RotateNow = true;
+
+    }
+
+    void CheckPage()
+    {
+        PageNo++;
+
+        if(PageNo >= AllCharacterCanvas.Count)
+        {
+            PageNo = 0;
+        }
+
+        if(Game_GlobalInfo.singleton.AvatarsList.Count!=0)
+        {
+            if(Game_GlobalInfo.singleton.AvatarsList[PageNo] == true)
+            {
+                Debug.Log("Unlocked");
+            }
+            else
+            {
+                Debug.Log("Locked");
+            }
+        }
 
     }
 

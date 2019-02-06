@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-
 public class Game_GlobalInfo : MonoBehaviour
 {
     public static Game_GlobalInfo singleton;
@@ -10,17 +9,9 @@ public class Game_GlobalInfo : MonoBehaviour
     public int Player_NextLevel = 0;
     public int Player_LatestDefeatedLevel = 0;
     public int Player_SelectedCharacter;
-    public List<bool> AvatarsList = new List<bool>(2);
+    public List<bool> AvatarsList = new List<bool>(4);
     public static bool AppStarted;
     public bool ThisIsMain;
-    //public float Hours;
-    //public float Minutes;
-    //public float Seconds;
-    //public float Milliseconds;
-    //public float TotalTimeInGame;
-
-    //DateTime currentDate;
-    //DateTime oldDate;
 
     private void Awake()
     {
