@@ -9,7 +9,7 @@ public class Game_GlobalInfo : MonoBehaviour
     public int Player_NextLevel = 0;
     public int Player_LatestDefeatedLevel = 0;
     public int Player_SelectedCharacter;
-    public List<bool> AvatarsList = new List<bool>(4);
+    public List<bool> AvatarsList = new List<bool>();
     public static bool AppStarted;
     public bool ThisIsMain;
 

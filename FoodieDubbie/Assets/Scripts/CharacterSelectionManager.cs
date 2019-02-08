@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 public class CharacterSelectionManager : MonoBehaviour
 {
     public GameManager_MainMenu GameManager_MainMenu;
+    public Game_GlobalInfo _GlobalInfo;
+    public LockManager _LockingManage;
     public Button Button_Back;
     public Button Button_Prev;
     public Button Button_Next;
@@ -21,14 +23,22 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void Start()
     {
+        if(Game_GlobalInfo.singleton != null)
+        {
+            _GlobalInfo = Game_GlobalInfo.singleton;
+        }
+        else
+        {
+            Debug.LogError("Game_GlobalInfo didnt get to it");
+        }
+
         if(AllCharacterCanvas.Count == 0)
         {
 
         }
         else
         {
-            Game_GlobalInfo.singleton.AvatarsList = new List<bool>(AllCharacterCanvas.Count);
-
+            _GlobalInfo.AvatarsList = new List<bool>(new bool[AllCharacterCanvas.Count]);
             CurrentAngle = 90;
         }
 
@@ -48,30 +58,41 @@ public class CharacterSelectionManager : MonoBehaviour
 
     void OnSelectingAvatar(GameObject _ButtonObj)
     {
-        //Debug.Log(_ButtonObj.transform.parent.parent.parent.name);
-        if(_ButtonObj.transform.parent.parent.parent.GetSiblingIndex() == 0)
+
+        //if (_ButtonObj.transform.parent.parent.parent.GetSiblingIndex())
+        if(_GlobalInfo.AvatarsList[_ButtonObj.transform.parent.parent.parent.GetSiblingIndex()] != true)
+        {
+            //Debug.LogError("It is locked");
+
+            NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 5);
+
+            return;
+        }
+
+
+        if (_ButtonObj.transform.parent.parent.parent.GetSiblingIndex() == 0)
         {
             Debug.Log("Avatar Default");
 
-            Game_GlobalInfo.singleton.Player_SelectedCharacter = 0;
+            _GlobalInfo.Player_SelectedCharacter = 0;
         }
         else if (_ButtonObj.transform.parent.parent.parent.GetSiblingIndex() == 1)
         {
             Debug.Log("Avatar 00");
 
-            Game_GlobalInfo.singleton.Player_SelectedCharacter = 1;
+            _GlobalInfo.Player_SelectedCharacter = 1;
         }
         else if (_ButtonObj.transform.parent.parent.parent.GetSiblingIndex() == 2)
         {
             Debug.Log("Avatar 01");
 
-            Game_GlobalInfo.singleton.Player_SelectedCharacter = 2;
+            _GlobalInfo.Player_SelectedCharacter = 2;
         }
         else if (_ButtonObj.transform.parent.parent.parent.GetSiblingIndex() == 3)
         {
             Debug.Log("Avatar 02");
 
-            Game_GlobalInfo.singleton.Player_SelectedCharacter = 3;
+            _GlobalInfo.Player_SelectedCharacter = 3;
         }
 
         GetAvatarSelection();
@@ -136,15 +157,19 @@ public class CharacterSelectionManager : MonoBehaviour
             PageNo = 0;
         }
 
-        if(Game_GlobalInfo.singleton.AvatarsList.Count!=0)
+        if(_GlobalInfo.AvatarsList.Count!=0)
         {
-            if(Game_GlobalInfo.singleton.AvatarsList[PageNo] == true)
+            if(_GlobalInfo.AvatarsList[PageNo] == true)
             {
                 Debug.Log("Unlocked");
+
+                _LockingManage.SetLockOrUnlock(false);
             }
             else
             {
                 Debug.Log("Locked");
+
+                _LockingManage.SetLockOrUnlock(true);
             }
         }
 
@@ -152,20 +177,20 @@ public class CharacterSelectionManager : MonoBehaviour
 
     public void GetAvatarSelection()
     {
-        if(Game_GlobalInfo.singleton.Player_SelectedCharacter == 0)
+        if(_GlobalInfo.Player_SelectedCharacter == 0)
         {
             GameManager_MainMenu.Text_ChosenAvatar.text = "Avatar default selected";
         }
-        else if (Game_GlobalInfo.singleton.Player_SelectedCharacter == 1)
+        else if (_GlobalInfo.Player_SelectedCharacter == 1)
         {
             GameManager_MainMenu.Text_ChosenAvatar.text = "Avatar 00 selected";
         }
-        else if (Game_GlobalInfo.singleton.Player_SelectedCharacter == 2)
+        else if (_GlobalInfo.Player_SelectedCharacter == 2)
         {
             GameManager_MainMenu.Text_ChosenAvatar.text = "Avatar 01 selected";
 
         }
-        else if (Game_GlobalInfo.singleton.Player_SelectedCharacter == 3)
+        else if (_GlobalInfo.Player_SelectedCharacter == 3)
         {
             GameManager_MainMenu.Text_ChosenAvatar.text = "Avatar 02 selected";
         }
