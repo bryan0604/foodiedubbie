@@ -9,6 +9,7 @@ using UnityEngine.SocialPlatforms;
 public class GooglePlayManager : MonoBehaviour
 {
     public static GooglePlayManager singletonGooglePlay;
+    public AchievementsManagement _AchieveManager;
     public Game_GlobalInfo _gameglobal;
     public GoogleMainMenuManager MenuManager;
     public LoadingManager _LoadManager;
@@ -119,43 +120,50 @@ public class GooglePlayManager : MonoBehaviour
                 MenuManager.LoginPanelInfo.SetActive(true);
             });
 
-        Social.LoadAchievements(achievements => {
+        Social.LoadAchievements(achievements =>
+        {
             if (achievements.Length > 0)
             {
-                string myAchievements = "My achievements:\n";
-                foreach (IAchievement achievement in achievements)
-                {
-                    if(achievement.id == "CgkI__DU0doGEAIQBQ") // test achievement
-                    {
-                        if(achievement.completed)
-                        {
-                            DebugManager.OnDebugging("Test Avatar is unlocked!");
-
-                            _gameglobal.AvatarsList[0] = true;
-                        }
-                        else
-                        {
-                            DebugManager.OnDebugging("Test Avatar is not unlocked!");
-                        }                     
-                    }
-                    else if(achievement.id == "CgkI__DU0doGEAIQBw")
-                    {
-                        if (achievement.completed)
-                        {
-                            DebugManager.OnDebugging("Avatar 01 is unlocked!");
-
-                            _gameglobal.AvatarsList[1] = true;
-                        }
-                        else
-                        {
-                            DebugManager.OnDebugging("Avatar 01 is not unlock!");
-                        }
-                    }
-                }
+                CheckAchievementId(achievements);
             }
             else
+            {
                 Debug.Log("No achievements returned");
+            }
         });
+    }
+
+    void CheckAchievementId(IAchievement[] achievements)
+    {
+        foreach (IAchievement achievement in achievements)
+        {
+            if (achievement.id == "CgkI__DU0doGEAIQBQ") // test achievement
+            {
+                if (achievement.completed)
+                {
+                    DebugManager.OnDebugging("Test Avatar is unlocked!");
+
+                    _gameglobal.AvatarsList[0] = true;
+                }
+                else
+                {
+                    DebugManager.OnDebugging("Test Avatar is not unlocked!");
+                }
+            }
+            else if (achievement.id == "CgkI__DU0doGEAIQBw")
+            {
+                if (achievement.completed)
+                {
+                    DebugManager.OnDebugging("Avatar 01 is unlocked!");
+
+                    _gameglobal.AvatarsList[1] = true;
+                }
+                else
+                {
+                    DebugManager.OnDebugging("Avatar 01 is not unlock!");
+                }
+            }
+        }
     }
 
     void TestSignOut()

@@ -9659,6 +9659,11 @@ PrefabInstance:
       propertyPath: _gameglobal
       value: 
       objectReference: {fileID: 1384999801}
+    - target: {fileID: 2914811009691599964, guid: 15081ffd90b73054587ea52c15822478,
+        type: 3}
+      propertyPath: _AchieveManager
+      value: 
+      objectReference: {fileID: 2005107945}
     - target: {fileID: 2914811009691599966, guid: 15081ffd90b73054587ea52c15822478,
         type: 3}
       propertyPath: Descriptions.Array.size
@@ -9684,6 +9689,11 @@ PrefabInstance:
       propertyPath: Player_SelectedCharacter
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3268543829865554596, guid: 15081ffd90b73054587ea52c15822478,
+        type: 3}
+      propertyPath: _globalInfo
+      value: 
+      objectReference: {fileID: 1384999801}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15081ffd90b73054587ea52c15822478, type: 3}
 --- !u!1 &574271460
@@ -32142,6 +32152,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003028678}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2005107945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3268543829865554596, guid: 15081ffd90b73054587ea52c15822478,
+    type: 3}
+  m_PrefabInstance: {fileID: 556716082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4950e9facbb38b4aafa9927a995b5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2010338175
 GameObject:
   m_ObjectHideFlags: 0

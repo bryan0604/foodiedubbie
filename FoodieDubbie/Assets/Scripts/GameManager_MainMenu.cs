@@ -56,6 +56,7 @@ public class GameManager_MainMenu : MonoBehaviour
                 return;
             }
 
+            // get next scene number for activate and check achievements
             SceneManager.LoadScene(Game_GlobalInfo.singleton.Player_NextLevel);
         }
     }

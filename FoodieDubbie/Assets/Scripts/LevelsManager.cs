@@ -63,6 +63,9 @@ public class LevelsManager : MonoBehaviour
                         return;
                     }
                     SceneManager.LoadScene(item.transform.GetSiblingIndex() + 1, LoadSceneMode.Single);
+
+                    // get next scene number for activate and check achievements
+                    AchievementsManagement.singletion.Activate_Level1_Achievement_Tracking(true);
                 }
             }
         }
