@@ -65,6 +65,8 @@ public class GameManager_MainMenu : MonoBehaviour
     {
         Group_AvatarMenus.gameObject.SetActive(true);
         Group_MainMenus.gameObject.SetActive(false);
+
+        CSM.CheckPage();
     }
 
     void SelectLevel()

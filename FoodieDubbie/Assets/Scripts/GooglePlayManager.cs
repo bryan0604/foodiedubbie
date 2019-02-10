@@ -19,17 +19,18 @@ public class GooglePlayManager : MonoBehaviour
     private void Awake()
     {
         //DontDestroyOnLoad(this);
-
-        singletonGooglePlay = this;
-    }
-
-    private void Start()
-    {
         if (MenuManager == null)
         {
             MenuManager = FindObjectOfType<GoogleMainMenuManager>();
         }
 
+        singletonGooglePlay = this;
+
+        OnCheckingGooglePlayUser();
+    }
+
+    private void Start()
+    {
         if (!PlayGamesPlatform.Instance.localUser.authenticated)
         {
             PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
@@ -41,7 +42,7 @@ public class GooglePlayManager : MonoBehaviour
             PlayGamesPlatform.DebugLogEnabled = true;
         }
 
-        OnCheckingGooglePlayUser();
+        //OnCheckingGooglePlayUser();
     }
 
     public void OnCheckingGooglePlayUser()
@@ -182,13 +183,38 @@ public class GooglePlayManager : MonoBehaviour
         //Social.ShowLeaderboardUI(GPGSIds.leaderboard_test_leaderboard_01)
     }
 
-    public void UnlockAchievement(int _Code, int _ExpAmount)
+    public void UnlockAchievement(int _Code, int _ExpAmount, bool isTopUp)
     {
-        if(_Code == 1)
+        if (!PlayGamesPlatform.Instance.localUser.authenticated)
         {
-            PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQBQ", _ExpAmount, (bool success) =>
+            NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 6);
+            return;
+        }
+
+        if (isTopUp)
+        {
+            ToppingUpPoints(_Code, _ExpAmount);
+        }
+        else
+        {
+            if (_Code == 1)
             {
-                if(success)
+                PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQCA", _ExpAmount, (bool success) =>
+                {
+                    if(success)
+                        NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 7);
+                });
+            }
+        }
+    }
+
+    void ToppingUpPoints(int _Code, int _ExpAmount)
+    {
+        if (_Code == 1)
+        {
+            PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQCA", _ExpAmount, (bool success) =>
+            {
+                if (success)
                 {
                     LivesManager.singleTonnie.OnConsumeLives(-1000);
                 }

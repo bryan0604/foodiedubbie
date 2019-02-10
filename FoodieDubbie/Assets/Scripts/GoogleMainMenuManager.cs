@@ -36,7 +36,7 @@ public class GoogleMainMenuManager : MonoBehaviour
         GooglePlayLeaderboard.onClick.AddListener(gpm.TestShowLeaderboard);
         GooglePlayAchievement.onClick.AddListener(gpm.TestShowAchievement);
         AddLevelPoints.onClick.AddListener(() => gpm.OnUpdateClearedLevel(0));
-        UpgradeAvatar.onClick.AddListener(()=> { gpm.UnlockAchievement(1, 5); });
+        UpgradeAvatar.onClick.AddListener(()=> { gpm.UnlockAchievement(1, 5, true); });
 
     }
 }

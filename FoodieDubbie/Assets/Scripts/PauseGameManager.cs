@@ -45,6 +45,8 @@ public class PauseGameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
 
+        AchievementsManagement.singletion.StopAchievementsTracking();
+
         SceneManager.LoadScene(0);
     }
 

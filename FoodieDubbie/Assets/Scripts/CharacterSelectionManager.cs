@@ -148,7 +148,7 @@ public class CharacterSelectionManager : MonoBehaviour
 
     }
 
-    void CheckPage()
+    public void CheckPage()
     {
         PageNo++;
 

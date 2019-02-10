@@ -724,6 +724,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &38283397 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2914811009691599964, guid: 15081ffd90b73054587ea52c15822478,
+    type: 3}
+  m_PrefabInstance: {fileID: 556716082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71a6211654671b42a2e7012eb0f6614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &40066636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2174,6 +2186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6cb9c71355bbca43bf0cbd7cc406b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AchievementsManagement: {fileID: 0}
   LevelsRequirements: c8000000900100005802000020030000e8030000b00400007805000040060000
   AllLevels:
   - {fileID: 1750746189539258156}
@@ -9667,7 +9680,7 @@ PrefabInstance:
     - target: {fileID: 2914811009691599966, guid: 15081ffd90b73054587ea52c15822478,
         type: 3}
       propertyPath: Descriptions.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2914811009691599966, guid: 15081ffd90b73054587ea52c15822478,
         type: 3}
@@ -9678,6 +9691,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Descriptions.Array.data[5]
       value: Don't you dare! It is locked.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914811009691599966, guid: 15081ffd90b73054587ea52c15822478,
+        type: 3}
+      propertyPath: Descriptions.Array.data[6]
+      value: Your achievement will not be track because you have not login.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914811009691599966, guid: 15081ffd90b73054587ea52c15822478,
+        type: 3}
+      propertyPath: Descriptions.Array.data[7]
+      value: You have earned an achievement.
       objectReference: {fileID: 0}
     - target: {fileID: 2914811009691599963, guid: 15081ffd90b73054587ea52c15822478,
         type: 3}
@@ -9694,6 +9717,11 @@ PrefabInstance:
       propertyPath: _globalInfo
       value: 
       objectReference: {fileID: 1384999801}
+    - target: {fileID: 3268543829865554596, guid: 15081ffd90b73054587ea52c15822478,
+        type: 3}
+      propertyPath: _googleplay
+      value: 
+      objectReference: {fileID: 38283397}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15081ffd90b73054587ea52c15822478, type: 3}
 --- !u!1 &574271460

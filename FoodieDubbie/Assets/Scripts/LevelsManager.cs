@@ -7,11 +7,17 @@ using UnityEngine.EventSystems;
 
 public class LevelsManager : MonoBehaviour
 {
+    public AchievementsManagement AchievementsManagement;
     public List<int> LevelsRequirements = new List<int>();
     public List<Button> AllLevels = new List<Button>();
     public Button BackButton;
     public GameManager_MainMenu Main;
     public NoticeManager _NoticeManager;
+
+    private void Awake()
+    {
+        AchievementsManagement = FindObjectOfType<AchievementsManagement>();
+    }
 
     private void OnEnable()
     {
@@ -64,8 +70,7 @@ public class LevelsManager : MonoBehaviour
                     }
                     SceneManager.LoadScene(item.transform.GetSiblingIndex() + 1, LoadSceneMode.Single);
 
-                    // get next scene number for activate and check achievements
-                    AchievementsManagement.singletion.Activate_Level1_Achievement_Tracking(true);
+                    AchievementsManagement.AchievementTracking(item.transform.GetSiblingIndex() + 1, true);
                 }
             }
         }

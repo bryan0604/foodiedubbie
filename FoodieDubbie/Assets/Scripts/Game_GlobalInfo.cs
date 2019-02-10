@@ -87,34 +87,6 @@ public class Game_GlobalInfo : MonoBehaviour
             Player_Lives = 0;
             PlayerPrefs.DeleteKey("PlayerData_Lives");
         }
-        //Debug.Log(Time.realtimeSinceStartup);
-        //if (Milliseconds >= 60)
-        //{
-        //    Seconds++;
-        //    Milliseconds = 0;
-
-            //    if(Seconds >= 60)
-            //    {
-            //        Minutes++;
-            //        Seconds = 0;
-
-            //        if(Minutes >= 60)
-            //        {
-            //            Hours++;
-            //            Minutes = 0;
-
-            //            if(Hours >= 24)
-            //            {
-            //                //Days ++;
-            //                //Hours=0;
-            //            }
-            //        }
-            //    }
-        //}
-        //else
-        //{
-        //    Milliseconds++;
-        //}
     }
 
     private void OnApplicationQuit()
