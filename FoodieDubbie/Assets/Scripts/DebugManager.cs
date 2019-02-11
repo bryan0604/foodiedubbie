@@ -5,25 +5,19 @@ using UnityEngine.UI;
 
 public class DebugManager : MonoBehaviour
 {
-    public static Text MyText;
+    public Text MyText;
+    private static int jump;
 
     private void Awake()
     {
         MyText = GetComponent<Text>();
     }
 
-    private void Update()
+    public void OnDebugging(string code)
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            int t = Random.Range(0, 9);
-            Debug.Log("adding " + t);
-            //OnDebugging(t);
-        }
-    }
+        jump++;
 
-    public static void OnDebugging(string code)
-    {
-        MyText.text = MyText.text + " " + code;
+        MyText.text = MyText.text + "\n " + jump + " " + code;
+
     }
 }

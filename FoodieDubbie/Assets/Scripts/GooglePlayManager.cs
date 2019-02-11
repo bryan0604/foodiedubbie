@@ -9,6 +9,7 @@ using UnityEngine.SocialPlatforms;
 public class GooglePlayManager : MonoBehaviour
 {
     public static GooglePlayManager singletonGooglePlay;
+    public DebugManager DebugMaster;
     public AchievementsManagement _AchieveManager;
     public Game_GlobalInfo _gameglobal;
     public GoogleMainMenuManager MenuManager;
@@ -26,7 +27,6 @@ public class GooglePlayManager : MonoBehaviour
 
         singletonGooglePlay = this;
 
-        OnCheckingGooglePlayUser();
     }
 
     private void Start()
@@ -41,8 +41,7 @@ public class GooglePlayManager : MonoBehaviour
 
             PlayGamesPlatform.DebugLogEnabled = true;
         }
-
-        //OnCheckingGooglePlayUser();
+        OnCheckingGooglePlayUser();
     }
 
     public void OnCheckingGooglePlayUser()
@@ -56,12 +55,14 @@ public class GooglePlayManager : MonoBehaviour
             MenuManager.LoginPanelInfo.SetActive(true);
 
             GetUserInfos();
+
+            DebugMaster.OnDebugging("You have already logged on");
         }
         else
         {
             MenuManager.DisplayInfo.text = "You have not log in";
 
-            Debug.LogWarning("You have not log in");
+            DebugMaster.OnDebugging("You have not log in");
         }
     }
 
@@ -138,30 +139,43 @@ public class GooglePlayManager : MonoBehaviour
     {
         foreach (IAchievement achievement in achievements)
         {
-            if (achievement.id == "CgkI__DU0doGEAIQBQ") // test achievement
+            if (achievement.id == "CgkI__DU0doGEAIQCA") // test achievement
             {
                 if (achievement.completed)
                 {
-                    DebugManager.OnDebugging("Test Avatar is unlocked!");
+                    DebugMaster.OnDebugging(" Avatar 00 - Unlocked");
 
-                    _gameglobal.AvatarsList[0] = true;
+                    _gameglobal.AvatarsList[1] = true;
                 }
                 else
                 {
-                    DebugManager.OnDebugging("Test Avatar is not unlocked!");
+                    DebugMaster.OnDebugging(" Avatar 00 - Locked");
                 }
             }
             else if (achievement.id == "CgkI__DU0doGEAIQBw")
             {
                 if (achievement.completed)
                 {
-                    DebugManager.OnDebugging("Avatar 01 is unlocked!");
+                    DebugMaster.OnDebugging(" Avatar 01 - Unlocked");
 
-                    _gameglobal.AvatarsList[1] = true;
+                    _gameglobal.AvatarsList[2] = true;
                 }
                 else
                 {
-                    DebugManager.OnDebugging("Avatar 01 is not unlock!");
+                    DebugMaster.OnDebugging(" Avatar 01 - Locked");
+                }
+            }
+            else if (achievement.id == "CgkI__DU0doGEAIQBQ")
+            {
+                if (achievement.completed)
+                {
+                    DebugMaster.OnDebugging(" Avatar 02 - Unlocked");
+
+                    _gameglobal.AvatarsList[2] = true;
+                }
+                else
+                {
+                    DebugMaster.OnDebugging(" Avatar 02 - Locked");
                 }
             }
         }

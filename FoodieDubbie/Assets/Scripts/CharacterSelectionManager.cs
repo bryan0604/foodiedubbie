@@ -39,6 +39,9 @@ public class CharacterSelectionManager : MonoBehaviour
         else
         {
             _GlobalInfo.AvatarsList = new List<bool>(new bool[AllCharacterCanvas.Count]);
+
+            _GlobalInfo.AvatarsList[0] = true;
+
             CurrentAngle = 90;
         }
 
@@ -140,6 +143,8 @@ public class CharacterSelectionManager : MonoBehaviour
     {
         if (RotateNow) return;
 
+        PageNo++;
+
         CheckPage();
 
         _angle += CurrentAngle;
@@ -150,9 +155,7 @@ public class CharacterSelectionManager : MonoBehaviour
 
     public void CheckPage()
     {
-        PageNo++;
-
-        if(PageNo >= AllCharacterCanvas.Count)
+        if (PageNo >= AllCharacterCanvas.Count)
         {
             PageNo = 0;
         }

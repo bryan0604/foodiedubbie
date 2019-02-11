@@ -48,6 +48,8 @@ public class PauseGameManager : MonoBehaviour
         AchievementsManagement.singletion.StopAchievementsTracking();
 
         SceneManager.LoadScene(0);
+
+        GooglePlayManager.singletonGooglePlay.OnCheckingGooglePlayUser();
     }
 
     public void ShowGuidance()
