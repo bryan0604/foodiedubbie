@@ -49,7 +49,7 @@ public class PauseGameManager : MonoBehaviour
 
         SceneManager.LoadScene(0);
 
-        GooglePlayManager.singletonGooglePlay.OnCheckingGooglePlayUser();
+        //GooglePlayManager.singletonGooglePlay.OnCheckingGooglePlayUser();
     }
 
     public void ShowGuidance()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GooglePlayGames;
 
 public class GoogleMainMenuManager : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class GoogleMainMenuManager : MonoBehaviour
 
             gpm.MenuManager = this;
         }
+
+        OnCheckingGooglePlayUser();
     }
 
     private void Start()
@@ -38,5 +41,27 @@ public class GoogleMainMenuManager : MonoBehaviour
         AddLevelPoints.onClick.AddListener(() => gpm.OnUpdateClearedLevel(0));
         UpgradeAvatar.onClick.AddListener(()=> { gpm.UnlockAchievement(1, 5, true); });
 
+    }
+
+    public void OnCheckingGooglePlayUser()
+    {
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
+        {
+            DisplayInfo.text = "You have already logged on";
+
+            GooglePlaySignIn.gameObject.SetActive(false);
+
+            LoginPanelInfo.SetActive(true);
+
+            gpm.GetUserInfos();
+
+            gpm.DebugMaster.OnDebugging("You have already logged on");
+        }
+        else
+        {
+            DisplayInfo.text = "You have not log in";
+
+            gpm.DebugMaster.OnDebugging("You have not log in");
+        }
     }
 }

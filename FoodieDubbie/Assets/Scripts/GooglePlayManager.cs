@@ -41,30 +41,30 @@ public class GooglePlayManager : MonoBehaviour
 
             PlayGamesPlatform.DebugLogEnabled = true;
         }
-        OnCheckingGooglePlayUser();
+        //OnCheckingGooglePlayUser();
     }
 
-    public void OnCheckingGooglePlayUser()
-    {
-        if (PlayGamesPlatform.Instance.localUser.authenticated)
-        {
-            MenuManager.DisplayInfo.text = "You have already logged on";
+    //public void OnCheckingGooglePlayUser()
+    //{
+    //    if (PlayGamesPlatform.Instance.localUser.authenticated)
+    //    {
+    //        MenuManager.DisplayInfo.text = "You have already logged on";
 
-            MenuManager.GooglePlaySignIn.gameObject.SetActive(false);
+    //        MenuManager.GooglePlaySignIn.gameObject.SetActive(false);
 
-            MenuManager.LoginPanelInfo.SetActive(true);
+    //        MenuManager.LoginPanelInfo.SetActive(true);
 
-            GetUserInfos();
+    //        GetUserInfos();
 
-            DebugMaster.OnDebugging("You have already logged on");
-        }
-        else
-        {
-            MenuManager.DisplayInfo.text = "You have not log in";
+    //        DebugMaster.OnDebugging("You have already logged on");
+    //    }
+    //    else
+    //    {
+    //        MenuManager.DisplayInfo.text = "You have not log in";
 
-            DebugMaster.OnDebugging("You have not log in");
-        }
-    }
+    //        DebugMaster.OnDebugging("You have not log in");
+    //    }
+    //}
 
     public void TestAuthLogin()
     {
@@ -91,10 +91,10 @@ public class GooglePlayManager : MonoBehaviour
     {
         ((GooglePlayGames.PlayGamesPlatform)Social.Active).SetGravityForPopups(Gravity.TOP);
 
-        OnCheckingGooglePlayUser();
+        //OnCheckingGooglePlayUser();
     }
 
-    void GetUserInfos()
+    public void GetUserInfos()
     {
         MenuManager.GooglePlayUsername.text = Social.localUser.userName;
 
