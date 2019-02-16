@@ -91,7 +91,11 @@ public class GooglePlayManager : MonoBehaviour
     {
         ((GooglePlayGames.PlayGamesPlatform)Social.Active).SetGravityForPopups(Gravity.TOP);
 
+        MenuManager.OnCheckingGooglePlayUser();
+
         //OnCheckingGooglePlayUser();
+
+        //GetUserInfos();
     }
 
     public void GetUserInfos()
