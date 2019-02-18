@@ -8,7 +8,7 @@ public class GoogleMainMenuManager : MonoBehaviour
 {
     public static GoogleMainMenuManager singleTonGooglePlayMenu;
     public GooglePlayManager gpm;
-
+    public LoadingManager _LoadingManager;
     public GameObject LoginPanelInfo;
     public Text GooglePlayUsername;
     public Text GooglePlayCurrentLevel;
@@ -30,6 +30,11 @@ public class GoogleMainMenuManager : MonoBehaviour
             gpm.MenuManager = this;
         }
 
+        if(_LoadingManager==null)
+        {
+            _LoadingManager = Behaviour.FindObjectOfType<LoadingManager>();
+        }
+
         OnCheckingGooglePlayUser();
     }
 
@@ -45,6 +50,8 @@ public class GoogleMainMenuManager : MonoBehaviour
 
     public void OnCheckingGooglePlayUser()
     {
+        _LoadingManager.LoadingScreen(true);
+
         if (PlayGamesPlatform.Instance.localUser.authenticated)
         {
             DisplayInfo.text = "You have already logged on";
@@ -63,5 +70,7 @@ public class GoogleMainMenuManager : MonoBehaviour
 
             gpm.DebugMaster.OnDebugging("You have not log in");
         }
+
+        _LoadingManager.LoadingScreen(false);
     }
 }

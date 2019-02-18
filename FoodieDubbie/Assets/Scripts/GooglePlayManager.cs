@@ -121,7 +121,7 @@ public class GooglePlayManager : MonoBehaviour
 
                 Game_GlobalInfo.singleton.OnUpdatePlayerInfo(Social.localUser.userName, GooglePlayCurrentLevel);
 
-                LoadingManager.singleton.LoadingScreen(false);
+                _LoadManager.LoadingScreen(false);
 
                 MenuManager.LoginPanelInfo.SetActive(true);
             });

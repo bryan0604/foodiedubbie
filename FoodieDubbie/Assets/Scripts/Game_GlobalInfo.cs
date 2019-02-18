@@ -62,7 +62,7 @@ public class Game_GlobalInfo : MonoBehaviour
 
             DontDestroyOnLoad(gameObject);
 
-            Debug.Log(Game_GlobalInfo.singleton + " is main = " + ThisIsMain, gameObject);
+            //Debug.Log(Game_GlobalInfo.singleton + " is main = " + ThisIsMain, gameObject);
 
             OnNextLevelCheck();
         }
