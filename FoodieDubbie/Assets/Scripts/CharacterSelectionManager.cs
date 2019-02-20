@@ -98,6 +98,8 @@ public class CharacterSelectionManager : MonoBehaviour
             _GlobalInfo.Player_SelectedCharacter = 3;
         }
 
+        NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 11);
+
         GetAvatarSelection();
     }
 

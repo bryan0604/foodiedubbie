@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PauseGameManager : MonoBehaviour
 {
     public static PauseGameManager singleTon;
+    public AchievementsManagement _achieveentManagement;
     public GameObject PausePanel;
     public Button Button_MainMenu;
     public Button Button_Guidance;
@@ -19,6 +20,12 @@ public class PauseGameManager : MonoBehaviour
         Button_Pause.onClick.AddListener(() => { PauseActivate(true); });
         Button_Unpause.onClick.AddListener(() => { PauseActivate(false); });
         Button_MainMenu.onClick.AddListener(ReturnToMainMenu);
+
+        if(_achieveentManagement==null)
+        {
+            _achieveentManagement = Behaviour.FindObjectOfType<AchievementsManagement>();
+        }
+
     }
 
     public void PauseActivate(bool activate)
@@ -45,7 +52,7 @@ public class PauseGameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        AchievementsManagement.singletion.StopAchievementsTracking();
+        _achieveentManagement.StopAchievementsTracking();
 
         SceneManager.LoadScene(0);
 

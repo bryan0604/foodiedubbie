@@ -8,6 +8,13 @@ using UnityEngine.SocialPlatforms;
 
 public class GooglePlayManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class AvatarIncrementPointsManager
+    {
+        public List<int> Avatar_Pts_Increment = new List<int>(3);
+    }
+
+    public AvatarIncrementPointsManager AIPM;
     public static GooglePlayManager singletonGooglePlay;
     public DebugManager DebugMaster;
     public AchievementsManagement _AchieveManager;
@@ -19,7 +26,6 @@ public class GooglePlayManager : MonoBehaviour
 
     private void Awake()
     {
-        //DontDestroyOnLoad(this);
         if (MenuManager == null)
         {
             MenuManager = FindObjectOfType<GoogleMainMenuManager>();
@@ -27,6 +33,7 @@ public class GooglePlayManager : MonoBehaviour
 
         singletonGooglePlay = this;
 
+        //Debug.Log(AIPM.Avatar00_Points_Increment);
     }
 
     private void Start()
@@ -79,10 +86,14 @@ public class GooglePlayManager : MonoBehaviour
             if (success)
             {
                 ShowLoginInfo();
+
+                NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 9);
             }
             else
             {
                 _LoadManager.LoadingScreen(false);
+
+                NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 10);
             }
         });
     }
@@ -175,7 +186,7 @@ public class GooglePlayManager : MonoBehaviour
                 {
                     DebugMaster.OnDebugging(" Avatar 02 - Unlocked");
 
-                    _gameglobal.AvatarsList[2] = true;
+                    _gameglobal.AvatarsList[3] = true;
                 }
                 else
                 {
@@ -203,15 +214,35 @@ public class GooglePlayManager : MonoBehaviour
 
     public void UnlockAchievement(int _Code, int _ExpAmount, bool isTopUp)
     {
+        LoadingManager.singleton.LoadingScreen(true);
+
         if (!PlayGamesPlatform.Instance.localUser.authenticated)
         {
             NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 6);
+
+            LoadingManager.singleton.LoadingScreen(false);
             return;
         }
 
         if (isTopUp)
         {
-            ToppingUpPoints(_Code, _ExpAmount);
+            for (int i = 0; i < _gameglobal.AvatarsList.Count; i++)
+            {
+                if(_gameglobal.AvatarsList[i])
+                {
+
+                }
+                else
+                {
+                    DebugMaster.OnDebugging("Topping up on avatar = " + (i-1).ToString());
+
+                    ToppingUpPoints(i-1);
+
+                    return;
+                }
+            }
+
+            DebugMaster.OnDebugging("All Avatars has been unlocked");
         }
         else
         {
@@ -220,21 +251,26 @@ public class GooglePlayManager : MonoBehaviour
                 PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQCA", _ExpAmount, (bool success) =>
                 {
                     if(success)
+                    {
                         NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 7);
+                    }
                 });
             }
         }
+        LoadingManager.singleton.LoadingScreen(false);
     }
 
-    void ToppingUpPoints(int _Code, int _ExpAmount)
+    void ToppingUpPoints(int _Code)
     {
-        if (_Code == 1)
+        if (_Code == 0)
         {
-            PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQCA", _ExpAmount, (bool success) =>
+            PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQCA", AIPM.Avatar_Pts_Increment[0], (bool success) =>
             {
                 if (success)
                 {
                     LivesManager.singleTonnie.OnConsumeLives(-1000);
+
+                    DebugMaster.OnDebugging("Code = 0, Achievement = Avatar 0, Points = " + AIPM.Avatar_Pts_Increment[0]);
                 }
                 else
                 {
@@ -242,6 +278,40 @@ public class GooglePlayManager : MonoBehaviour
                 }
             });
         }
+        else if (_Code == 1)
+        {
+            PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQBw", AIPM.Avatar_Pts_Increment[1], (bool success) =>
+            {
+                if (success)
+                {
+                    LivesManager.singleTonnie.OnConsumeLives(-1000);
+
+                    DebugMaster.OnDebugging("Code = 1, Achievement = Avatar 1, Points = " + AIPM.Avatar_Pts_Increment[1]);
+                }
+                else
+                {
+                    NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 3);
+                }
+            });
+        }
+        else if (_Code == 2)
+        {
+            PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQBQ", AIPM.Avatar_Pts_Increment[2], (bool success) =>
+            {
+                if (success)
+                {
+                    LivesManager.singleTonnie.OnConsumeLives(-1000);
+
+                    DebugMaster.OnDebugging("Code = 2, Achievement = Avatar 2, Points = " + AIPM.Avatar_Pts_Increment[2]);
+                }
+                else
+                {
+                    NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 3);
+                }
+            });
+        }
+
+        LoadingManager.singleton.LoadingScreen(false);
     }
 
     public void OnUpdateClearedLevel(int _NewDefeatedLevel)

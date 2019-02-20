@@ -32,7 +32,7 @@ public class LoadingManager : MonoBehaviour
 
     IEnumerator Delays(bool activate)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
 
         LoadingScreen_Panel.SetActive(activate);
     }

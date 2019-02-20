@@ -10,6 +10,7 @@ public class LivesManager : MonoBehaviour
     public static LivesManager singleTonnie;
     public Button Button_WatchAds;
     public Text Text_Lives;
+    public bool AdsIsShowing;
 
     private void Awake()
     {
@@ -25,10 +26,14 @@ public class LivesManager : MonoBehaviour
 
     public void ShowRewardedAd()
     {
-        if (Advertisement.IsReady("AddingLives"))
+        if(AdsIsShowing == false)
         {
-            var options = new ShowOptions { resultCallback = HandleShowResult };
-            Advertisement.Show("AddingLives", options);
+            if (Advertisement.IsReady("AddingLives"))
+            {
+                var options = new ShowOptions { resultCallback = HandleShowResult };
+                Advertisement.Show("AddingLives", options);
+                AdsIsShowing = true;
+            }
         }
     }
 
@@ -40,8 +45,8 @@ public class LivesManager : MonoBehaviour
                 Debug.Log("The ad was successfully shown.");
 
                 OnAddingLives(250);
-
-
+                AdsIsShowing = false;
+                NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 8);
                 break;
             case ShowResult.Skipped:
                 Debug.Log("The ad was skipped before reaching the end.");

@@ -3533,6 +3533,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213696610}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &227868103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 227868104}
+  m_Layer: 5
+  m_Name: RedScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &227868104
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227868103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1236411780}
+  m_Father: {fileID: 2914811009981939065}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!43 &246630097
 Mesh:
   m_ObjectHideFlags: 0
@@ -15736,6 +15772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button_WatchAds: {fileID: 1732934486}
   Text_Lives: {fileID: 2097303627}
+  AdsIsShowing: 0
 --- !u!114 &1206387554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15778,6 +15815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gpm: {fileID: 0}
+  _LoadingManager: {fileID: 0}
   LoginPanelInfo: {fileID: 1750746190123001142}
   GooglePlayUsername: {fileID: 1750746189623379854}
   GooglePlayCurrentLevel: {fileID: 1750746189626954342}
@@ -16099,6 +16137,80 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1236411777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1236411780}
+  - component: {fileID: 1236411779}
+  - component: {fileID: 1236411778}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1236411778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236411777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.3584906, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1236411779
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236411777}
+  m_CullTransparentMesh: 1
+--- !u!224 &1236411780
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236411777}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 227868104}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1248929006
 GameObject:
   m_ObjectHideFlags: 0
@@ -40330,7 +40442,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
@@ -40341,7 +40453,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '<b>DEBUG LOG</b> : -'
+  m_Text: '<size=50><b>DEBUG LOG</b> : -</size>'
 --- !u!222 &1750746190598144701
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42176,6 +42288,7 @@ RectTransform:
   - {fileID: 2914811010387908911}
   - {fileID: 2914811011490411080}
   - {fileID: 1750746190598144703}
+  - {fileID: 227868104}
   m_Father: {fileID: 2914811010248217704}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42293,6 +42406,7 @@ GameObject:
   - component: {fileID: 2914811010248217708}
   - component: {fileID: 3268543829308912278}
   - component: {fileID: 2914811010248217709}
+  - component: {fileID: 2914811010248217712}
   m_Layer: 0
   m_Name: _globalInfo
   m_TagString: Untagged
@@ -42315,12 +42429,17 @@ MonoBehaviour:
   Descriptions:
   - Not enough points to start the game. Please kindly watch the ads to restore points.
   - This level will be coming soon!
-  - Successfully Consumed all points!
+  - Successfully topup 1000 points to the next avatar.
   - Failed to consume your points!
   - Not enough points to upgrade your next avatar!
   - Don't you dare! It is locked.
   - Your achievement will not be track because you have not login.
   - You have earned an achievement.
+  - Thank you for watching the Ads. You have recieved 250 points, hand have a good
+    day!
+  - You have successfully login to your account.
+  - Failed to login to your account. Please check connections.
+  - Character selected!
   Text_Content: {fileID: 2914811011236129206}
   NoticePanel: {fileID: 2914811010387908910}
   Button_Closed: {fileID: 2914811010655509928}
@@ -42348,6 +42467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71a6211654671b42a2e7012eb0f6614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AIPM:
+    Avatar_Pts_Increment: 050000000500000005000000
   DebugMaster: {fileID: 1750746190598144674}
   _AchieveManager: {fileID: 3268543829308912278}
   _gameglobal: {fileID: 2914811010248217705}
@@ -42369,6 +42490,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoadingScreen_Panel: {fileID: 2914811011490411083}
   Prefab: {fileID: 8690881975611071746, guid: cd9560e5291ff7a409535567902e56fe, type: 3}
+--- !u!114 &2914811010248217712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2914811010248217707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c3c1481a6d6f51449be75d0b2b6da99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChangeSpeed: 2
+  ChangeSpeedMultiply: 2
+  AlphaMax: 155
+  RedScreen: {fileID: 1236411778}
 --- !u!114 &2914811010302469488
 MonoBehaviour:
   m_ObjectHideFlags: 0

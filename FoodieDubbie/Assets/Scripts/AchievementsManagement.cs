@@ -45,7 +45,7 @@ public class AchievementsManagement : MonoBehaviour
 
         Debug.Log("Achievement Increased");
 
-        _googleplay.UnlockAchievement(1, 25, false);
+        _googleplay.UnlockAchievement(1, 1, false);
     }
 
     public void StopAchievementsTracking()
