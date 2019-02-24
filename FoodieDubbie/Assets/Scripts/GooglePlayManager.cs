@@ -14,6 +14,8 @@ public class GooglePlayManager : MonoBehaviour
         public List<int> Avatar_Pts_Increment = new List<int>(3);
     }
 
+    protected string GoogleSignInTracking = "SignIn"; 
+
     public AvatarIncrementPointsManager AIPM;
     public static GooglePlayManager singletonGooglePlay;
     public DebugManager DebugMaster;
@@ -33,11 +35,6 @@ public class GooglePlayManager : MonoBehaviour
 
         singletonGooglePlay = this;
 
-        //Debug.Log(AIPM.Avatar00_Points_Increment);
-    }
-
-    private void Start()
-    {
         if (!PlayGamesPlatform.Instance.localUser.authenticated)
         {
             PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
@@ -48,7 +45,30 @@ public class GooglePlayManager : MonoBehaviour
 
             PlayGamesPlatform.DebugLogEnabled = true;
         }
-        //OnCheckingGooglePlayUser();
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            print("Android");
+
+            if(PlayerPrefs.HasKey(GoogleSignInTracking))
+            {
+                DebugMaster.OnDebugging(" Old player - Account found!");
+
+                TestAuthLogin();
+            }
+            else
+            {
+                DebugMaster.OnDebugging(" New player - No login records found!");
+            }
+        }
+        else if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            print("Iphone");
+        }
+        else
+        {
+            print("Editor");
+        }
     }
 
     //public void OnCheckingGooglePlayUser()
@@ -75,13 +95,13 @@ public class GooglePlayManager : MonoBehaviour
 
     public void TestAuthLogin()
     {
-        Debug.Log("Processing Google Play Login");
+        DebugMaster.OnDebugging("Processing Google Play Login");
 
         _LoadManager.LoadingScreen(true);
 
         Social.localUser.Authenticate((bool success) =>
         {
-            Debug.Log("Success or Fail = " + success);
+            DebugMaster.OnDebugging("Success or Fail = " + success);
 
             if (success)
             {
@@ -104,9 +124,7 @@ public class GooglePlayManager : MonoBehaviour
 
         MenuManager.OnCheckingGooglePlayUser();
 
-        //OnCheckingGooglePlayUser();
-
-        //GetUserInfos();
+        PlayerPrefs.SetString(GoogleSignInTracking, "True");
     }
 
     public void GetUserInfos()
@@ -148,6 +166,8 @@ public class GooglePlayManager : MonoBehaviour
                 Debug.Log("No achievements returned");
             }
         });
+
+
     }
 
     void CheckAchievementId(IAchievement[] achievements)
@@ -221,6 +241,11 @@ public class GooglePlayManager : MonoBehaviour
             NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 6);
 
             LoadingManager.singleton.LoadingScreen(false);
+            return;
+        }
+        else if (Game_GlobalInfo.singleton.Player_Lives < 1000)
+        {
+            NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 4);
             return;
         }
 

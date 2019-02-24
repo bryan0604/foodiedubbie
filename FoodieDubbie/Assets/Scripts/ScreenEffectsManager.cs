@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ScreenEffectsManager : MonoBehaviour
 {
+    public static ScreenEffectsManager SEM;
     public float ChangeSpeed;
     public float ChangeSpeedMultiply;
     public float AlphaMax;
@@ -16,6 +17,7 @@ public class ScreenEffectsManager : MonoBehaviour
 
     private void Awake()
     {
+        SEM = this;
         AlphaMax = AlphaMax/255;
         CurrentAlphaAmount = RedScreen.color.a;
         C = RedScreen.color;
@@ -23,17 +25,17 @@ public class ScreenEffectsManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            if(isChanging || isDecreasing)
-            {
-                return;
-            }
-            else
-            {
-                isChanging = true;
-            }
-        }
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    if(isChanging || isDecreasing)
+        //    {
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        isChanging = true;
+        //    }
+        //}
 
         if(isChanging)
         {
@@ -69,6 +71,18 @@ public class ScreenEffectsManager : MonoBehaviour
 
                 RedScreen.color = C;
             }
+        }
+    }
+
+    public void ActivateScreenRed()
+    {
+        if (isChanging || isDecreasing)
+        {
+            return;
+        }
+        else
+        {
+            isChanging = true;
         }
     }
 }

@@ -59,18 +59,12 @@ public class LivesManager : MonoBehaviour
     
     public void OnConsumeLives(int Quantity)
     {
-        if(Game_GlobalInfo.singleton.Player_Lives >= 1000 )
-        {
-            NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 2);
 
-            Game_GlobalInfo.singleton.Player_Lives += Quantity;
+        NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 2);
 
-            OnUpdateLivesDisplay();
-        }
-        else
-        {
-            NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 4);
-        }
+        Game_GlobalInfo.singleton.Player_Lives += Quantity;
+
+        OnUpdateLivesDisplay();
     }
 
     public void OnAddingLives(int Quantity)

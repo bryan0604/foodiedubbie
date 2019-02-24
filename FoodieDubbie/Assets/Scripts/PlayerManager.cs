@@ -72,6 +72,8 @@ public class PlayerManager : MonoBehaviour
     {
         HealthPoints -= _DamageAmount;
 
+        ScreenEffectsManager.SEM.ActivateScreenRed();
+
         #region SE
         SpecialEffectsManager _se;
 

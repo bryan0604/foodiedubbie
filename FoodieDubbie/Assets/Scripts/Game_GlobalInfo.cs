@@ -61,7 +61,7 @@ public class Game_GlobalInfo : MonoBehaviour
             singleton = this;
 
             DontDestroyOnLoad(gameObject);
-
+            
             //Debug.Log(Game_GlobalInfo.singleton + " is main = " + ThisIsMain, gameObject);
 
             OnNextLevelCheck();
@@ -77,15 +77,6 @@ public class Game_GlobalInfo : MonoBehaviour
         if(!ThisIsMain)
         {
             Destroy(gameObject);
-        }
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            Player_Lives = 0;
-            PlayerPrefs.DeleteKey("PlayerData_Lives");
         }
     }
 
