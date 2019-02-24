@@ -44,7 +44,8 @@ public class LivesManager : MonoBehaviour
             case ShowResult.Finished:
                 Debug.Log("The ad was successfully shown.");
 
-                OnAddingLives(250);
+                TreasureManagement.TM.OnShowingRewards(0);
+
                 AdsIsShowing = false;
                 NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 8);
                 break;
