@@ -44,10 +44,10 @@ public class LivesManager : MonoBehaviour
             case ShowResult.Finished:
                 Debug.Log("The ad was successfully shown.");
 
-                TreasureManagement.TM.OnShowingRewards(0);
+                TreasureManagement.TM.OnShowingRewards(1);
 
                 AdsIsShowing = false;
-                NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 8);
+                //NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 8);
                 break;
             case ShowResult.Skipped:
                 Debug.Log("The ad was skipped before reaching the end.");

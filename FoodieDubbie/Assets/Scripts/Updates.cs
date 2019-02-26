@@ -1,22 +1,23 @@
 ﻿#region To Updates
 // 1. Camera Shake (Priority - 1D)
-// 2. Level 4 & 5 Introductions
+// 2. Characters Locking/Unlock Management
 // 3. Multiplayer
-// 4. Level 4 & 5 Balancing and Test Error
-// 5.
-// 6. 
-// 7.
+// 4. Check character with current achievements for unlock/lock
+// 5. Apply stats for characters on PlayerManager
+// 6. New Achievements introductions
+// 7. Achievement increment based on time play conditions.
 // 8. AOE damage indications basic - animations code mechanics. (Neglected)
-// 9. Special Effects when player takes dmg. (Priority - 1D)
+// 9. Treasure Chest implementations
 //10. Display Damage text when got hit. (Not important)
-//11. 
+//11. Treasure display rewards content.
 //12. Loading Display before game start.
 //13. Loading Screen Design
-//14. 
-//15. 
-//16.
-//17.
-//18. 
+//14. Auto login on android for old player. Not new player.
+//15. Account log out implementation
+//16. Special Effects - Opening Treasures
+//17. Special Effects - Boss Normal attack
+//18. Special Effects - Boss Skills
+//19. Turrets shoot missiles.
 #endregion
 
 #region Updates Done

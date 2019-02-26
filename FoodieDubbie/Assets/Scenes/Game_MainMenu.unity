@@ -21481,6 +21481,7 @@ MonoBehaviour:
   ChestSE: {fileID: 711334740}
   TreasuresButton: {fileID: 1534628772}
   ClosedButton: {fileID: 19224349}
+  Text_Content: {fileID: 1775312939}
   DebugMaster: {fileID: 0}
   ChestGroup: {fileID: 2060529406}
   ChestContent: {fileID: 365152983}

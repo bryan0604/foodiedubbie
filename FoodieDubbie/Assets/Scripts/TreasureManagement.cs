@@ -15,10 +15,12 @@ public class TreasureManagement : MonoBehaviour
     public ParticleSystem ChestSE;
     public Button TreasuresButton;
     public Button ClosedButton;
+    public Text Text_Content;
     public DebugManager DebugMaster;
     public GameObject ChestGroup;
     public GameObject ChestContent;
     public List<TreasuresRewards> Rewards = new List<TreasuresRewards>();
+    private bool IsTreasureOpened;
     private int PointsQuantity;
 
     private void Awake()
@@ -51,10 +53,16 @@ public class TreasureManagement : MonoBehaviour
 
     public void OnShowingRewards(int code)
     {
-        //PointsQuantity = Rewards[code].RewardsList[code];
-        for (int i = 0; i < code; i++)
+        IsTreasureOpened = false;
+
+        for (int i = 0; i < Rewards[code-1].RewardsList.Count; i++)
         {
-            DebugMaster.OnDebugging(Rewards[code].RewardsList[i].ToString());
+            DebugMaster.OnDebugging(Rewards[i].RewardsList[i].ToString());
+
+            Game_GlobalInfo.singleton.Player_Lives += Rewards[i].RewardsList[i];
+
+            Text_Content.text = "Points + " + Rewards[i].RewardsList[i].ToString();
+
         }
 
         ShowChest();
@@ -63,12 +71,15 @@ public class TreasureManagement : MonoBehaviour
     void ShowChest()
     {
         ChestGroup.SetActive(true);
-
     }
 
     void TreasureOpen()
     {
+        if (IsTreasureOpened == true) return;
+
         DebugMaster.OnDebugging("Treasure Opening...");
+
+        IsTreasureOpened = true;
 
         ChestSE.Play();
 
@@ -81,7 +92,7 @@ public class TreasureManagement : MonoBehaviour
 
         // add rewards
 
-        Game_GlobalInfo.singleton.Player_Lives += PointsQuantity;
+        //Game_GlobalInfo.singleton.Player_Lives += PointsQuantity;
 
         LivesManager.singleTonnie.OnUpdateLivesDisplay();
 
