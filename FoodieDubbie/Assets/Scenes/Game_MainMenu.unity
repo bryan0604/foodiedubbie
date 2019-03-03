@@ -53777,6 +53777,7 @@ MonoBehaviour:
   _gameglobal: {fileID: 2914811010248217705}
   MenuManager: {fileID: 0}
   _LoadManager: {fileID: 2914811010248217711}
+  _NoticeManage: {fileID: 0}
   GooglePlayUsername: 
   GooglePlayCurrentLevel: 1
 --- !u!114 &2914811010248217711

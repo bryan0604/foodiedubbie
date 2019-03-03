@@ -23,6 +23,7 @@ public class GooglePlayManager : MonoBehaviour
     public Game_GlobalInfo _gameglobal;
     public GoogleMainMenuManager MenuManager;
     public LoadingManager _LoadManager;
+    public NoticeManager _NoticeManage;
     public string GooglePlayUsername="";
     public int GooglePlayCurrentLevel=1;
 
@@ -31,6 +32,11 @@ public class GooglePlayManager : MonoBehaviour
         if (MenuManager == null)
         {
             MenuManager = FindObjectOfType<GoogleMainMenuManager>();
+        }
+
+        if(_NoticeManage == null)
+        {
+            _NoticeManage = NoticeManager.SingleTonyStark;
         }
 
         singletonGooglePlay = this;
@@ -107,13 +113,13 @@ public class GooglePlayManager : MonoBehaviour
             {
                 ShowLoginInfo();
 
-                NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 9);
+                _NoticeManage.OnActivationNoticeBoard(true, 9);
             }
             else
             {
                 _LoadManager.LoadingScreen(false);
 
-                NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 10);
+                _NoticeManage.OnActivationNoticeBoard(true, 10);
             }
         });
     }
@@ -234,18 +240,18 @@ public class GooglePlayManager : MonoBehaviour
 
     public void UnlockAchievement(int _Code, int _ExpAmount, bool isTopUp)
     {
-        LoadingManager.singleton.LoadingScreen(true);
+        _LoadManager.LoadingScreen(true);
 
         if (!PlayGamesPlatform.Instance.localUser.authenticated)
         {
-            NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 6);
+            _NoticeManage.OnActivationNoticeBoard(true, 6);
 
-            LoadingManager.singleton.LoadingScreen(false);
+            _LoadManager.LoadingScreen(false);
             return;
         }
         else if (Game_GlobalInfo.singleton.Player_Lives < 1000)
         {
-            NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 4);
+            _NoticeManage.OnActivationNoticeBoard(true, 4);
             return;
         }
 
@@ -277,12 +283,12 @@ public class GooglePlayManager : MonoBehaviour
                 {
                     if(success)
                     {
-                        NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 7);
+                        _NoticeManage.OnActivationNoticeBoard(true, 7);
                     }
                 });
             }
         }
-        LoadingManager.singleton.LoadingScreen(false);
+        _LoadManager.LoadingScreen(false);
     }
 
     void ToppingUpPoints(int _Code)
@@ -299,7 +305,7 @@ public class GooglePlayManager : MonoBehaviour
                 }
                 else
                 {
-                    NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 3);
+                    _NoticeManage.OnActivationNoticeBoard(true, 3);
                 }
             });
         }
@@ -315,7 +321,7 @@ public class GooglePlayManager : MonoBehaviour
                 }
                 else
                 {
-                    NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 3);
+                    _NoticeManage.OnActivationNoticeBoard(true, 3);
                 }
             });
         }
@@ -331,7 +337,7 @@ public class GooglePlayManager : MonoBehaviour
                 }
                 else
                 {
-                    NoticeManager.SingleTonyStark.OnActivationNoticeBoard(true, 3);
+                    _NoticeManage.OnActivationNoticeBoard(true, 3);
                 }
             });
         }

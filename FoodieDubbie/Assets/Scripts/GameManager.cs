@@ -107,14 +107,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            SkillSix_AoeLine(3);
-        }
-    }
-
     #region Ability/Skill Management
     public void SkillOne_Upgraded()
     {
@@ -251,36 +243,36 @@ public class GameManager : MonoBehaviour
     {
         _normalHits = h;
 
-        yield return new WaitForSeconds(0.25f);
-
         SpecialEffectsManager SpecialEffect;
+
+        foreach (var item in SpecialEffects_Pools)
+        {
+            if (!item.gameObject.activeInHierarchy)
+            {
+                SpecialEffect = item.GetComponent<SpecialEffectsManager>();
+
+                if (SpecialEffect.SpecialEffectsCode == 2)
+                {
+                    Vector3 _playerPos = MainPlayer.transform.position;
+
+                    float _dice = Random.Range(-0.35f, 0.35f);
+
+                    Vector3 Pos = new Vector3(_playerPos.x + _dice, _playerPos.y + _dice, _playerPos.z + _dice);
+
+                    SpecialEffect.OnEndPlayingSpecialEffects(Pos);
+
+                    break;
+                }
+            }
+        }
+
+        yield return new WaitForSeconds(0.25f);
 
         if(_normalHits > 0)
         {
             _normalHits -= 1;
 
             MainPlayer.GetComponent<PlayerManager>().OnTakenDamage(1); 
-
-            foreach (var item in SpecialEffects_Pools)
-            {
-                if(!item.gameObject.activeInHierarchy)
-                {
-                    SpecialEffect = item.GetComponent<SpecialEffectsManager>();
-
-                    if(SpecialEffect.SpecialEffectsCode == 2)
-                    {
-                        Vector3 _playerPos = MainPlayer.transform.position;
-
-                        float _dice = Random.Range(-0.35f, 0.35f);
-
-                        Vector3 Pos = new Vector3(_playerPos.x+_dice, _playerPos.y+_dice, _playerPos.z+_dice);
-
-                        SpecialEffect.OnEndPlayingSpecialEffects(Pos);
-
-                        break;
-                    }
-                }
-            }
 
             StartCoroutine(HitManagement(_normalHits));
         }
@@ -426,6 +418,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region TargetManager (Current Version)
     void TargetManagement(bool isRandom, int Quantity, bool isTheSameTimeSpawning, int Level, bool isBuff ,bool isSmall, bool isMedium, bool isLarge)
     {
         if(isRandom)
@@ -475,6 +468,59 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    #endregion
+
+    #region TargetManager (New Implmentations)
+    void TargetManagementII(bool isRandom, int Quantity, bool isTheSameTimeSpawning, int Level, bool isBuff, bool isSmall, bool isMedium, bool isLarge)
+    {
+        if (isRandom)
+        {
+            for (int i = 0; i < Quantity; i++)
+            {
+                float X, Z, RandomX, RandomZ;
+                X = (Platform.transform.localScale.x / 2) - 0.5f;
+                Z = (Platform.transform.localScale.z / 2) - 0.5f;
+
+                RandomX = Random.Range(-X, X);
+                RandomZ = Random.Range(-Z, Z);
+
+                SingleTarget_Position = new Vector3(RandomX, 0, RandomZ);
+
+                SingleTarget_Position = Platform.transform.TransformPoint(SingleTarget_Position / 2f);
+
+                Collider[] Objects = Physics.OverlapSphere(SingleTarget_Position, 0.1f);
+
+                foreach (var item in Objects)
+                {
+                    if (item.gameObject.tag == "Platforms")
+                    {
+                        HitPlatform = true;
+                    }
+                }
+
+                if (HitPlatform)
+                {
+                    Debug.DrawLine(transform.position, SingleTarget_Position, Color.green, 5f);
+
+                    AbilitiesManagement(Level, isSmall, isMedium, isLarge);
+                }
+                else
+                {
+                    Debug.DrawLine(transform.position, SingleTarget_Position, Color.red, 5f);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < Quantity; i++)
+            {
+                SingleTarget_Position = MainPlayer.transform.position;
+
+                AbilitiesManagement(Level, isSmall, isMedium, isLarge);
+            }
+        }
+    }
+    #endregion
 
     public void TargetOnSpots()
     {

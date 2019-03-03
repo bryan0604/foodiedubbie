@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour
     public Rigidbody myRigidBody;
     public Joystick joystick;
     public PlayerUIs PlayerUIs;
+    public PlayerConvoManager PlayerConvoM;
+    public ScreenEffectsManager SEM;
     private TurretManager _mountTurret;
     private int _HealthPoints;
     private float Default_MovementSpeed;
@@ -27,6 +29,11 @@ public class PlayerManager : MonoBehaviour
         PlayerUIs.HealthPoints = HealthPoints;
 
         _HealthPoints = HealthPoints;
+
+        if(SEM == null)
+        {
+            SEM = Behaviour.FindObjectOfType<ScreenEffectsManager>();
+        }
 
         //Name'
         if(Game_GlobalInfo.singleton)
@@ -49,10 +56,10 @@ public class PlayerManager : MonoBehaviour
             Movements();
         }
         
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            OnTakenDamage(5);
-        }
+        //if(Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    OnTakenDamage(5);
+        //}
     }
 
     void Movements()
@@ -70,9 +77,11 @@ public class PlayerManager : MonoBehaviour
 
     public void OnTakenDamage(int _DamageAmount)
     {
+        PlayerConvoM.OnPlayerConvo();
+
         HealthPoints -= _DamageAmount;
 
-        ScreenEffectsManager.SEM.ActivateScreenRed();
+        SEM.ActivateScreenRed();
 
         #region SE
         SpecialEffectsManager _se;
