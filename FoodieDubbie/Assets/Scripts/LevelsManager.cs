@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class LevelsManager : MonoBehaviour
 {
+
+    public LoadingManager LoadingScreen;
     public AchievementsManagement AchievementsManagement;
     public List<int> LevelsRequirements = new List<int>();
     public List<Button> AllLevels = new List<Button>();
@@ -16,6 +18,7 @@ public class LevelsManager : MonoBehaviour
 
     private void Awake()
     {
+        LoadingScreen = Behaviour.FindObjectOfType<LoadingManager>();
         AchievementsManagement = FindObjectOfType<AchievementsManagement>();
     }
 
@@ -33,7 +36,7 @@ public class LevelsManager : MonoBehaviour
 
         //gameObject.SetActive(false);
     }
-
+    
     void ProcessLevelsProgress()
     {
         int _OpeningLevelAt = Game_GlobalInfo.singleton.Player_NextLevel;
@@ -48,8 +51,6 @@ public class LevelsManager : MonoBehaviour
 
     void DebugButton(GameObject number)
     {
-        
-
         foreach (var item in AllLevels)
         {
             if(item.gameObject == number)
@@ -68,12 +69,28 @@ public class LevelsManager : MonoBehaviour
 
                         return;
                     }
-                    SceneManager.LoadScene(item.transform.GetSiblingIndex() + 1, LoadSceneMode.Single);
+
+                    PlayerAbilitiesManager.PAM.OnEnteringGameLevels();
+
+                    //SceneManager.LoadScene(item.transform.GetSiblingIndex() + 1, LoadSceneMode.Single);
+
+                    StartCoroutine(DelayChangeScene(item.transform.GetSiblingIndex() + 1));
 
                     AchievementsManagement.AchievementTracking(item.transform.GetSiblingIndex() + 1, true);
                 }
             }
         }
+    }
+
+    IEnumerator DelayChangeScene(int SceneInt)
+    {
+        LoadingScreen.LoadingScreen(true);
+
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene(SceneInt, LoadSceneMode.Single);
+
+        LoadingScreen.LoadingScreen(false);
     }
 
     void Back()

@@ -29,6 +29,8 @@ public class GooglePlayManager : MonoBehaviour
 
     private void Awake()
     {
+        _LoadManager.LoadingScreen(true);
+
         if (MenuManager == null)
         {
             MenuManager = FindObjectOfType<GoogleMainMenuManager>();

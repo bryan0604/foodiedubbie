@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager_MainMenu : MonoBehaviour
 {
+    public LoadingManager LM;
     public CharacterSelectionManager CSM;
     public LevelsManager _levelManager;
     public Button Button_Resume;
@@ -26,6 +27,7 @@ public class GameManager_MainMenu : MonoBehaviour
 
     private void Awake()
     {
+        if (LM == null) LM = FindObjectOfType<LoadingManager>();
 
         Button_Resume.onClick.AddListener(Continue);
         Button_Quit.onClick.AddListener(Quit);
@@ -57,8 +59,23 @@ public class GameManager_MainMenu : MonoBehaviour
             }
 
             // get next scene number for activate and check achievements
-            SceneManager.LoadScene(Game_GlobalInfo.singleton.Player_NextLevel);
+            //SceneManager.LoadScene(Game_GlobalInfo.singleton.Player_NextLevel);
+
+            //StartCoroutine(_levelManager.DelayChangeScene(Game_GlobalInfo.singleton.Player_NextLevel));
+
+            StartCoroutine(DelayChangeScene(Game_GlobalInfo.singleton.Player_NextLevel));
         }
+    }
+
+    IEnumerator DelayChangeScene(int SceneInt)
+    {
+        LM.LoadingScreen(true);
+
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene(SceneInt, LoadSceneMode.Single);
+
+        LM.LoadingScreen(false);
     }
 
     void AvatarSelect()
