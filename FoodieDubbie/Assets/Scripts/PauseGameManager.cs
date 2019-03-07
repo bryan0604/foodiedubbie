@@ -54,6 +54,8 @@ public class PauseGameManager : MonoBehaviour
 
         _achieveentManagement.StopAchievementsTracking();
 
+        PlayerAbilitiesManager.PAM.OnQuittingGameLevels();
+
         SceneManager.LoadScene(0);
 
         //GooglePlayManager.singletonGooglePlay.OnCheckingGooglePlayUser();

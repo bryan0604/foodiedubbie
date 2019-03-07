@@ -63,6 +63,8 @@ public class GameManager_MainMenu : MonoBehaviour
 
             //StartCoroutine(_levelManager.DelayChangeScene(Game_GlobalInfo.singleton.Player_NextLevel));
 
+            PlayerAbilitiesManager.PAM.OnEnteringGameLevels();
+
             StartCoroutine(DelayChangeScene(Game_GlobalInfo.singleton.Player_NextLevel));
         }
     }
