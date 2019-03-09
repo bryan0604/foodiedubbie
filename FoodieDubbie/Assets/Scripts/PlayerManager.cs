@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     public int ABuffsDamage_Lv1 = 2;
     public int HP_RecoverBuff = 5;
     public int HealthPoints = 100;
+    public int ManaPoints = 0;
     public float MovementSpeed = 3f;
     public string PlayerName;
     public Rigidbody myRigidBody;
@@ -19,6 +20,11 @@ public class PlayerManager : MonoBehaviour
     private TurretManager _mountTurret;
     private int _HealthPoints;
     private float Default_MovementSpeed;
+
+    private void Awake()
+    {
+        PlayerAbilitiesManager.PAM.OnEnteringGameLevels();
+    }
 
     private void Start()
     {
@@ -144,7 +150,10 @@ public class PlayerManager : MonoBehaviour
                     {
                         BossManager_Level2.singleton.OnTakingDamage(ABuffsDamage_Lv1);
                     }
-                    
+
+                    ManaPoints++;
+
+                    PlayerAbilitiesManager.PAM.OnUpdateQuantityText();
 
                     OnRecoveringHealth();
                 }

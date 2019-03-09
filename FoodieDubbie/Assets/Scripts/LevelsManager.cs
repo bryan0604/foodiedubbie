@@ -70,7 +70,7 @@ public class LevelsManager : MonoBehaviour
                         return;
                     }
 
-                    PlayerAbilitiesManager.PAM.OnEnteringGameLevels();
+                    //PlayerAbilitiesManager.PAM.OnEnteringGameLevels();
 
                     //SceneManager.LoadScene(item.transform.GetSiblingIndex() + 1, LoadSceneMode.Single);
 

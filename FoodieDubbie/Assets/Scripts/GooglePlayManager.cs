@@ -254,6 +254,8 @@ public class GooglePlayManager : MonoBehaviour
         else if (Game_GlobalInfo.singleton.Player_Lives < 1000)
         {
             _NoticeManage.OnActivationNoticeBoard(true, 4);
+
+            _LoadManager.LoadingScreen(false);
             return;
         }
 
