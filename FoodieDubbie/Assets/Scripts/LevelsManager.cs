@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 
 public class LevelsManager : MonoBehaviour
 {
-
     public LoadingManager LoadingScreen;
     public AchievementsManagement AchievementsManagement;
     public List<int> LevelsRequirements = new List<int>();

@@ -26,14 +26,14 @@ public class NoticeManager : MonoBehaviour
     {
         if(toActivate)
         {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
 
             NoticePanel.SetActive(toActivate);
             UpdateContext(Code);
         }
         else
         {
-            Time.timeScale = 1;
+            //Time.timeScale = 1;
 
             NoticePanel.SetActive(toActivate);
         }

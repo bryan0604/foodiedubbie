@@ -24,6 +24,11 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         PlayerAbilitiesManager.PAM.OnEnteringGameLevels();
+
+        ManaPoints = PlayerAbilitiesManager.PAM.Ability1_Quantity_Start;
+
+        PlayerAbilitiesManager.PAM.PlayerScript = this;
+
     }
 
     private void Start()

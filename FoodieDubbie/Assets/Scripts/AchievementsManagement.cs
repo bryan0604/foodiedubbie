@@ -10,7 +10,7 @@ public class AchievementsManagement : MonoBehaviour
 
     public static AchievementsManagement singletion;
  
-    public float Level1_Timer = 10f;
+    public List<float> Level_Unlock_Timer = new List<float>();
 
     public bool Achievement_Level1;
 
@@ -21,29 +21,23 @@ public class AchievementsManagement : MonoBehaviour
 
     public void AchievementTracking(int Level, bool Activate)
     {
-        if(Level == 1)
+        if (Activate)
         {
-            //if (Activate && _globalInfo.AvatarsList[0] != true)
-            if (Activate )
-            {
-                StartCoroutine(Level1_Tracking());
-            }
-            else
-            {
-                Debug.Log("Rejecting Activation Level 1 Tracking");
-
-                StopAchievementsTracking();
-            }
+            StartCoroutine(Level_Tracking_Timer(Level));
+        }
+        else
+        {
+            StopAchievementsTracking();
         }
     }
 
-    IEnumerator Level1_Tracking()
+    IEnumerator Level_Tracking_Timer(int CurrentLevel)
     {
         Debug.Log("Activating achievement tracking system level 1");
 
-        yield return new WaitForSeconds(Level1_Timer);
+        yield return new WaitForSeconds(Level_Unlock_Timer[CurrentLevel]);
 
-        Debug.Log("Achievement Increased");
+        //Debug.Log("Achievement Increased");
 
         _googleplay.UnlockAchievement(1, 1, false);
     }

@@ -240,7 +240,7 @@ public class GooglePlayManager : MonoBehaviour
         //Social.ShowLeaderboardUI(GPGSIds.leaderboard_test_leaderboard_01)
     }
 
-    public void UnlockAchievement(int _Code, int _ExpAmount, bool isTopUp)
+    public void UnlockAchievement(int Level, int _ExpAmount, bool isTopUp)
     {
         _LoadManager.LoadingScreen(true);
 
@@ -281,9 +281,21 @@ public class GooglePlayManager : MonoBehaviour
         }
         else
         {
-            if (_Code == 1)
+            if (Level == 1)
             {
+                DebugMaster.OnDebugging(PlayGamesPlatform.Instance.GetAchievement("CgkI__DU0doGEAIQCA").IsUnlocked.ToString());
+
                 PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQCA", _ExpAmount, (bool success) =>
+                {
+                    if(success)
+                    {
+                        _NoticeManage.OnActivationNoticeBoard(true, 7);
+                    }
+                });
+            }
+            else if (Level == 2)
+            {
+                PlayGamesPlatform.Instance.IncrementAchievement("CgkI__DU0doGEAIQBw", _ExpAmount, (bool success) =>
                 {
                     if(success)
                     {

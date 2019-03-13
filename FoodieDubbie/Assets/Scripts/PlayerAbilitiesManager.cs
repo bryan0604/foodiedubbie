@@ -39,9 +39,9 @@ public class PlayerAbilitiesManager : MonoBehaviour
     {
         AbilityUIs.SetActive(true);
 
-        if (PlayerScript == null) PlayerScript = Behaviour.FindObjectOfType<PlayerManager>();
+        //if (PlayerScript == null) PlayerScript = Behaviour.FindObjectOfType<PlayerManager>();
 
-        PlayerScript.ManaPoints = Ability1_Quantity_Start;
+        //PlayerScript.ManaPoints = Ability1_Quantity_Start;
     }
 
     public void OnQuittingGameLevels()
@@ -54,6 +54,10 @@ public class PlayerAbilitiesManager : MonoBehaviour
         if(PlayerScript.ManaPoints >= Ability1_Quantity_Requirement)
         {
             DebugMaster.OnDebugging("Pass skill one!");
+
+            PlayerScript.ManaPoints -= 5;
+
+            OnUpdateQuantityText();
         }
         else
         {

@@ -18310,7 +18310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 274.09998, y: -720}
+  m_AnchoredPosition: {x: 274.0996, y: -720}
   m_SizeDelta: {x: 200.9, y: 200.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &897416058
@@ -55559,7 +55559,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _globalInfo: {fileID: 2914811010248217705}
   _googleplay: {fileID: 2914811010248217710}
-  Level1_Timer: 10
+  Level_Unlock_Timer:
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
   Achievement_Level1: 0
 --- !u!1001 &6070059867802156178
 PrefabInstance:

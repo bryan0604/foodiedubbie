@@ -8,6 +8,7 @@ public class GameManager_MainMenu : MonoBehaviour
 {
     public LoadingManager LM;
     public CharacterSelectionManager CSM;
+    public AchievementsManagement AchievementsManagement;
     public LevelsManager _levelManager;
     public Button Button_Resume;
     public Button Button_Login;
@@ -27,7 +28,8 @@ public class GameManager_MainMenu : MonoBehaviour
 
     private void Awake()
     {
-        if (LM == null) LM = FindObjectOfType<LoadingManager>();
+        if (LM == null) LM = Behaviour.FindObjectOfType<LoadingManager>();
+        if (AchievementsManagement == null) AchievementsManagement = Behaviour.FindObjectOfType<AchievementsManagement>();
 
         Button_Resume.onClick.AddListener(Continue);
         Button_Quit.onClick.AddListener(Quit);
@@ -65,7 +67,11 @@ public class GameManager_MainMenu : MonoBehaviour
 
             PlayerAbilitiesManager.PAM.OnEnteringGameLevels();
 
-            StartCoroutine(DelayChangeScene(Game_GlobalInfo.singleton.Player_NextLevel));
+            int Temp_NextLevel = Game_GlobalInfo.singleton.Player_NextLevel;
+
+            StartCoroutine(DelayChangeScene(Temp_NextLevel));
+
+            AchievementsManagement.AchievementTracking(Temp_NextLevel, true);
         }
     }
 
