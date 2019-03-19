@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,8 +9,8 @@ public class TreasureManagement : MonoBehaviour
     [System.Serializable]
     public class TreasuresRewards
     {
-        //[System.Serializable]
-        public List<int> RewardsList = new List<int>();
+        public int Points;
+        public int Mana;
     }
     public static TreasureManagement TM;
     public ParticleSystem ChestSE;
@@ -19,7 +20,10 @@ public class TreasureManagement : MonoBehaviour
     public DebugManager DebugMaster;
     public GameObject ChestGroup;
     public GameObject ChestContent;
-    public List<TreasuresRewards> Rewards = new List<TreasuresRewards>();
+    //public List<TreasuresRewards> Rewards = new List<TreasuresRewards>();
+    public List<TreasuresRewards> NewRewards = new List<TreasuresRewards>();
+
+
     private bool IsTreasureOpened;
     private int PointsQuantity;
 
@@ -55,15 +59,21 @@ public class TreasureManagement : MonoBehaviour
     {
         IsTreasureOpened = false;
 
-        for (int i = 0; i < Rewards[code-1].RewardsList.Count; i++)
-        {
-            DebugMaster.OnDebugging(Rewards[i].RewardsList[i].ToString());
+        DebugMaster.OnDebugging(NewRewards[code].Points + " " + NewRewards[code].Mana);
 
-            Game_GlobalInfo.singleton.Player_Lives += Rewards[i].RewardsList[i];
+        #region unused
+        ////for (int i = 0; i < NewRewards[code - 1].; i++)
+        //{
+        //    //    DebugMaster.OnDebugging(Rewards[i].RewardsList[i].ToString());
 
-            Text_Content.text = "Points + " + Rewards[i].RewardsList[i].ToString();
+        //    //    Game_GlobalInfo.singleton.Player_Lives += Rewards[i].RewardsList[i];
 
-        }
+        //    //    Text_Content.text = "Points + " + Rewards[i].RewardsList[i].ToString();
+
+        //}
+        #endregion
+
+
 
         ShowChest();
     }
@@ -105,4 +115,8 @@ public class TreasureManagement : MonoBehaviour
         ChestContent.SetActive(false);
         ChestSE.Stop();
     }
+}
+
+internal class NamedArrayAttribute : Attribute
+{
 }

@@ -69,14 +69,14 @@ public class GooglePlayManager : MonoBehaviour
                 DebugMaster.OnDebugging(" New player - No login records found!");
             }
         }
-        else if (Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            print("Iphone");
-        }
-        else
-        {
-            print("Editor");
-        }
+        //else if (Application.platform == RuntimePlatform.IPhonePlayer)
+        //{
+        //    print("Iphone");
+        //}
+        //else
+        //{
+        //    print("Editor");
+        //}
     }
 
     //public void OnCheckingGooglePlayUser()
@@ -251,16 +251,17 @@ public class GooglePlayManager : MonoBehaviour
             _LoadManager.LoadingScreen(false);
             return;
         }
-        else if (Game_GlobalInfo.singleton.Player_Lives < 1000)
-        {
-            _NoticeManage.OnActivationNoticeBoard(true, 4);
-
-            _LoadManager.LoadingScreen(false);
-            return;
-        }
 
         if (isTopUp)
         {
+            if (Game_GlobalInfo.singleton.Player_Lives < 1000)
+            {
+                _NoticeManage.OnActivationNoticeBoard(true, 4);
+
+                _LoadManager.LoadingScreen(false);
+                return;
+            }
+
             for (int i = 0; i < _gameglobal.AvatarsList.Count; i++)
             {
                 if(_gameglobal.AvatarsList[i])

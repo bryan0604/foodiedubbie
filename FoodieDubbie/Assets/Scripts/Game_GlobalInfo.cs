@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Game_GlobalInfo : MonoBehaviour
 {
     public static Game_GlobalInfo singleton;
+    public PlayerAbilitiesManager PAM;
     public string Player_Username = "AnduinLothar";
     public int Player_Lives = 1000;
     public int Player_NextLevel = 0;
@@ -18,7 +19,7 @@ public class Game_GlobalInfo : MonoBehaviour
         if(AppStarted == false)
         {
             AppStarted = true;
-            if (PlayerPrefs.HasKey("PlayerData_Lives"))
+            if (PlayerPrefs.HasKey("PlayerData_Lives") && PlayerPrefs.HasKey("PlayerData_ManaPoints"))
             {
                 #region UNUSED
                 //Debug.Log("Key found!");
@@ -46,8 +47,9 @@ public class Game_GlobalInfo : MonoBehaviour
                 #endregion
 
                 Player_Lives = PlayerPrefs.GetInt("PlayerData_Lives");
+                PAM.Ability1_Quantity_Start = PlayerPrefs.GetInt("PlayerData_ManaPoints");
 
-                Debug.Log("Loading Lives = " + Player_Lives);
+                Debug.Log("Loading Lives = " + Player_Lives + " | " + "Mana = " + PAM.Ability1_Quantity_Start );
             }
             else
             {
@@ -85,8 +87,10 @@ public class Game_GlobalInfo : MonoBehaviour
         //TotalTimeInGame = Seconds;
 
         PlayerPrefs.SetInt("PlayerData_Lives", Player_Lives);
+        PlayerPrefs.SetInt("PlayerData_ManaPoints", PAM.Ability1_Quantity_Start);
 
         Debug.Log("Saving Lives = " + Player_Lives);
+        Debug.Log("Saving Mana = " + PAM.Ability1_Quantity_Start);
 
         //Debug.Log("Saving timeOut timing = " + TotalTimeInGame);
 
